@@ -1,0 +1,350 @@
+﻿Incident_Number,call_time,initial_incident_type,incident_classification_label,incident_profile_label,incident_classification_level1,prl_count,brv_count,bsv_count,EASTINGS,NORTHINGS,callsign_station,call_seconds,reaction_seconds,driving_seconds,on_scene_seconds
+2,01/04/2009 00:17,FLOODING AFFECTING ELECTRICS,"Water incident (flooding, leaks, rescues etc.)",Medium Risk,SSC,1,0,0,396626.6478,293398.2749,Wednesbury,72,90,357,2675
+3,01/04/2009 01:19,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,392467.7616,300729.972,Fallings Park,83,107,137,301
+4,01/04/2009 02:38,HOUSE FIRE,Deliberate Dwelling Fires,High Risk,FIRE,1,0,0,414032.0265,295718.2087,Sutton Coldfield,60,59,243,1604
+5,01/04/2009 03:06,CAR FIRE,Accidental fire in a vehicle,Medium Risk,FIRE,1,0,0,402125.9995,304036.436,Bloxwich,77,178,298,3683
+6,01/04/2009 04:00,VEHICLE FIRE,Deliberate Vehicle Fires,Medium Risk,FIRE,2,0,0,434018.7384,283292.7994,Foleshill,39,138,142,1891
+7,01/04/2009 04:18,FIRE,Deliberate Vehicle Fires,Medium Risk,FIRE,2,0,0,389303.2417,287797.8539,Stourbridge,55,128,290,2937
+8,01/04/2009 05:32,CAR FIRE,Deliberate Vehicle Fires,Medium Risk,FIRE,1,0,0,400297.283,293871.541,Wednesbury,129,88,246,3088
+9,01/04/2009 06:13,OPEN,Accidental secondary fire,Low Risk,FIRE,1,0,0,413999.7832,300172.0657,Sutton Coldfield,218,60,415,532
+10,01/04/2009 06:41,HOUSE FIRE,False alarm raised with malicious intent,False Alarms,FALSE_ALARM,2,0,0,390989.878,297714.1582,Wolverhampton,47,146,87,697
+11,01/04/2009 07:03,LOCK IN,Lock in / lock out (effecting entry / exit),Medium Risk,SSC,1,0,0,406070.8205,290723.1433,Aston,96,100,368,487
+12,01/04/2009 07:27,AFA,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,400175.1416,298031.7356,Walsall,39,93,234,421
+13,01/04/2009 07:39,CANAL EMBANKMENT,Accidental rubbish fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,393042.16,296009.4503,Bilston,160,71,224,2031
+14,01/04/2009 08:12,AFA,False Alarms (Equipment),Medium Risk,FALSE_ALARM,1,0,0,410918.6866,291078.6571,Erdington,98,121,226,375
+15,01/04/2009 09:14,INSPECTION CALL,False Alarms (Equipment),False Alarms,FALSE_ALARM,1,0,0,406756.538,282079.6209,Billesley,86,120,249,831
+17,01/04/2009 09:25,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,407440.6281,286732.9708,Highgate,146,100,237,247
+18,01/04/2009 09:30,CHEMICAL,Hazardous Materials incident,High Risk,SSC,1,0,0,413745.3966,290569.9278,Erdington,266,56,389,5954
+19,01/04/2009 10:07,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,409539.7064,286329.0125,Ward End,127,65,315,360
+20,01/04/2009 10:14,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,405549.619,279081.2929,Kings Norton,113,118,146,530
+21,01/04/2009 10:18,SMELL OF BURNING,False Alarms (Equipment),False Alarms,FALSE_ALARM,2,0,0,407198.8146,287431.1944,Ladywood,178,62,271,973
+22,01/04/2009 10:25,SMOKE ISSUING,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,2,0,0,405705.1081,289990.2039,Handsworth,65,42,228,789
+23,01/04/2009 10:38,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,433740.5798,279245.3671,Coventry,174,89,60,412
+24,01/04/2009 10:59,SMELL OF BURNING,False alarm raised with good intent,False Alarms,FALSE_ALARM,2,0,0,404600.2941,290274.7851,Handsworth,153,37,283,1759
+25,01/04/2009 11:11,BUSH,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,409768.9628,292323.3349,Erdington,84,45,938,4115
+26,01/04/2009 11:19,BONFIRE,Accidental rubbish fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,400757.964,301176.94,Bloxwich,131,48,140,603
+27,01/04/2009 11:49,GARDEN FIRE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,400963.4505,296649.1959,Walsall,81,124,391,295
+28,01/04/2009 11:52,AFA,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,409927.6615,291415.3736,Erdington,63,58,204,582
+29,01/04/2009 12:09,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,415559.1403,279802.9316,Solihull,42,76,92,728
+30,01/04/2009 12:09,OPEN,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,400999.8505,298317.1841,Walsall,181,21,118,2154
+31,01/04/2009 12:19,RTC PERSON REPORTED,False alarm raised with malicious intent,False Alarms,FALSE_ALARM,2,0,0,434586.5276,282781.4391,Foleshill,90,161,6,363
+32,01/04/2009 12:25,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,409553.9817,285622.1724,Hay Mills,185,83,288,914
+33,01/04/2009 12:33,GARDEN FIRE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,393850.1077,290468.0824,Willenhall,73,158,287,827
+34,01/04/2009 12:52,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,2,0,0,417946.2156,285961.9567,Bickenhill,40,84,369,375
+35,01/04/2009 13:01,GRASS,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,409318.5704,282197.9702,Billesley,95,75,168,2231
+36,01/04/2009 13:22,ALARMS,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,407315.7991,289631.828,Handsworth,147,115,356,319
+37,01/04/2009 13:37,CARELINE PERSONS REPORTED,False Alarms (Equipment),False Alarms,FALSE_ALARM,3,0,0,407672.9883,297845.9515,Sutton Coldfield,127,128,325,1018
+38,01/04/2009 13:43,AFA,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,415738.7959,279974.73,Solihull,25,112,127,346
+39,01/04/2009 13:59,ALARMS,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,404512.9958,282361.4918,Bournbrook,193,67,94,836
+40,01/04/2009 14:01,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,412263.1817,296108.5181,Perry Barr,85,130,419,590
+41,01/04/2009 14:07,TREE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,392458.6781,286525.426,Dudley,63,57,140,1124
+42,01/04/2009 14:14,SSC,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,393363.0713,294450.4398,Tipton,187,214,417,1064
+43,01/04/2009 14:14,CAR FIRE,Accidental fire in a vehicle,Medium Risk,FIRE,1,0,0,395704.0129,295805.6685,Bilston,64,81,163,1142
+44,01/04/2009 14:21,AFA,Accidental Non-Domestic Fires,High Risk,FIRE,1,0,0,391226.7936,299493.2699,Wolverhampton,101,52,234,1494
+45,01/04/2009 14:23,AFA,False alarm raised with malicious intent,Low Risk,FALSE_ALARM,1,0,0,396605.6897,298338.4215,Willenhall,260,73,170,1956
+46,01/04/2009 14:23,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,391112.3987,299859.9616,Fallings Park,258,665,0,146
+47,01/04/2009 14:29,RUBBISH,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,407694.2651,289351.798,Highgate,98,52,390,412
+48,01/04/2009 14:29,RUBBISH,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,400902.9648,293056.1331,West Bromwich,110,12,382,423
+50,01/04/2009 14:39,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,412998.1212,287134.3735,Sheldon,110,24,457,1115
+51,01/04/2009 14:55,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,401265.9575,298643.674,Walsall,80,75,130,412
+52,01/04/2009 15:13,SMOKE DETECTOR ACTUATED,False alarm raised with good intent,False Alarms,FALSE_ALARM,2,0,0,397139.3626,289505.1241,Oldbury,48,82,253,1584
+53,01/04/2009 15:20,BIN OUTSIDE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,400414.7834,291613.9515,West Bromwich,92,58,116,245
+54,01/04/2009 15:35,LOCK IN,Other rescue/release of persons,High Risk,SSC,1,0,0,393747.6426,300903.2584,Fallings Park,91,141,104,889
+55,01/04/2009 15:39,TREE,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,390289.8377,288443.8086,Brierley Hill,86,121,154,811
+56,01/04/2009 16:15,CANAL EMBANKMENT,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,398879.2305,297762.3732,Walsall,122,118,341,2643
+57,01/04/2009 16:17,CANAL EMBANKMENT,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,396819.4184,294958.3876,Tipton,194,86,291,780
+58,01/04/2009 16:19,GRASS,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,412009.7614,291187.3653,Erdington,163,101,232,1613
+59,01/04/2009 16:23,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,411879.4245,291327.042,Erdington,246,110,289,361
+60,01/04/2009 16:25,FLAT FIRE HIGH RISE,False alarm raised with good intent,False Alarms,FALSE_ALARM,4,0,0,407619.5502,278961.8575,Billesley,101,103,299,1215
+61,01/04/2009 16:31,MOTORWAY GRASS,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,2,0,0,398912.49,298831.9782,Walsall,159,56,324,1136
+62,01/04/2009 16:38,HOUSE FIRE,Accidental Dwelling Fires,High Risk,FIRE,2,0,0,409856.1541,290060.7681,Aston,63,73,244,2420
+63,01/04/2009 16:48,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,416157.0466,286078.6327,Sheldon,132,75,128,1511
+64,01/04/2009 16:56,FLAT FIRE HIGH RISE,False alarm raised with good intent,False Alarms,FALSE_ALARM,4,0,0,407777.7351,278951.4457,Billesley,131,82,230,580
+65,01/04/2009 17:01,CANAL EMBANKMENT,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,398096.5388,297495.2045,Wednesbury,210,50,394,1871
+66,01/04/2009 17:06,GARDEN FIRE,Accidental rubbish fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,407239.9322,285440.6361,Highgate,96,59,164,530
+67,01/04/2009 17:11,MOTORWAY GRASS,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,2,0,0,399048.556,298824.279,Walsall,108,34,157,2102
+68,01/04/2009 17:12,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,398480.843,301768.3554,Bloxwich,424,91,106,888
+69,01/04/2009 17:15,RTC,Road Traffic Collision,High Risk,RTC,2,0,0,390511.1624,290013.8592,Brierley Hill,82,98,306,342
+70,01/04/2009 17:18,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,391224.9878,299015.144,Wolverhampton,714,71,238,413
+71,01/04/2009 17:18,CAR FIRE,Accidental fire in a vehicle,Medium Risk,FIRE,1,0,0,408458.0627,284757.7778,Highgate,89,58,98,858
+72,01/04/2009 17:24,OPEN,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,392470.7185,284688.7467,Dudley,69,39,179,362
+73,01/04/2009 17:27,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,2,0,0,398916.9577,301004.467,Walsall,67,138,11,245
+74,01/04/2009 17:30,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,1,0,0,434724.8837,281178.8578,Foleshill,80,80,127,206
+76,01/04/2009 17:40,OPEN,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,398854.965,301286.0565,Bloxwich,64,23,167,254
+77,01/04/2009 17:40,FIRE,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,393286.2646,286220.0015,Brierley Hill,130,62,276,939
+78,01/04/2009 17:49,OPEN,Deliberate Derelict Vehicle,Low Risk,FIRE,1,0,0,413807.5099,282375.3582,Hay Mills,127,27,300,873
+79,01/04/2009 17:49,RTC,Road Traffic Collision,High Risk,RTC,2,0,0,391900.0483,291876.529,Dudley,52,86,183,977
+80,01/04/2009 17:50,MOTORWAY MULTI RTC,Road Traffic Collision,High Risk,RTC,5,0,0,399455.0903,288867.9678,Smethwick,317,55,260,739
+81,01/04/2009 17:58,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,397923.9834,298597.1906,Willenhall,103,31,393,999
+82,01/04/2009 18:10,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,402020.6153,302243.4856,Bloxwich,345,69,260,586
+83,01/04/2009 18:13,TREE,Accidental secondary fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,402887.6377,288409.8311,Smethwick,43,20,206,431
+84,01/04/2009 18:16,SKIP FIRE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,388062.9846,299118.3835,Tettenhall,129,45,385,2239
+85,01/04/2009 18:18,AFA,Accidental Dwelling Fires,High Risk,FIRE,2,0,0,412199.7696,291691.8591,Erdington,42,63,117,1940
+86,01/04/2009 18:21,MOTORWAY GRASS,Road Traffic Collision,High Risk,RTC,2,0,0,399457.6306,296941.1686,Walsall,162,129,293,1195
+87,01/04/2009 18:26,LIFT,Lift Release,Low Risk,SSC,1,0,0,407160.9253,286847.1346,Highgate,115,103,350,2618
+88,01/04/2009 18:33,GRASS,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,400716.4895,294655.8244,Wednesbury,102,43,359,1175
+89,01/04/2009 18:36,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,399260.1404,277674.6675,Northfield,65,81,251,731
+90,01/04/2009 18:44,BUSH,Accidental secondary fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,398148.7412,293640.3962,Tipton,183,119,387,3015
+91,01/04/2009 18:54,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,395755.7637,298820.8296,Willenhall,110,58,256,1125
+92,01/04/2009 18:54,CARELINE PERSONS REPORTED,False Alarms (Equipment),False Alarms,FALSE_ALARM,3,0,0,408516.123,282535.8189,Billesley,58,84,157,1258
+93,01/04/2009 19:10,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,396033.7396,293955.8969,Bilston,61,77,308,981
+94,01/04/2009 19:12,FIRE,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,2,0,0,412299.3287,291337.7947,Erdington,74,86,71,963
+95,01/04/2009 19:14,GRASS,Accidental secondary fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,392265.6046,298779.371,Fallings Park,235,44,232,1770
+96,01/04/2009 19:14,CANAL EMBANKMENT,Deliberate Derelict Building Fires,Secondary Fires that attract a 20 minute-response time,FIRE,3,0,0,398953.7701,297755.8755,West Bromwich,465,10,199,1391
+97,01/04/2009 19:18,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,405604.2808,278012.5232,Kings Norton,207,18,245,460
+98,01/04/2009 19:21,GRASS,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,405553.5188,296001.9485,Perry Barr,150,74,726,1591
+99,01/04/2009 19:23,GRASS,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,409878.6081,285886.531,Hay Mills,140,117,331,907
+100,01/04/2009 19:26,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,391218.5466,299737.4178,Wolverhampton,48,68,190,307
+101,01/04/2009 19:32,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,397652.0413,291854.0504,West Bromwich,52,16,527,1644
+102,01/04/2009 19:32,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,2,0,0,391195.1224,299567.4867,Dudley,72,82,268,33
+103,01/04/2009 19:36,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,400450.1187,294013.2577,Handsworth,158,61,378,1495
+104,01/04/2009 19:37,SMOKE In area,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,398561.4843,300924.6148,Dudley,310,73,789,3284
+105,01/04/2009 19:37,GRASS,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,394866.6766,296166.3137,Bilston,58,81,7,319
+106,01/04/2009 19:49,FIRE,Deliberate Non-Domestic Fires,High Risk,FIRE,3,0,0,405360.2933,295385.6803,Handsworth,144,33,136,7882
+107,01/04/2009 19:51,OPEN,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,400621.2318,292934.2945,Smethwick,94,77,223,609
+108,01/04/2009 19:54,AFA,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,393760.7162,300208.5813,Fallings Park,39,124,196,1100
+109,01/04/2009 19:54,GRASS,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,389097.5056,284845.5389,Brierley Hill,186,30,252,1144
+110,01/04/2009 19:55,GRASS,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,397470.2296,289216.8863,Oldbury,67,134,452,1414
+111,01/04/2009 19:56,CANAL EMBANKMENT,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,393621.5114,296151.2392,Bilston,71,54,157,730
+112,01/04/2009 19:57,FIRE,Accidental rubbish fire,Low Risk,FIRE,2,0,0,400466.6545,290673.8975,Oldbury,102,103,237,312
+113,01/04/2009 20:12,OPEN,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,394541.5992,292388.1306,Tipton,256,96,291,745
+114,01/04/2009 20:17,OPEN,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,406369.3043,286575.44,Ladywood,167,98,283,248
+115,01/04/2009 20:22,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,406172.4223,284034.8213,Bournbrook,183,67,111,1550
+116,01/04/2009 20:31,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,414911.7519,288164.2927,Sheldon,43,93,251,600
+117,01/04/2009 20:33,AFA,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,392182.9919,302520.6644,Wolverhampton,102,91,405,630
+118,01/04/2009 20:43,BIN OUTSIDE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,396545.5265,300535.4034,Willenhall,51,47,214,359
+119,01/04/2009 20:50,OPEN,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,415476.115,290807.223,Erdington,123,74,406,787
+120,01/04/2009 20:50,LOCK OUT,Lock in / lock out (effecting entry / exit),Medium Risk,SSC,1,0,0,405484.9121,287150.9116,Ladywood,83,67,162,4011
+121,01/04/2009 20:54,FIRE,False alarm raised with good intent,False Alarms,FALSE_ALARM,2,0,0,400601.4961,287115.622,Smethwick,59,119,177,886
+122,01/04/2009 20:56,LOCK OUT,Special Service Call - Service not required.,Low Risk,SSC,1,0,0,406757.139,288386.4098,Aston,85,124,240,69
+123,01/04/2009 20:58,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,390723.531,288326.8932,Brierley Hill,46,58,229,1721
+125,01/04/2009 21:10,GARDEN FIRE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,400914.8418,299863.8411,Walsall,56,92,139,383
+126,01/04/2009 21:13,OPEN,False alarm raised with malicious intent,False Alarms,FALSE_ALARM,1,0,0,400248.4619,286763.1272,Smethwick,183,207,309,696
+127,01/04/2009 21:14,AFA,False Alarms (Equipment),Medium Risk,FALSE_ALARM,1,0,0,411545.5982,286415.5712,Ward End,82,84,185,733
+128,01/04/2009 21:33,HOUSE FIRE,Accidental Dwelling Fires,High Risk,FIRE,2,0,0,399320.2771,287430.5006,Oldbury,66,120,208,1086
+129,01/04/2009 21:37,CAR FIRE,Deliberate Vehicle Fires,Medium Risk,FIRE,1,0,0,405334.827,287693.3948,Handsworth,44,110,388,1294
+130,01/04/2009 21:46,FIRE,Deliberate Rubbish Fires,Low Risk,FIRE,2,0,0,435316.2837,279886.3941,Foleshill,134,61,200,541
+131,01/04/2009 21:49,SKIP FIRE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,394224.6344,293894.0252,Bilston,51,65,251,976
+132,01/04/2009 22:00,INSPECTION CALL,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,401714.933,287881.9165,Oldbury,202,81,462,316
+133,01/04/2009 22:01,OPEN,Deliberate FDR Other,Medium Risk,FIRE,1,0,0,393992.9092,293760.8108,Dudley,42,101,306,1555
+134,01/04/2009 22:02,SSC,Lock in / lock out (effecting entry / exit),Medium Risk,SSC,1,0,0,391242.6147,288219.0509,Brierley Hill,201,34,202,1215
+135,01/04/2009 22:14,BIN OUTSIDE,Accidental rubbish fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,400240.4301,301054.7993,Walsall,101,74,241,348
+136,01/04/2009 22:20,GRASS,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,398922.7048,297904.7675,Walsall,96,76,247,837
+137,01/04/2009 22:26,BIN INSIDE,Accidental Dwelling Fires,High Risk,FIRE,2,0,0,393814.2995,298132.9837,Fallings Park,134,116,285,3857
+138,01/04/2009 22:41,LOCK OUT,Lock in / lock out (effecting entry / exit),Medium Risk,SSC,1,0,0,399721.9897,301615.0885,Bloxwich,122,57,50,1012
+139,01/04/2009 22:47,OPEN,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,408072.1208,295797.9578,Perry Barr,124,80,214,1640
+140,01/04/2009 22:59,BUSH,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,396978.3408,295819.3571,Bilston,189,102,322,486
+141,01/04/2009 23:00,GARAGE - LOCK UP,Deliberate Derelict Building Fires,Low Risk,FIRE,2,0,0,400978.6772,293009.2341,West Bromwich,78,78,138,3114
+142,01/04/2009 23:23,FIRE,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,2,0,0,395317.8943,299411.1782,Fallings Park,180,116,234,1326
+143,01/04/2009 23:34,SMOKE DETECTOR PERS  REPORTED,Accidental Dwelling Fires,High Risk,FIRE,3,0,0,391544.0948,297353.1129,Wolverhampton,52,101,220,1425
+144,02/04/2009 00:02,GARDEN FIRE,Accidental rubbish fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,396332.1737,292094.1207,Tipton,125,138,188,464
+145,02/04/2009 00:11,LOCK IN,Lock in / lock out (effecting entry / exit),Medium Risk,SSC,1,0,0,405104.5197,278203.7775,Kings Norton,129,146,167,997
+146,02/04/2009 01:56,ALARMS,False Alarms (Equipment),Low Risk,FALSE_ALARM,2,0,0,408714.805,283340.7398,Billesley,71,100,180,288
+147,02/04/2009 02:04,CAR FIRE,Deliberate Vehicle Fires,Medium Risk,FIRE,1,0,0,390543.7273,297990.1515,Wolverhampton,57,130,118,1741
+148,02/04/2009 02:21,FIRE,Deliberate Non-Domestic Fires,High Risk,FIRE,3,0,0,437104.2334,281855.557,Foleshill,78,89,250,9596
+149,02/04/2009 02:41,SKIP FIRE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,394473.7206,291918.9631,Dudley,52,181,214,2198
+150,02/04/2009 03:35,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,391574.8518,298625.6453,Wolverhampton,120,108,168,1963
+151,02/04/2009 04:51,BIN OUTSIDE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,433653.2583,283661.3465,Sheldon,107,141,253,681
+152,02/04/2009 06:03,FIRE,Deliberate Non-Domestic Fires,High Risk,FIRE,6,0,0,436949.2865,281922.6709,Foleshill,77,65,263,19726
+153,02/04/2009 06:58,BIN OUTSIDE,Deliberate Non-Domestic Fires,High Risk,FIRE,2,0,0,414847.5369,279524.1175,Billesley,89,99,156,3820
+154,02/04/2009 07:02,FLOODING AFFECTING ELECTRICS,"Water incident (flooding, leaks, rescues etc.)",High Risk,SSC,1,0,0,407377.5687,289938.4952,Aston,108,71,88,1660
+155,02/04/2009 07:09,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,405611.5839,285601.0412,Ladywood,74,79,145,377
+156,02/04/2009 08:11,SMOKE DETECTOR PERS  REPORTED,False alarm raised with good intent,False Alarms,FALSE_ALARM,3,0,0,415437.3884,279368.5979,Billesley,57,27,244,1070
+157,02/04/2009 08:29,CARELINE PERSONS REPORTED,False Alarms (Equipment),False Alarms,FALSE_ALARM,1,0,0,389465.4759,283624.6933,Stourbridge,41,101,152,323
+158,02/04/2009 08:55,AFA,False alarm raised with malicious intent,Low Risk,FALSE_ALARM,1,0,0,416108.6652,290292.8771,Sheldon,53,82,502,421
+159,02/04/2009 09:13,TREE,Deliberate FDR Other,High Risk,FIRE,1,0,0,434744.4926,282949.9586,Foleshill,70,81,83,2831
+160,02/04/2009 09:19,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,412818.7,296419.3622,Sutton Coldfield,51,112,194,748
+161,02/04/2009 10:21,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,393867.0092,300322.2402,Fallings Park,77,173,9,538
+162,02/04/2009 10:54,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,404109.3925,284059.2686,Bournbrook,71,82,186,364
+163,02/04/2009 10:54,HOUSE FIRE,Accidental Dwelling Fires,High Risk,FIRE,2,0,0,410923.2914,293580.5155,Erdington,51,50,261,2679
+164,02/04/2009 11:04,AFA,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,408854.5441,293640.4765,Erdington,109,54,353,598
+165,02/04/2009 11:09,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,2,0,0,402013.4847,284644.7543,Woodgate Valley,81,77,220,626
+166,02/04/2009 11:11,RTC,Road Traffic Collision,High Risk,RTC,2,0,0,436452.962,277107.8607,Binley,100,111,275,487
+167,02/04/2009 11:13,AFA,False alarm raised with malicious intent,Low Risk,FALSE_ALARM,1,0,0,403203.6195,287945.3522,Ladywood,127,26,159,821
+168,02/04/2009 11:21,GARDEN FIRE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,406043.4781,291073.3481,Handsworth,149,89,263,529
+169,02/04/2009 12:15,AFA,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,408724.6023,289768.9066,Erdington,49,87,305,381
+170,02/04/2009 12:25,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,404889.2261,287782.5789,Ladywood,41,67,233,821
+171,02/04/2009 12:35,SMELL OF BURNING,False Alarms (Equipment),False Alarms,FALSE_ALARM,2,0,0,402533.8281,302283.6133,Walsall,78,119,292,529
+172,02/04/2009 12:36,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,404697.7651,282208.826,Bournbrook,39,39,394,449
+173,02/04/2009 12:38,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,393534.5018,300339.5288,Bilston,55,82,453,681
+175,02/04/2009 13:08,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,393486.9795,300275.322,Wolverhampton,71,24,436,157
+176,02/04/2009 13:31,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,1,0,0,395410.0864,296440.3017,Bilston,92,52,128,777
+177,02/04/2009 13:56,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,391797.1916,298308.2526,Wolverhampton,77,109,248,478
+178,02/04/2009 13:57,ALARMS,False Alarms (Equipment),Low Risk,FALSE_ALARM,2,0,0,409795.5818,285016.3601,Highgate,77,55,240,782
+179,02/04/2009 13:59,AFA,False Alarms (Equipment),Medium Risk,FALSE_ALARM,1,0,0,392735.4632,289911.1387,Dudley,54,66,274,769
+180,02/04/2009 14:15,ALARMS,False Alarms (Equipment),Low Risk,FALSE_ALARM,2,0,0,417739.642,285485.6319,Sheldon,52,16,226,965
+181,02/04/2009 14:16,BONFIRE,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,416874.5181,281573.1433,Solihull,79,149,381,1305
+182,02/04/2009 14:23,ALARMS,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,413327.7424,277576.6211,Solihull,144,175,294,659
+183,02/04/2009 14:37,FIRE,Deliberate Dwelling Fires,High Risk,FIRE,3,0,0,393984.8606,300783.7066,Fallings Park,193,50,86,4290
+184,02/04/2009 14:56,BIN OUTSIDE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,394929.2207,301126.7982,Bloxwich,70,77,449,679
+185,02/04/2009 15:12,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,393394.5388,300407.4602,Wednesbury,42,34,620,634
+186,02/04/2009 15:17,GAS LEAK INSIDE,Gas leak,High Risk,SSC,1,0,0,402820.1662,287872.5769,Smethwick,84,24,271,3296
+187,02/04/2009 15:21,OPEN,Deliberate FDR Other,High Risk,FIRE,2,0,0,435763.5617,280932.575,Foleshill,158,28,182,2365
+188,02/04/2009 15:22,RTC,Spillage of non hazardous substance,Medium Risk,SSC,2,0,0,397644.8665,290653.9814,Oldbury,107,49,203,2314
+189,02/04/2009 15:22,SSC,Other rescue/release of persons,High Risk,SSC,1,0,0,412703.7821,275984.9974,Solihull,73,154,474,763
+190,02/04/2009 15:36,OPEN,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,406023.0817,303137.0652,Walsall,87,35,579,1110
+191,02/04/2009 15:39,ALARMS,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,406803.4013,286787.2797,Highgate,90,17,233,1184
+192,02/04/2009 15:49,OPEN,False alarm raised with malicious intent,False Alarms,FALSE_ALARM,1,0,0,405965.5365,303538.7508,Aldridge,158,16,775,211
+193,02/04/2009 16:24,OPEN,Accidental rubbish fire,Low Risk,FIRE,1,0,0,409187.5684,282170.809,Highgate,150,73,333,1691
+194,02/04/2009 16:33,AFA,Accidental Dwelling Fires,High Risk,FIRE,2,0,0,432403.3392,282849.1571,Foleshill,59,80,263,602
+195,02/04/2009 16:35,GARDEN FIRE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,434634.6925,278744.4947,Coventry,98,90,175,482
+196,02/04/2009 16:42,FIRE,Deliberate Derelict Building Fires,Low Risk,FIRE,2,0,0,406341.6716,300445.278,Aldridge,70,39,276,2988
+197,02/04/2009 16:42,FACTORY,Acc Derelict Vehicle Fire,Low Risk,FIRE,2,0,0,392244.6255,298396.1462,Wolverhampton,57,107,230,1317
+198,02/04/2009 16:44,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,395824.0169,288409.0395,Oldbury,100,131,388,887
+199,02/04/2009 16:52,SPILLAGE,Transport incident (Not RTC),Medium Risk,SSC,1,0,0,400673.6096,292286.967,West Bromwich,127,94,113,632
+200,02/04/2009 17:13,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,401493.2899,294861.7666,West Bromwich,145,45,355,372
+201,02/04/2009 17:16,GRASS,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,416695.1523,288008.9926,Sheldon,66,77,440,762
+202,02/04/2009 17:22,GRASS,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,394984.5228,290866.1558,Dudley,93,93,324,1056
+203,02/04/2009 17:26,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,4,0,0,404643.1685,288418.1161,Handsworth,53,73,230,1167
+204,02/04/2009 17:36,SMOKE ISSUING,Accidental Dwelling Fires,High Risk,FIRE,4,0,0,400965.2375,290093.3796,West Bromwich,72,37,218,4751
+205,02/04/2009 17:41,AFA,False alarm raised with malicious intent,Low Risk,FALSE_ALARM,2,0,0,396508.1139,297972.2702,Willenhall,39,66,186,982
+206,02/04/2009 17:42,OPEN,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,435294.457,279495.6448,Binley,128,77,214,1502
+207,02/04/2009 17:56,GARDEN FIRE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,397070.8355,296472.6264,Wednesbury,90,59,232,1630
+208,02/04/2009 17:56,LIFT,Lift Release,Low Risk,SSC,1,0,0,391244.9504,298293.3103,Wolverhampton,99,73,217,955
+209,02/04/2009 18:01,CARELINE PERSONS REPORTED,False Alarms (Equipment),False Alarms,FALSE_ALARM,3,0,0,388841.0371,285021.4374,Stourbridge,36,75,222,245
+210,02/04/2009 18:06,FIRE,Deliberate Non-Domestic Fires,High Risk,FIRE,2,0,0,405347.7853,295610.9807,Perry Barr,108,82,401,7586
+211,02/04/2009 18:10,RAILWAY EMBANKMENT FIRE,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,402434.3581,293938.7185,Handsworth,119,93,541,1989
+212,02/04/2009 18:27,TREE,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,399331.2453,297957.9238,Walsall,164,96,296,925
+213,02/04/2009 18:31,OPEN,Other rescue/release of persons,High Risk,SSC,1,0,0,399366.7489,282126.0444,Woodgate Valley,106,73,162,992
+214,02/04/2009 18:44,BUSH,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,400007.2991,278572.1524,Northfield,127,74,323,450
+215,02/04/2009 18:51,BUSH,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,403377.4589,277854.6981,Northfield,94,90,260,856
+216,02/04/2009 18:53,OPEN,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,400642.4983,293048.2774,Handsworth,144,38,259,2005
+217,02/04/2009 18:58,FIRE,Deliberate Dwelling Fires,High Risk,FIRE,2,0,0,407705.9301,285074.3095,Highgate,117,26,279,1136
+218,02/04/2009 19:07,BIN OUTSIDE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,395434.9543,295658.8931,Bilston,99,63,267,272
+219,02/04/2009 19:08,BUSH,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,395525.9901,295131.342,Wednesbury,166,21,352,483
+220,02/04/2009 19:16,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,2,0,0,393361.4004,283547.9207,Stourbridge,257,16,475,1704
+221,02/04/2009 19:18,ALARMS,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,413151.9678,292979.3665,Erdington,87,22,271,447
+222,02/04/2009 19:19,BUSH,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,397266.5384,292021.2702,West Bromwich,108,259,592,1081
+223,02/04/2009 19:21,HOUSE FIRE PERSONS REPORTED,Accidental Dwelling Fires,High Risk,FIRE,3,0,0,414715.0538,286293.6259,Hay Mills,105,43,367,1692
+224,02/04/2009 19:27,BONFIRE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,410779.8233,292355.9003,Bickenhill,110,31,232,575
+225,02/04/2009 19:41,FIRE PERSONS REPORTED,Deliberate Non-Domestic Fires,High Risk,FIRE,8,0,0,397419.1154,297209.1694,Willenhall,150,57,225,9693
+226,02/04/2009 19:55,OPEN,Deliberate Vehicle Fires,Medium Risk,FIRE,1,0,0,403538.6679,278721.4053,Kings Norton,231,101,235,1250
+227,02/04/2009 20:11,SHED FIRE,Deliberate FDR Other,High Risk,FIRE,1,0,0,410412.5538,288979.7318,Ward End,96,79,112,679
+228,02/04/2009 20:12,CYLINDER,Accidental Dwelling Fires,High Risk,FIRE,2,0,0,389746.6873,298773.2992,Wolverhampton,89,88,227,4239
+229,02/04/2009 20:17,SMELL OF BURNING,False alarm raised with good intent,False Alarms,FALSE_ALARM,2,0,0,411025.6313,286289.7423,Hay Mills,115,77,202,657
+230,02/04/2009 20:20,RTC PERSON REPORTED,Road Traffic Collision,High Risk,RTC,2,0,0,399545.6939,300640.9616,Smethwick,113,19,174,1134
+231,02/04/2009 20:24,SPILLAGE,Making Safe (not RTC),Medium Risk,SSC,1,0,0,408541.4305,285095.3023,Highgate,123,54,200,841
+232,02/04/2009 20:30,GARDEN FIRE,Accidental rubbish fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,400295.1816,294952.4078,Highgate,147,119,603,309
+234,02/04/2009 20:40,AFA,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,434506.764,276819.0903,Coventry,83,110,252,1076
+235,02/04/2009 20:45,GARDEN FIRE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,434986.4697,282096.6557,Foleshill,123,105,180,286
+236,02/04/2009 20:46,OPEN,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,435916.5036,282730.8238,Foleshill,105,49,250,268
+237,02/04/2009 20:50,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,405943.729,281109.3234,Kings Norton,130,112,369,968
+238,02/04/2009 21:00,TREE,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,398963.4641,290504.6994,Smethwick,136,24,525,140
+239,02/04/2009 21:06,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,404214.5441,282342.0776,Bournbrook,55,70,129,528
+240,02/04/2009 21:10,OPEN,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,399159.107,277526.5573,Billesley,84,32,1144,721
+241,02/04/2009 21:20,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,411206.8423,284933.6476,Hay Mills,332,80,123,983
+243,02/04/2009 21:42,FACTORY,Deliberate Non-Domestic Fires,High Risk,FIRE,2,0,0,407512.2727,287917.3644,Aston,91,82,146,4844
+244,02/04/2009 22:08,FIRE,Accidental rubbish fire,Low Risk,FIRE,1,0,0,410933.1295,290288.8187,Erdington,123,88,480,208
+245,02/04/2009 22:09,GRASS,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,399052.1062,297911.3464,Walsall,85,114,236,1174
+246,02/04/2009 22:11,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,433563.5043,278960.0717,Coventry,97,134,83,2669
+247,02/04/2009 22:37,RTC PERSON REPORTED,Road Traffic Collision,High Risk,RTC,2,0,0,410641.7483,285134.455,Hay Mills,63,72,123,2096
+248,02/04/2009 22:46,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,411654.5965,296359.6235,Sutton Coldfield,77,52,217,413
+249,02/04/2009 22:56,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,401494.6783,289551.0518,Smethwick,209,87,170,428
+250,02/04/2009 23:14,OPEN,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,393620.236,289755.4205,Dudley,74,108,234,545
+251,02/04/2009 23:36,BONFIRE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,427904.4881,280013.1608,Canley,118,120,380,980
+252,03/04/2009 00:06,HOUSE FIRE,False alarm raised with good intent,False Alarms,FALSE_ALARM,3,0,0,409058.1855,283736.5989,Highgate,60,62,189,501
+253,03/04/2009 01:10,VEHICLE FIRE,Deliberate Vehicle Fires,Medium Risk,FIRE,2,0,0,417397.9244,288026.0256,Sheldon,94,136,271,1596
+254,03/04/2009 01:13,TREE,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,413911.0079,296112.8392,Sutton Coldfield,117,146,307,549
+255,03/04/2009 01:27,LOCK IN,Lock in / lock out (effecting entry / exit),Medium Risk,SSC,1,0,0,412098.8757,295954.8105,Sutton Coldfield,442,120,33,672
+256,03/04/2009 02:04,FIRE,False alarm raised with good intent,False Alarms,FALSE_ALARM,2,0,0,388913.298,296884.5064,Wolverhampton,104,116,250,289
+257,03/04/2009 02:16,FIRE,Deliberate FDR Other,Medium Risk,FIRE,2,0,0,419209.4148,275208.6582,Bickenhill,101,101,633,300
+258,03/04/2009 03:28,RTC,Road Traffic Collision,High Risk,RTC,2,0,0,411344.5351,282381.4443,Hay Mills,114,94,190,1335
+259,03/04/2009 04:21,BIN OUTSIDE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,392925.6946,300136.5832,Fallings Park,204,132,85,343
+260,03/04/2009 06:17,CARELINE Speech contact received,False Alarms (Equipment),False Alarms,FALSE_ALARM,1,0,0,408372.2638,287649.8401,Highgate,79,127,206,388
+261,03/04/2009 06:35,BIN OUTSIDE,Accidental rubbish fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,411328.7279,291653.6744,Erdington,90,148,116,565
+262,03/04/2009 06:58,INSPECTION CALL,False Alarms (Equipment),False Alarms,FALSE_ALARM,1,0,0,407986.2057,293352.8061,Perry Barr,145,96,423,709
+263,03/04/2009 07:29,OPEN,Accidental rubbish fire,Low Risk,FIRE,2,0,0,409835.4531,283524.6038,Highgate,72,117,752,2949
+264,03/04/2009 08:08,AFA,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,400030.0418,291046.8372,West Bromwich,68,158,158,1026
+265,03/04/2009 08:16,GAS LEAK INSIDE,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,395381.4323,286382.985,Oldbury,78,59,423,123
+266,03/04/2009 08:21,FIRE,Deliberate Non-Domestic Fires,High Risk,FIRE,2,0,0,433393.8406,283392.0703,Foleshill,111,81,210,4064
+267,03/04/2009 08:25,ALARMS,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,405055.4045,286413.6609,Ladywood,73,108,78,229
+268,03/04/2009 08:31,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,414998.3033,279418.7312,Solihull,61,84,149,666
+269,03/04/2009 08:47,SSC,Other rescue/release of persons,High Risk,SSC,1,0,0,414646.5514,285479.081,Sheldon,122,170,183,638
+270,03/04/2009 09:09,SMOKE DETECTOR ACTUATED,False alarm raised with malicious intent,False Alarms,FALSE_ALARM,2,0,0,406091.0356,290888.4918,Aston,125,76,300,665
+271,03/04/2009 09:39,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,392274.7383,286598.2261,Brierley Hill,98,33,252,807
+272,03/04/2009 09:43,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,407365.5219,287190.1741,Highgate,79,77,336,384
+273,03/04/2009 10:00,FIRE,False alarm raised with good intent,False Alarms,FALSE_ALARM,2,0,0,399702.1953,290747.3073,West Bromwich,67,156,230,485
+274,03/04/2009 10:17,ALARMS,False alarm raised with good intent,Low Risk,FALSE_ALARM,2,0,0,403704.4981,283907.7011,Woodgate Valley,96,94,64,1143
+275,03/04/2009 10:19,LOCK IN,Lock in / lock out (effecting entry / exit),Medium Risk,SSC,1,0,0,434255.9981,279588.9081,Foleshill,74,46,581,626
+276,03/04/2009 10:23,CAR FIRE,Accidental rubbish fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,408669.7622,290084.3956,Aston,103,89,151,841
+277,03/04/2009 10:47,ALARMS,Deliberate Non-Domestic Fires,High Risk,FIRE,2,0,0,409247.7465,286136.0328,Highgate,76,30,139,1815
+278,03/04/2009 10:59,SMELL UNIDENTIFIED,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,406357.3411,287274.1446,Ladywood,110,160,694,1322
+279,03/04/2009 11:08,ALARMS,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,409471.9528,286052.8282,Ward End,109,90,476,214
+280,03/04/2009 11:27,CHUTE HIGH RISE,False Alarms (Equipment),False Alarms,FALSE_ALARM,3,0,0,391630.8394,286751.8231,Brierley Hill,80,66,188,1556
+281,03/04/2009 11:58,GRASS,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,393041.5958,301349.5766,Fallings Park,88,51,396,867
+282,03/04/2009 12:46,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,412402.951,290672.3092,Erdington,93,35,270,629
+283,03/04/2009 13:17,OPEN,Accidental secondary fire,Low Risk,FIRE,1,0,0,394077.2886,292048.2528,Dudley,96,62,430,675
+284,03/04/2009 13:25,ALARMS,False alarm raised with malicious intent,Low Risk,FALSE_ALARM,1,0,0,401238.0734,279826.726,Northfield,71,94,265,435
+285,03/04/2009 13:32,CAR FIRE,Accidental fire in a vehicle,Medium Risk,FIRE,1,0,0,392624.7723,303815.4872,Fallings Park,84,58,324,1569
+286,03/04/2009 13:32,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,412370.7704,289958.6369,Erdington,473,99,524,364
+287,03/04/2009 13:33,OPEN,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,410615.4277,286640.1541,Highgate,127,67,430,1409
+288,03/04/2009 13:36,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,402518.6891,302027.0106,Sutton Coldfield,76,103,753,4173
+289,03/04/2009 13:36,RTC,Road Traffic Collision,High Risk,RTC,2,0,0,410763.0832,280837.0346,Solihull,83,84,321,1881
+291,03/04/2009 13:43,FIRE,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,396339.3715,293416.8727,Tipton,119,27,240,1179
+292,03/04/2009 13:48,CAR FIRE,Accidental fire in a vehicle,Medium Risk,FIRE,1,0,0,393683.5093,295208.1906,Wolverhampton,290,103,422,648
+293,03/04/2009 14:31,HOUSE FIRE,Accidental Dwelling Fires,High Risk,FIRE,2,0,0,436532.3657,282704.4064,Foleshill,55,16,187,1157
+294,03/04/2009 14:31,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,411775.7008,286470.536,Sheldon,54,81,314,767
+295,03/04/2009 14:47,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,408244.7279,289627.1963,Aston,62,79,178,941
+296,03/04/2009 14:50,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,400424.8553,286758.4592,Smethwick,145,105,751,468
+297,03/04/2009 14:51,AFA,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,415155.0273,279751.7943,Solihull,29,70,177,1342
+298,03/04/2009 14:59,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,407019.9463,291393.4157,Walsall,122,65,465,742
+299,03/04/2009 15:05,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,404120.8928,283602.4292,Bournbrook,79,30,322,802
+300,03/04/2009 15:21,FIRE,Deliberate Rubbish Fires,Low Risk,FIRE,2,0,0,403936.8745,287760.9656,Ladywood,146,27,247,425
+301,03/04/2009 15:29,AFA,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,394776.8476,300256.4828,Fallings Park,135,67,267,856
+302,03/04/2009 15:46,RTC  MULTI,Road Traffic Collision,High Risk,RTC,2,0,0,403005.7544,276602.9566,Northfield,101,77,144,1231
+303,03/04/2009 15:48,OPEN,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,404526.7922,290093.7509,Handsworth,44,125,211,733
+304,03/04/2009 15:52,OPEN,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,414669.3492,278711.5566,Solihull,102,76,134,968
+305,03/04/2009 16:02,GARDEN FIRE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,410629.7134,291145.7173,Erdington,120,14,372,509
+306,03/04/2009 16:24,ALARMS,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,407933.1538,286362.3848,Highgate,50,112,234,605
+307,03/04/2009 16:29,SMOKE In area,Accidental rubbish fire,Low Risk,FIRE,1,0,0,398781.4661,299243.8775,Walsall,103,126,378,400
+308,03/04/2009 16:31,OPEN,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,401768.8594,277467.8573,Northfield,63,23,117,309
+309,03/04/2009 16:32,FLAT FIRE PERS REP LOW RISE,Accidental Dwelling Fires,High Risk,FIRE,3,0,0,436964.7164,279543.64,Binley,118,62,158,2788
+311,03/04/2009 16:50,BONFIRE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,403851.2708,280921.1817,Kings Norton,85,49,161,2033
+312,03/04/2009 17:01,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,410557.4929,291459.2731,Erdington,97,48,163,375
+313,03/04/2009 17:13,ANIMAL SMALL,Animal rescue / assistance incidents,Low Risk,SSC,1,0,0,412233.1217,286516.4039,Hay Mills,213,60,347,1682
+314,03/04/2009 17:13,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,393001.9012,291539.0362,Dudley,55,181,98,215
+315,03/04/2009 17:16,OPEN,Accidental rubbish fire,Low Risk,FIRE,1,0,0,401693.6575,301891.0565,Bloxwich,62,80,472,834
+316,03/04/2009 17:19,OPEN,Deliberate Dwelling Fires,High Risk,FIRE,1,0,0,404839.5823,289947.8648,Handsworth,96,94,307,5735
+317,03/04/2009 17:21,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,404656.3981,293575.313,Perry Barr,156,40,420,1144
+318,03/04/2009 17:31,ALARMS,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,401685.2659,288415.209,Smethwick,48,84,85,216
+319,03/04/2009 17:32,SMOKE DETECTOR ACTUATED,False alarm raised with good intent,False Alarms,FALSE_ALARM,2,0,0,415166.9541,283815.1745,Sheldon,132,57,328,469
+320,03/04/2009 17:39,BIN OUTSIDE,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,435336.209,278638.5513,Binley,80,52,171,442
+321,03/04/2009 17:41,WATER RESCUE INCIDENT,"Water incident (flooding, leaks, rescues etc.)",High Risk,SSC,3,0,0,402644.5612,298628.4942,Walsall,351,106,128,1148
+322,03/04/2009 17:46,OPEN,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,436623.6525,283596.6121,Foleshill,139,186,120,2012
+323,03/04/2009 17:55,FIRE,Deliberate Derelict Building Fires,Low Risk,FIRE,2,0,0,405707.6844,294575.7421,Erdington,95,38,378,4847
+324,03/04/2009 18:07,FIRE,Deliberate Rubbish Fires,Low Risk,FIRE,2,0,0,411880.0699,281072.299,Billesley,155,110,288,617
+325,03/04/2009 18:12,CARELINE PERSONS REPORTED,False Alarms (Equipment),False Alarms,FALSE_ALARM,3,0,0,388355.8061,284697.9966,Stourbridge,33,112,224,469
+326,03/04/2009 18:17,AFA,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,407728.4219,294628.9973,Perry Barr,109,12,129,862
+327,03/04/2009 18:28,CAR FIRE,Accidental fire in a vehicle,Medium Risk,FIRE,2,0,0,401444.2107,289837.0269,Smethwick,80,45,176,1847
+328,03/04/2009 18:29,BUSH,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,398654.8038,287462.6232,Oldbury,68,109,527,1451
+329,03/04/2009 18:36,CANAL EMBANKMENT,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,401040.1112,303979.3919,Bloxwich,89,72,271,1197
+330,03/04/2009 18:36,OPEN,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,405094.0655,305070.5005,Aldridge,72,118,202,748
+331,03/04/2009 18:38,OPEN,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,410840.2034,290647.4947,Erdington,68,23,907,95
+332,03/04/2009 18:38,OPEN,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,389285.6489,284840.3759,Stourbridge,60,129,235,1085
+333,03/04/2009 18:41,OPEN,Accidental secondary fire,Low Risk,FIRE,1,0,0,403739.2219,286174.5923,Ladywood,50,107,590,9
+334,03/04/2009 18:55,CARELINE Speech contact received,First Aid,High Risk,SSC,1,0,0,403500.3535,284013.822,Ladywood,95,61,501,1375
+335,03/04/2009 18:59,OPEN,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,411010.9738,290105.5326,Sheldon,135,31,262,1499
+336,03/04/2009 19:03,SMOKE In area,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,436682.8443,281202.4369,Binley,104,109,320,426
+337,03/04/2009 19:03,OPEN,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,392544.4532,296747.0812,Wolverhampton,86,67,332,496
+338,03/04/2009 19:15,RTC,Road Traffic Collision,High Risk,RTC,1,0,0,412209.2716,288407.6438,Ward End,66,96,251,350
+339,03/04/2009 19:24,OPEN,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,393367.1587,284894.4646,Brierley Hill,123,66,510,2191
+340,03/04/2009 19:32,BONFIRE,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,407325.1385,284493.5917,Highgate,130,56,195,444
+341,03/04/2009 19:34,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,401143.2019,291708.0359,West Bromwich,311,96,127,1510
+342,03/04/2009 19:42,BUSH,Accidental secondary fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,409473.3647,289082.209,Ward End,96,71,199,812
+343,03/04/2009 19:44,AFA,False Alarms (Equipment),Low Risk,FALSE_ALARM,1,0,0,404960.4532,285859.0167,Ladywood,75,105,325,419
+344,03/04/2009 19:46,FLAT FIRE PERS REP LOW RISE,Accidental Dwelling Fires,High Risk,FIRE,3,0,0,403858.7668,283482.0542,Woodgate Valley,57,92,203,1642
+345,03/04/2009 19:46,BONFIRE,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,399053.9262,301015.8948,Bloxwich,64,38,72,659
+346,03/04/2009 19:46,CAR FIRE,Accidental fire in a vehicle,Medium Risk,FIRE,1,0,0,414318.7186,279906.6141,Solihull,62,90,25,2225
+347,03/04/2009 19:50,OPEN,False alarm raised with malicious intent,False Alarms,FALSE_ALARM,1,0,0,402612.7074,302042.1191,Aldridge,83,124,273,581
+348,03/04/2009 19:51,FIRE,Deliberate Derelict Building Fires,Low Risk,FIRE,2,0,0,407817.007,284797.9161,Highgate,133,93,201,2572
+349,03/04/2009 19:52,HOUSE FIRE,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,394636.2214,288816.3824,Dudley,66,85,310,34
+350,03/04/2009 19:53,CANAL EMBANKMENT,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,401865.4678,302249.8643,Walsall,97,107,558,1561
+351,03/04/2009 20:00,OPEN,Deliberate Rubbish Fires,Low Risk,FIRE,1,0,0,435780.0222,277799.5961,Binley,192,94,251,766
+352,03/04/2009 20:01,AFA,False Alarms (Equipment),Medium Risk,FALSE_ALARM,2,0,0,412035.1222,295511.991,Erdington,92,80,287,4442
+353,03/04/2009 20:02,BONFIRE,False alarm raised with good intent,False Alarms,FALSE_ALARM,1,0,0,414794.7555,282909.8939,Solihull,61,65,384,506
+354,03/04/2009 20:02,CARELINE PERSONS REPORTED,False Alarms (Equipment),False Alarms,FALSE_ALARM,4,0,0,401149.9922,282585.3607,Highgate,90,75,238,883
+356,03/04/2009 20:06,TREE,Secondary fire resulting from deliberately set fire,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,414335.1162,296012.1234,Perry Barr,67,113,535,438
+357,03/04/2009 20:12,OPEN,Accidental secondary fire,Low Risk,FIRE,1,0,0,391657.0811,296575.3632,Wolverhampton,110,30,286,630
+358,03/04/2009 20:13,AFA,False Alarms (Equipment),Medium Risk,FALSE_ALARM,1,0,0,395369.9976,296284.8911,Bilston,103,55,144,388
+359,03/04/2009 20:26,RUBBISH,Deliberate Rubbish Fires,Secondary Fires that attract a 20 minute-response time,FIRE,1,0,0,409122.2483,292493.42,Aston,61,90,255,469
+360,03/04/2009 20:38,OPEN,Secondary fire resulting from deliberately set fire,Low Risk,FIRE,1,0,0,402907.6293,282268.2399,Highgate,66,22,220,288
