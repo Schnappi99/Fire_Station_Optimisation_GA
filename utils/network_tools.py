@@ -3,114 +3,79 @@
 # --------------------------------------------------------------
 # 调用本地 OSRM /table API，返回每个 grid → 最近消防站的行驶时间（秒）
 # --------------------------------------------------------------
+
 import numpy as np
-import requests
 import pandas as pd
-import json
 from pyproj import CRS, Transformer
 import requests
 import matplotlib.pyplot as plt
 import seaborn as sns
+from tqdm import tqdm
 import time
-from typing import List
-       
+
+
+
 
 def _transform_coords(coords):
     """
     coords: (n,2)  [x, y]  →  (n,2)  [lon, lat]  
     """
     transformer = Transformer.from_crs(CRS.from_epsg(27700), CRS.from_epsg(4326), always_xy=True)
-    return np.array(transformer.transform(coords[:, 0], coords[:, 1])).T  
+    return np.array(transformer.transform(coords[:, 0], coords[:, 1])).T
 
-def _coord_str(coords):
-    # coords: (n,2)  [lon, lat]  →  "lon,lat;lon,lat;..."
-    return ";".join(f"{lon:.6f},{lat:.6f}" for lon, lat in coords)
+def table_parser(loc : np.ndarray, sources_list : list):
+    out1, sou, des = '', '', ''
+    for i in range(loc.shape[0]):
+        out1 += str(loc[i, 0]) + ',' + str(loc[i, 1]) + ';'
+        if i in sources_list:
+            sou += str(i) + ';'
+        else:
+            des += str(i) + ';'
+    out1 = out1[:-1]
+    out2 = {'sources': sou[:-1], 'destinations': des[:-1]}
+    return out1, out2
 
-
-OSRM_URL      = "http://127.0.0.1:5000"
-INIT_BATCH    = 200      # 初始 batch 尺寸
-MIN_BATCH     = 20       # 最小降到 20 仍然失败就报错
-TIMEOUT       = 60       # 单次请求超时
-RETRY_NUM     = 3        # 每批最多重试 3 次
-SLEEP_SEC     = 1        # 失败后等待时间
-
-def _coord_str(coords: np.ndarray) -> str:
-    """ 
-    coords: (n,2)  [x, y]  →  (n,2)  [lon, lat]  
-    coords (n,2) [lon,lat] → 'lon,lat;lon,lat;...' 
+def get_osrm_time(event, station):
     """
-    transformer = Transformer.from_crs(CRS.from_epsg(27700), CRS.from_epsg(4326), always_xy=True)
-    return ";".join(f"{lon:.6f},{lat:.6f}" for lon, lat in coords)
-
-def _post_table(st_xy: np.ndarray, batch_xy: np.ndarray) -> np.ndarray:
+    event:  (n,2)  [lon, lat]
+    station: (40,2)  [lon, lat]
+    This function is to calculate the minimal driving time from the fire station to each incident
     """
-    单次 POST /table 请求，返回 (batch,) 最近行驶时间（秒）
-    st_xy    : (N_station,2)
-    batch_xy : (batch,2)
-    """
-    n_station = len(st_xy)
-    coords    = np.vstack([st_xy, batch_xy])
 
-    body = {
-        "coordinates":  coords.tolist(),                 # [[lon,lat], ...]
-        "sources":      list(range(n_station)),          # 站点索引
-        "destinations": list(range(n_station, n_station + len(batch_xy))),
-        "annotations":  "duration"                       # 要时长矩阵
-    }
+    min_times = []
+    start_time = time.time()  # record the start time
 
-    resp = requests.post(
-        f"{OSRM_URL}/table/v1/car",
-        data=json.dumps(body),
-        headers={"Content-Type": "application/json"},
-        timeout=TIMEOUT
-    )
-    resp.raise_for_status()
+    sample_size = 200  # the number of events to handle
 
-    durations = np.array(resp.json()["durations"])       # (n_station, batch)
-    return np.min(durations, axis=0)                     # (batch,)
+    for i in tqdm(range(0, event.shape[0], sample_size)):
+        # the event index of the current batch
+        event_list = [j for j in range(i, min(i + sample_size, event.shape[0]))]
 
-# ----------------------------------------------------------------
-def robust_osrm_matrix(station_xy: np.ndarray,
-                       grid_xy:    np.ndarray,
-                       init_batch: int = INIT_BATCH) -> np.ndarray:
-    """
-    station_xy : (N_station, 2) [lon,lat]
-    grid_xy    : (N_cell,   2)  [lon,lat]
-    返回       : (N_cell,)  每格到最近站点的行驶时间（秒）
-    · 自动降批量：失败时 batch //=2，直至成功或 < MIN_BATCH
-    """
-    results: List[np.ndarray] = []
-    i, B = 0, init_batch
+        # combine the coordinate list as the type what OSRM need（station + event_batch）
+        temp = np.concatenate([station, event[event_list]], axis=0)
 
-    while i < len(grid_xy):
-        batch = grid_xy[i : i + B]
+        # URL
+        locs, kv = table_parser(temp, [j for j in range(station.shape[0])])  # station 是 source
 
-        # ---- 带重试 ----
-        success = False
-        for attempt in range(RETRY_NUM):
-            try:
-                min_times = _post_table(station_xy, batch)      # (batch,)
-                results.append(min_times)
-                i += B
-                success = True
-                break
-            except Exception as e:
-                if attempt < RETRY_NUM - 1:
-                    time.sleep(SLEEP_SEC)
-                else:
-                    # 如果重试次数用尽，但可以再降批量，就降一半继续
-                    if B > MIN_BATCH:
-                        B //= 2
-                        print(f"[OSRM] Batch failed, reduce batch to {B} (idx {i})")
-                    else:
-                        raise RuntimeError(
-                            f"OSRM request repeatedly failed at idx {i}: {e}"
-                        ) from e
-        if not success and B <= MIN_BATCH:
-            # 说明降批量后依旧失败（已在上面 raise），这里仅防御
-            break
+        try:
+            response = requests.get('http://127.0.0.1:5010/table/v1/driving/' + locs, params=kv)
+            durations = np.array(response.json()['durations']).T  # shape: (num_events, num_stations)
+            batch_min_times = np.min(durations, axis=1)
+            min_times.append(batch_min_times)
+        except Exception as e:
+            print(f" Error in batch {i}: {e}")
 
-    return np.concatenate(results)
+    # end time record
+    end_time = time.time()
+
+    min_times_array = np.concatenate(min_times)
+    print("Done. Shape:", min_times_array.shape)
+    print(f" Total runtime: {end_time - start_time:.2f} seconds")
+
+    return min_times_array
+
+
+
 
 if __name__ == "__main__":
     # Example usage
@@ -123,7 +88,7 @@ if __name__ == "__main__":
     station_xy = _transform_coords(station_xy_27700)   # → 可直接送入 OSRM
     incident_xy = _transform_coords(incident_xy_27700)
 
-    min_times = robust_osrm_matrix(station_xy, incident_xy)
+    min_times = get_osrm_time(station_xy, incident_xy)
     print(min_times)
 
 

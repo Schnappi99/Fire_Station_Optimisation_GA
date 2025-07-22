@@ -3,9 +3,11 @@ import numpy as np
 import pygad
 from scipy.spatial import cKDTree
 from joblib import load
-from config import *
+from optimiser.config import *
 import pandas as pd
-
+import time
+import matplotlib.pyplot as plt
+import utils.network_tools as tools
 
 # 为 pygad fitness 函数设置全局变量
 _xy_all = None
@@ -16,15 +18,63 @@ _features = None
 _rf_model = None
 _total_incidents = None
 
+
+def on_start(ga):
+    global t, log, best_layout, best_fitness
+    t = time.time()
+    log = []
+    best_fitness = 0
+    best_layout = []
+
+
+def on_generation(ga):
+    """
+      This function is for recording the time cost of each generation and plotting fitness curve.
+      """
+    # global log
+    # print("Generation {}: time cost: {:.1f}; fitness:{:.0f}".format(ga.generations_completed, time.time() - t, ga.best_solutions_fitness[-1]))
+    # log.append([time.time() - t, ga.best_solutions_fitness[-1]])
+
+    # The following part is for Steady-State version, which has too many generations.
+    global log
+    if ga.generations_completed % 10 == 0:
+        print("Generation {} | Elapsed: {:.1f}s | Best fitness: {:.0f}".format(
+            ga.generations_completed,
+            time.time() - t,
+            ga.best_solution_fitness))
+        log.append([time.time() - t, ga.best_solution_fitness])
+
+
+def on_stop(ga, last_fit):
+    """
+    This function is for saving logs when stopped (visual + save as CSV)
+    """
+    _log = np.array(log, dtype='float64')
+    pd.DataFrame(_log, columns=["Time", "Fitness"]).to_csv("log/log.csv", index=False)
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(_log[:, 0], _log[:, 1], marker='o', color='orange')
+    plt.xlabel("Elapsed Time (s)")
+    plt.ylabel("Best Fitness")
+    plt.title("GA Fitness Over Time")
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig("log/fitness_curve.png")
+    plt.show()
+
+
 def fitness_function(ga_instance, solution, solution_idx):
     station_xy = _xy_all[solution]
-    distances, _ = cKDTree(station_xy).query(_incident_xy, k=1)
+    station_coors = tools._transform_coords(station_xy)
+    event_coors = tools._transform_coords(_incident_xy)
+    min_time = tools.get_osrm_time(event_coors, station_coors)
 
-    dist_df = pd.DataFrame({'grid_idx': _incident_grid_idx, 'distance': distances})
-    mean_dist_per_grid = dist_df.groupby('grid_idx')['distance'].mean()
+
+    time_df = pd.DataFrame({'grid_idx': _incident_grid_idx, 'driving_time': min_time})
+    mean_time_per_grid = time_df.groupby('grid_idx')['driving_time'].mean()
 
     mean_dist_full = pd.Series(np.nan, index=np.arange(_xy_all.shape[0]), dtype=float)
-    mean_dist_full.update(mean_dist_per_grid)
+    mean_dist_full.update(mean_time_per_grid)
     mean_dist_full = mean_dist_full.fillna(0)
 
     feature_names = ['nearest_station_travel_time', 'neighbour_frequency_per_month',
@@ -36,7 +86,9 @@ def fitness_function(ga_instance, solution, solution_idx):
     )
 
     efficiency = _rf_model.predict(X)
-    fitness = np.sum(efficiency * _incident_freq)
+    # fitness = np.sum(efficiency * _incident_freq)
+    fitness = np.sum(efficiency * _incident_freq) / np.sum(_incident_freq)
+    print(fitness)
     return float(fitness)
 
 
@@ -62,6 +114,9 @@ def run_optimisation(data_dict, gene_space, config, verbose=True, plot=True):
         num_genes=n_station,
         gene_type=int,
         gene_space=gene_space,
+        on_start=on_start,
+        on_generation=on_generation,
+        on_stop=on_stop,
         fitness_func=fitness_function,
         parent_selection_type=config["parent_selection_type"],
         crossover_type=config["crossover_type"],
