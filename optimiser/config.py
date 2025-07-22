@@ -16,18 +16,18 @@ genetic algorithm parameters
 '''
 
 config = {
-    "num_stations": 40,  # 要选址的消防站数量
-    "generations": 500,  # 遗传算法的最大迭代次数
-    "sol_per_pop": 50,   # 每一代的个体数（population size）
-    "num_parents_mating": 20,  # 每代中用于交叉的父代个体数
-    "parent_selection_type": "sss",  # 父代选择方式：sss = steady-state selection（稳定选择）
-    "crossover_type": "single_point",  # 单点交叉
-    "mutation_type": "random",         # 随机突变
-    "crossover_probability": 0.9,      # 交叉发生的概率
-    "mutation_probability": 0.08,      # 突变发生的概率
-    "keep_elitism": 2,     # 每代保留表现最好的个体数量
-    "keep_parents": 4,     # 每代保留用于下一代的父母个体数量
-    "stop_criteria": ["saturate_50"],  # 停止标准：适应度50代未提升则终止
+    "num_stations": 40,  # the number of stations
+    "generations": 500,  # the number of generations
+    "sol_per_pop": 50,   # population size for each generation
+    "num_parents_mating": 20,  # number of parents to select for mating
+    "parent_selection_type": "sss",  #  parent select strategy  sss = steady-state selection
+    "crossover_type": "single_point",  # crossover strategy
+    "mutation_type": "random",         # mutation strategy
+    "crossover_probability": 0.9,      # crossover possibility
+    "mutation_probability": 0.08,      # mutation possibility
+    "keep_elitism": 2,     # keep the best individuals for the next generation
+    "keep_parents": 4,     # keep parents for the next generation
+    "stop_criteria": ["saturate_50"],  # stop criteria 
     "random_seed": 0
 }
 

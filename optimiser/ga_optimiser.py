@@ -7,9 +7,9 @@ from optimiser.config import *
 import pandas as pd
 import time
 import matplotlib.pyplot as plt
-import utils.network_tools as tools
+import utils.osrm_utils as tools
 
-# 为 pygad fitness 函数设置全局变量
+# set global variables
 _xy_all = None
 _incident_xy = None
 _incident_freq = None

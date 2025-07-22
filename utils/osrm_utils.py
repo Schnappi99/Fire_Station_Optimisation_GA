@@ -1,7 +1,7 @@
 # --------------------------------------------------------------
 # utils/network_tools.py
 # --------------------------------------------------------------
-# 调用本地 OSRM /table API，返回每个 grid → 最近消防站的行驶时间（秒）
+# Call the local OSRM /table API, returning the driving time of each grid → the nearest fire station (seconds)
 # --------------------------------------------------------------
 
 import numpy as np
@@ -85,7 +85,7 @@ if __name__ == "__main__":
     station_xy_27700 = station_df[["Easting", "Northing"]].to_numpy()  # shape = (n_station, 2)
     incident_xy_27700 = incident_df[["EASTINGS", "NORTHINGS"]].to_numpy()  # shape = (n_incident, 2)
  
-    station_xy = _transform_coords(station_xy_27700)   # → 可直接送入 OSRM
+    station_xy = _transform_coords(station_xy_27700)   
     incident_xy = _transform_coords(incident_xy_27700)
 
     min_times = get_osrm_time(station_xy, incident_xy)
