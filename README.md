@@ -30,8 +30,13 @@ Fire_Station_Optimisation_GA/
 
 ## Getting starts
 ```bash
+# Clone the repository
+git clone https://github.com/Schnappi99/Fire_Station_Optimisation_GA.git
+cd Fire_Station_Optimisation_GA
+
 # Install dependencies
-pip install -r requirements.txt
+conda env create -f environment.yml
+conda activate fire_station_ga
 
 # Run feasibility benchmark
 python analysis/feasibility_study.py
