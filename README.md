@@ -16,6 +16,7 @@ Fire_Station_Optimisation_GA/
 ├── utils/                        # Helper scripts and notebooks
 │   ├── osrm_utils.py             # Functions for computing OSRM travel time
 │   └── preprocess.ipynb          # Grid/feature generation and preprocessing
+│   └── osrm_drv_time.ipynb       # Local attempts to calculate time for osrm
 │
 ├── analysis/                     # Evaluation tools
 │   ├── feasibility_study.py      # Compare current layout to random layouts
