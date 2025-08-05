@@ -77,10 +77,12 @@ def get_osrm_time(event, station):
 
 
 
+
+
 if __name__ == "__main__":
     # Example usage
-    station_df = pd.read_csv("/Users/zhaoyuxin/Repos/Fire_service_efficiency/Code/fire_station_optimisation_ga/data/station_information_with_bsv.csv")
-    incident_df = pd.read_csv("/Users/zhaoyuxin/Repos/Fire_service_efficiency/Code/fire_station_optimisation_ga/data/incident_temp.csv")
+    station_df = pd.read_csv("/Users/zhaoyuxin/Repos/fire_station_optimisation_ga/data/station_information_with_bsv.csv")
+    incident_df = pd.read_csv("/Users/zhaoyuxin/Repos/fire_station_optimisation_ga/data/incident_temp.csv")
     
     station_xy_27700 = station_df[["Easting", "Northing"]].to_numpy()  # shape = (n_station, 2)
     incident_xy_27700 = incident_df[["EASTINGS", "NORTHINGS"]].to_numpy()  # shape = (n_incident, 2)
@@ -88,7 +90,7 @@ if __name__ == "__main__":
     station_xy = _transform_coords(station_xy_27700)   
     incident_xy = _transform_coords(incident_xy_27700)
 
-    min_times = get_osrm_time(station_xy, incident_xy)
+    min_times = get_osrm_time(incident_xy, station_xy)
     print(min_times)
 
 
