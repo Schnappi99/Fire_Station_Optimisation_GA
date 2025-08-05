@@ -1,0 +1,6 @@
+# ignore big docs
+data/driving_time_matrix.npy
+
+__pycache__/
+*.log
+.DS_Store
