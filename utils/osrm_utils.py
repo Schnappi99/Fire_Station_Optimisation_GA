@@ -14,8 +14,6 @@ from tqdm import tqdm
 import time
 
 
-
-
 def _transform_coords(coords):
     """
     coords: (n,2)  [x, y]  →  (n,2)  [lon, lat]  
@@ -76,13 +74,10 @@ def get_osrm_time(event, station):
 
 
 
-
-
-
 if __name__ == "__main__":
     # Example usage
-    station_df = pd.read_csv("/Users/zhaoyuxin/Repos/fire_station_optimisation_ga/data/station_information_with_bsv.csv")
-    incident_df = pd.read_csv("/Users/zhaoyuxin/Repos/fire_station_optimisation_ga/data/incident_temp.csv")
+    station_df = pd.read_csv("/Users/zhaoyuxin/Repos/Fire_service_efficiency/Code/fire_station_optimisation_ga/data/station_information_with_bsv.csv")
+    incident_df = pd.read_csv("/Users/zhaoyuxin/Repos/Fire_service_efficiency/Code/fire_station_optimisation_ga/data/incident_temp.csv")
     
     station_xy_27700 = station_df[["Easting", "Northing"]].to_numpy()  # shape = (n_station, 2)
     incident_xy_27700 = incident_df[["EASTINGS", "NORTHINGS"]].to_numpy()  # shape = (n_incident, 2)

@@ -6,6 +6,8 @@ from scipy.stats import percentileofscore
 from optimiser import ga_optimiser
 from optimiser.data_loader import load_data
 from config import DATA_DIR
+from config import n_random_layouts
+from config import config
 
 
 def evaluate_random_layouts(n_samples: int, n_station: int, feasible_cells: np.ndarray) -> pd.DataFrame:
@@ -38,12 +40,14 @@ if __name__ == "__main__":
     ga_optimiser._total_incidents = data["total_incidents"]
 
     # set parameters
-    n_samples = 1000
-    n_station = 40
+    # number of station is import from config
+    # n_random_layouts is import from config
+    n_station = config["num_stations"]
+
     feasible_cells = np.arange(ga_optimiser._xy_all.shape[0])  
 
     # Run a random layout evaluation
-    df_random = evaluate_random_layouts(n_samples, n_station, feasible_cells)
+    df_random = evaluate_random_layouts(n_random_layouts, n_station, feasible_cells)
 
     # Save results to CSV
     out_path = DATA_DIR.parents[0] / "analysis" / "random_layouts_with_efficiency.csv"
