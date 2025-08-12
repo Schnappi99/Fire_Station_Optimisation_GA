@@ -10,7 +10,7 @@ def load_data():
     Load the data required for computing the driving time matrix.
     """
     data = {
-        "events_grid": np.load(DATA_DIR / "events_grid.npy", allow_pickle=True),
+   #     "events_grid": np.load(DATA_DIR / "events_grid.npy", allow_pickle=True),
         "candidate_grid": np.load(DATA_DIR / "xy_all.npy", allow_pickle=True),
     }
 
@@ -73,15 +73,15 @@ def compute_matrix(data):
     Compute the driving time matrix using OSRM.
     """
     # Load data
-    events_grid = data["events_grid"]
+    # events_grid = data["events_grid"]
     candidate_grid = data["candidate_grid"]
 
     # Transform coordinates from [x, y] to [lon, lat]
-    events_grid = osrm_utils._transform_coords(events_grid)   
+    # events_grid = osrm_utils._transform_coords(events_grid)
     candidate_grid= osrm_utils._transform_coords(candidate_grid)
 
     # Compute the driving time matrix
-    driving_time_matrix = get_osrm_time(events_grid, candidate_grid, batch_size_src=50, batch_size_dst=100)
+    driving_time_matrix = get_osrm_time(candidate_grid, candidate_grid, batch_size_src=50, batch_size_dst=100)
 
     return driving_time_matrix 
 
@@ -92,7 +92,7 @@ if __name__ == "__main__":
     driving_time_matrix = compute_matrix(data)
 
     # Save the matrix
-    np.save(DATA_DIR / "driving_time_matrix.npy", driving_time_matrix)
+    np.save(DATA_DIR / "driving_time_matrix_NN.npy", driving_time_matrix)
     print("Driving time matrix saved.")
 
 

@@ -1,6 +1,7 @@
 from pathlib import Path
 import numpy as np
 import pygad
+from fiona.features import length
 from scipy.spatial import cKDTree
 from joblib import load
 from optimiser.config import *
@@ -10,13 +11,7 @@ import matplotlib.pyplot as plt
 import utils.osrm_utils as tools
 
 # set global variables
-_xy_all = None
-_incident_xy = None
-_incident_freq = None
-_incident_grid_idx = None
-_features = None
-_rf_model = None
-_total_incidents = None
+global _xy_all, _incident_freq, _time_matrix, _partial_features, _rf_model, _total_incidents
 
 
 def on_start(ga):
@@ -64,17 +59,22 @@ def on_stop(ga, last_fit):
 
 
 def fitness_function(ga_instance, solution, solution_idx):
-    station_xy = _xy_all[solution]
-    station_coors = tools._transform_coords(station_xy)
-    event_coors = tools._transform_coords(_incident_xy)
-    min_time = tools.get_osrm_time(event_coors, station_coors)
+    # 假设 travel_time_matrix 是 NumPy 数组，shape: (M, N)
+    # 假设 solution 是 array，表示你选择的 station 的 grid_idx，长度为 40
+
+    selected_times = _time_matrix[:, solution]
+
+    # station_xy = _xy_all[solution]
+    # station_coors = tools._transform_coords(station_xy)
+    # event_coors = tools._transform_coords(_incident_xy)
+    # min_time = tools.get_osrm_time(event_coors, station_coors)
 
 
-    time_df = pd.DataFrame({'grid_idx': _incident_grid_idx, 'driving_time': min_time})
-    mean_time_per_grid = time_df.groupby('grid_idx')['driving_time'].mean()
+    # time_df = pd.DataFrame({'grid_idx': _incident_grid_idx, 'driving_time': min_time})
+    # mean_time_per_grid = time_df.groupby('grid_idx')['driving_time'].mean()
 
     mean_dist_full = pd.Series(np.nan, index=np.arange(_xy_all.shape[0]), dtype=float)
-    mean_dist_full.update(mean_time_per_grid)
+    # mean_dist_full.update(mean_time_per_grid)
     mean_dist_full = mean_dist_full.fillna(0)
 
     feature_names = ['nearest_station_travel_time', 'neighbour_frequency_per_month',
@@ -93,12 +93,11 @@ def fitness_function(ga_instance, solution, solution_idx):
 
 
 def run_optimisation(data_dict, gene_space, config, verbose=True, plot=True):
-    global _xy_all, _incident_xy, _incident_freq, _incident_grid_idx, _features, _rf_model, _total_incidents
+    global _xy_all, _incident_freq, _time_matrix, _partial_features, _rf_model, _total_incidents
     _xy_all = data_dict["xy_all"]
-    _incident_xy = data_dict["incident_xy"]
     _incident_freq = data_dict["incident_freq"]
-    _incident_grid_idx = data_dict["incident_grid_idx"]
-    _features = data_dict["features"]
+    _time_matrix = data_dict["time_matrix"]
+    _partial_features = data_dict["partial_features"]
     _rf_model = data_dict["rf_model"]
     _total_incidents = data_dict["total_incidents"]
 
