@@ -13,7 +13,7 @@ from config import n_random_layouts
 from config import config
 
 from tqdm import tqdm
-from typing import Optional
+
 
 # set global variables
 _xy_all = None
@@ -41,6 +41,7 @@ def make_buffers_from_xy(xy_all, buffer_m=1000):
 
     return cent, buffer_idx, buffer_for_join
 
+
 # 2) 本次 layout 的站点点集（solution 直接当行号/索引使用）
 def make_station_gdf(solution, xy_all):
     station = gpd.GeoDataFrame(
@@ -49,6 +50,7 @@ def make_station_gdf(solution, xy_all):
         crs="EPSG:27700"
     )
     return station.to_crs(27700)
+
 
 def count_stations_per_buffer(xy_all, station_gdf, buffer_m=10000):
     """
@@ -89,6 +91,7 @@ def count_stations_per_buffer(xy_all, station_gdf, buffer_m=10000):
     station_num.index.name = 'grid'
     return station_num
 
+
 def fitness_function(ga_instance, solution, solution_idx):
     # 假设 travel_time_matrix 是 NumPy 数组，shape: (M, N)
     # 假设 solution 是 array，表示你选择的 station 的 grid_idx，长度为 40
@@ -111,6 +114,24 @@ def fitness_function(ga_instance, solution, solution_idx):
     fitness = np.sum(efficiency * _incident_freq) / np.sum(_incident_freq)
     print(fitness)
     return float(fitness)
+
+
+def evaluate_random_layouts(n_samples: int, n_station: int, feasible_cells: np.ndarray) -> pd.DataFrame:
+    """
+    Randomly sample several layouts, calculate their fitness, and compare them with optimization results.
+    """
+    results = []
+
+    print(f"Evaluating {n_samples} random layouts with {n_station} stations...")
+
+    for _ in tqdm(range(n_samples)):
+        random_layout = np.random.choice(feasible_cells, size=n_station, replace=False)
+        fitness = fitness_function(None, random_layout, 0)  # Ignore GA parameters
+        results.append((random_layout, fitness))
+
+    # Save as DataFrame
+    df = pd.DataFrame(results, columns=["layout", "fitness"])
+    return df
 
 def evaluate_baseline_efficiency(station_ids):
     """
@@ -140,97 +161,21 @@ def evaluate_baseline_efficiency(station_ids):
 
     return baseline_fitness
 
-def demand_weighted_sample(
-    candidate_cells: np.ndarray,
-    incident_frequencies: np.ndarray,
-    n_stations: int,
-    epsilon: float = 1e-6,
-    alpha: float = 1.0,
-    rng: Optional[np.random.Generator] = None,
-    uniform_mix_ratio: float = 0.0
-) -> np.ndarray:
-    """
-    Randomly sample station locations from a set of feasible candidates,
-    with probabilities weighted by historical incident frequencies.
 
-    Parameters
-    ----------
-    candidate_cells : np.ndarray
-        Global indices of feasible candidate locations.
-    incident_frequencies : np.ndarray
-        Incident frequency array of length N (total number of grid cells).
-    n_stations : int
-        Number of stations to select.
-    epsilon : float
-        A small constant added to zero-frequency cells to avoid zero probability.
-    alpha : float
-        Weight scaling factor:
-          - > 1 biases more towards high-frequency cells
-          - < 1 produces a smoother, less biased distribution
-    rng : np.random.Generator, optional
-        Random number generator for reproducibility.
-    uniform_mix_ratio : float
-        Proportion of uniform distribution to mix into the weighted probabilities,
-        which helps prevent over-concentration in hotspot cells.
+def calculate_real_baseline(All_features):
+    # 选出需要的列
+    cols = ['nearest_station_travel_time', 'neighbour_frequency_per_month',
+                     'Agriculture - mainly crops', 'Deciduous woodland', 'station_count']
 
-    Returns
-    -------
-    np.ndarray
-        Sorted array of selected global indices.
-    """
+    # 转成 NumPy 数组
+    arr = All_features[cols].to_numpy()
 
-    if rng is None:
-        rng = np.random.default_rng()
+    efficiency = _rf_model.predict(arr)
+    # 5. 计算全局加权平均效率
+    baseline_fitness = np.sum(efficiency * _incident_freq) / np.sum(_incident_freq)
 
-    # 取出可行候选对应的事件频次
-    freq_subset = incident_frequencies[candidate_cells].astype(float)
+    return baseline_fitness
 
-    # 防止零权重
-    weights = np.maximum(freq_subset, epsilon)
-
-    # 权重拉伸
-    weights = weights ** alpha
-
-    # 混入均匀分布比例
-    if uniform_mix_ratio > 0.0:
-        lam = 1.0 - float(uniform_mix_ratio)
-        uniform_weights = np.ones_like(weights, dtype=float)
-        weights = lam * weights + (1.0 - lam) * uniform_weights
-
-    # 转为概率分布
-    probs = weights / weights.sum()
-
-    # 按权重抽样
-    chosen_cells = rng.choice(candidate_cells, size=n_stations, replace=False, p=probs)
-
-    return np.sort(chosen_cells)
-
-def evaluate_demand_weighted_layouts(
-    n_layouts: int,               # 采样次数
-    n_stations: int,              # 每个布局的消防站数量
-    candidate_cells: np.ndarray,  # 可行的候选位置（全局索引）
-    incident_freq: np.ndarray,    # 历史事件频次（长度 = 全部网格 N）
-    epsilon: float = 1e-6,        # 最小权重
-    alpha: float = 1.0             # 权重拉伸系数
-) -> pd.DataFrame:
-    """
-    生成多组需求加权随机布局，并计算其 fitness。
-    返回包含布局索引和 fitness 的 DataFrame。
-    """
-    results = []
-    print(f"Evaluating {n_layouts} demand-weighted random layouts with {n_stations} stations...")
-
-    for _ in tqdm(range(n_layouts)):
-        # 按需求加权抽样
-        layout_indices = demand_weighted_sample(
-            candidate_cells, incident_freq, n_stations,
-            epsilon=epsilon, alpha=alpha
-        )
-        # 计算 fitness
-        fitness_val = fitness_function(None, layout_indices, 0)
-        results.append((layout_indices, fitness_val))
-
-    return pd.DataFrame(results, columns=["layout", "fitness"])
 
 
 
@@ -249,38 +194,25 @@ if __name__ == "__main__":
     current_layout_idx = np.load(DATA_DIR / "current_layout_idx.npy")
     All_features = pd.read_csv(DATA_DIR / "All_features.csv")
     baseline_fitness = evaluate_baseline_efficiency(current_layout_idx)
+    print(baseline_fitness)
     # baseline_fitness = calculate_real_baseline(All_features)
 
     # set parameters: number of station is import from config; n_random_layouts is import from config
     n_station = config["num_stations"]
     feasible_cells = np.arange(_xy_all.shape[0])
-
-    # Sampling 1000 demand weighted random Layout
-    df_demand_weighted = evaluate_demand_weighted_layouts(
-        n_layouts=1000,
-        n_stations=n_station,
-        candidate_cells=feasible_cells,
-        incident_freq=_incident_freq,
-        epsilon=1e-6,
-        alpha=1.0
-    )
-
-    # 查看前几行结果
-    print(df_demand_weighted.head())
-
-    # 统计平均 fitness
-    print("Average fitness:", df_demand_weighted["fitness"].mean())
+    # Run a random layout evaluation
+    df_random = evaluate_random_layouts(n_random_layouts, n_station, feasible_cells)
 
     # Save results to CSV
-    out_path = DATA_DIR.parents[0] / "analysis" / "demand_weighted_layouts_with_efficiency.csv"
-    df_demand_weighted.to_csv(out_path, index=False)
+    out_path = DATA_DIR.parents[0] / "analysis" / "random_layouts_with_efficiency.csv"
+    df_random.to_csv(out_path, index=False)
     print(f"Saved random layout results to: {out_path}")
 
     #df_random = pd.read_csv("/Users/zhaoyuxin/Repos/fire_station_optimisation_ga/analysis/random_layouts_with_efficiency.csv")
 
     # Plot the fitness distribution of random layouts   # current layout fitness
     plt.figure(figsize=(10, 6))
-    plt.hist(df_demand_weighted["fitness"], bins=30, color="skyblue", edgecolor="black", alpha=0.8)
+    plt.hist(df_random["fitness"], bins=30, color="skyblue", edgecolor="black", alpha=0.8)
     plt.axvline(baseline_fitness, color='red', linestyle='--', linewidth=2, label='Current layout efficiency')
     plt.title("Efficiency Distribution of 1000 Random Layouts")
     plt.xlabel("Efficiency")
@@ -291,8 +223,7 @@ if __name__ == "__main__":
     
 
     # calculate the percentile of the current layout fitness
-    percentile = percentileofscore(df_demand_weighted["fitness"], baseline_fitness)
+    percentile = percentileofscore(df_random["fitness"], baseline_fitness)
     print(f"Current layout fitness: {baseline_fitness}")
     print(f"Percentile in random layouts: {percentile:.2f}%")
 
-    plt.savefig("/Users/zhaoyuxin/Repos/fire_station_optimisation_ga/analysis/random_fitness_histogram.png", dpi=300)
