@@ -40,7 +40,7 @@ conda env create -f environment.yml
 conda activate fire_station_ga
 
 # Run feasibility benchmark
-python analysis/feasibility_study.py
+python analysis/feasibility_study_weighted.py
 
 # Run optimisation
 python main.py

@@ -1,17 +1,28 @@
 from pathlib import Path
 import numpy as np
+import geopandas as gpd
 import pygad
 from fiona.features import length
 from scipy.spatial import cKDTree
 from joblib import load
+
 from optimiser.config import *
+from optimiser.data_loader import load_data
+
 import pandas as pd
 import time
 import matplotlib.pyplot as plt
 import utils.osrm_utils as tools
+from shapely.geometry import Point
+
 
 # set global variables
-global _xy_all, _incident_freq, _time_matrix, _partial_features, _rf_model, _total_incidents
+_xy_all = None
+_time_matrix = None
+_incident_freq = None
+_partial_features = None
+_rf_model = None
+_total_incidents = None
 
 
 def on_start(ga):
@@ -58,42 +69,83 @@ def on_stop(ga, last_fit):
     plt.show()
 
 
+def count_stations_per_buffer(xy_all, solution, buffer_m=10000):
+    """
+    Calculate the number of stations within a buffer area for each grid cell.
+
+    Parameters:
+        xy_all: (N, 2) numpy array, coordinates of all grid centroids (EPSG:27700)
+        station_gdf: GeoDataFrame, columns = ['grid', 'geometry'], CRS = EPSG:27700
+        buffer_m: Buffer radius in meters
+
+    Returns:
+            pd.Series, index = grid, values = station_num
+    """
+
+    # Create fire station GeoDataFrame
+    station = gpd.GeoDataFrame(
+        {'grid': solution},
+        geometry=[Point(xy) for xy in xy_all[solution]],
+        crs="EPSG:27700"
+    )
+    station_gdf = station.to_crs(27700)
+
+    # Create grid centroid GeoDataFrame
+    cent = gpd.GeoDataFrame(
+        {'grid': np.arange(len(xy_all), dtype=int)},
+        geometry=[Point(xy) for xy in xy_all],
+        crs="EPSG:27700"
+    )
+
+    # Create buffer polygons (add 'grid_buf' column for spatial join)
+    buffer_for_join = cent.copy()
+    buffer_for_join['geometry'] = buffer_for_join.geometry.buffer(buffer_m)
+    buffer_for_join = buffer_for_join.rename(columns={'grid': 'grid_buf'})
+
+    # Spatial join (left = buffer polygons, right = station points)
+    joined = gpd.sjoin(buffer_for_join, station_gdf, how='left', predicate='contains')
+
+    # Count number of stations within each buffer
+    station_num = (joined.groupby('grid_buf')['index_right']
+                   .count()
+                   .reindex(buffer_for_join['grid_buf'], fill_value=0)
+                   .astype(int)
+                   .rename('station_num'))
+
+    station_num.index.name = 'grid'
+    return station_num
+
+
 def fitness_function(ga_instance, solution, solution_idx):
-    # 假设 travel_time_matrix 是 NumPy 数组，shape: (M, N)
-    # 假设 solution 是 array，表示你选择的 station 的 grid_idx，长度为 40
-
+    # Select nearest_station_travel_time from the time matrix
     selected_times = _time_matrix[:, solution]
+    nearest_times = selected_times.min(axis=1)
 
-    # station_xy = _xy_all[solution]
-    # station_coors = tools._transform_coords(station_xy)
-    # event_coors = tools._transform_coords(_incident_xy)
-    # min_time = tools.get_osrm_time(event_coors, station_coors)
+    # Calculate the number of the station in the buffer, radius=10000
+    station_num = count_stations_per_buffer(_xy_all, solution, buffer_m=10000)
 
-
-    # time_df = pd.DataFrame({'grid_idx': _incident_grid_idx, 'driving_time': min_time})
-    # mean_time_per_grid = time_df.groupby('grid_idx')['driving_time'].mean()
-
-    mean_dist_full = pd.Series(np.nan, index=np.arange(_xy_all.shape[0]), dtype=float)
-    # mean_dist_full.update(mean_time_per_grid)
-    mean_dist_full = mean_dist_full.fillna(0)
-
+    # Combine features
     feature_names = ['nearest_station_travel_time', 'neighbour_frequency_per_month',
                      'Agriculture - mainly crops', 'Deciduous woodland', 'station_count']
 
     X = pd.DataFrame(
-        np.column_stack([mean_dist_full.values.reshape(-1, 1), _features]),
+        np.column_stack([nearest_times, _partial_features, station_num]),
         columns=feature_names
     )
 
+    # Predict the fire service efficiency
     efficiency = _rf_model.predict(X)
-    # fitness = np.sum(efficiency * _incident_freq)
+
+    # Calculate the fitness
     fitness = np.sum(efficiency * _incident_freq) / np.sum(_incident_freq)
     print(fitness)
+
     return float(fitness)
 
 
 def run_optimisation(data_dict, gene_space, config, verbose=True, plot=True):
-    global _xy_all, _incident_freq, _time_matrix, _partial_features, _rf_model, _total_incidents
+    # Load data
+    data = load_data()
     _xy_all = data_dict["xy_all"]
     _incident_freq = data_dict["incident_freq"]
     _time_matrix = data_dict["time_matrix"]

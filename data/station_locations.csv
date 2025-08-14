@@ -1,0 +1,41 @@
+Station name,Easting,Northing,PRL_Count,BRV_Count,Closed (Y/N),Opened,Closed
+Aldridge,405203,302818,1,0,N,Before study period,N/A
+Aston,407316,289711,1,1,N,Before study period,N/A
+Bickenhill,419627,284038,1,0,N,Before study period,N/A
+Billesley,409029,281369,1,1,N,Before study period,N/A
+Bilston,394543,296040,1,0,N,Before study period,N/A
+Binley,436876,278691,1,1,N,Before study period,N/A
+Bloxwich,399846,301797,1,0,N,Before study period,N/A
+Bournbrook,405167,283287,1,0,N,Before study period,N/A
+Brierley Hill,391862,287775,1,1,N,Before study period,N/A
+Canley,430542,277280,1,0,N,Before study period,N/A
+Coventry,433026,279453,2,0,N,Before study period,N/A
+Cradley Heath,395460,286326,0,0,Y,Before study period,04/08/2014
+Dudley,392914,291534,1,1,N,Before study period,N/A
+Erdington,411277,292051,1,0,N,Before study period,N/A
+Fallings Park,393074,300673,1,1,N,Before study period,N/A
+Foleshill,434545,282370,1,1,N,Before study period,N/A
+Haden Cross,395946,285731,1,1,N,04/08/2014,N/A
+Halesowen,395366,282656,0,0,Y,Before study period,01/04/2012
+Handsworth,404124,289867,1,1,N,Before study period,N/A
+Hay Mills,411478,284683,1,1,N,Before study period,N/A
+Highgate,407895,285024,2,0,N,Before study period,N/A
+Kings Norton,404865,279690,1,0,N,Before study period,N/A
+Ladywood,404983,286788,1,1,N,Before study period,N/A
+Northfield,401796,278838,1,1,N,Before study period,N/A
+Oldbury,399022,288393,1,1,N,Before study period,N/A
+Perry Barr,408405,293078,1,1,N,Before study period,N/A
+Sheldon,414991,286606,1,1,N,Before study period,N/A
+Smethwick,401805,288545,1,0,N,Before study period,N/A
+Solihull,414377,279802,1,1,N,Before study period,N/A
+Stourbridge,390368,284156,1,0,N,Before study period,N/A
+Sutton Coldfield,412078,296747,1,0,N,Before study period,N/A
+Tettenhall,388415,300090,1,0,N,Before study period,N/A
+Tipton,396494,292683,1,0,N,Before study period,N/A
+Walsall,400789,298890,2,0,N,Before study period,N/A
+Ward End,411296,288549,1,1,N,Before study period,N/A
+Wednesbury,398425,294968,1,0,N,Before study period,N/A
+West Bromwich,400485,291813,1,1,N,Before study period,N/A
+Willenhall,397381,299387,1,0,N,Before study period,N/A
+Wolverhampton,390873,297977,1,1,N,Before study period,N/A
+Woodgate Valley,401587,283003,1,0,N,Before study period,N/A
