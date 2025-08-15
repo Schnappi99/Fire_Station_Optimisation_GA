@@ -196,7 +196,7 @@ def evaluate_demand_weighted_layouts(
                                                 epsilon=1e-6, alpha=1.0,
                                                 uniform_mix_ratio=0.0,
                                                 xy_all=_xy_all,
-                                                min_dist=3000)  # Apply minimum spacing constraint
+                                                min_dist=3500)  # Apply minimum spacing constraint
 
         # Compute fitness
         fitness_val =  fitness_function(None, layout_indices, 0)
@@ -215,6 +215,20 @@ if __name__ == "__main__":
     _partial_features = data["partial_features"]
     _rf_model = data["rf_model"]
     _total_incidents = data["total_incidents"]
+
+    # Load west midlands boundary
+    boundary = gpd.read_file(DATA_DIR/ "west_midlands_boundary.geojson")
+    boundary = boundary.to_crs(epsg=27700)
+    # city_boundary: GeoDataFrame (27700)，xy_all: (N,2)
+    gdf_xy = gpd.GeoDataFrame(
+        pd.DataFrame({"old_idx": np.arange(len(_xy_all))}),
+        geometry=gpd.points_from_xy(_xy_all[:, 0], _xy_all[:, 1]),
+        crs=boundary.crs
+    )
+
+    study_union = boundary.unary_union
+    mask_in = gdf_xy.within(study_union).to_numpy()
+
 
     # The baseline efficiency
     current_layout_idx = np.load(DATA_DIR / "current_layout_idx.npy")
