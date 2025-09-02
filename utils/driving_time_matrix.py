@@ -5,6 +5,7 @@ from optimiser.config import DATA_DIR
 from tqdm import tqdm
 import requests
 
+
 def load_data():
     """
     Load the data required for computing the driving time matrix.
@@ -88,8 +89,34 @@ def compute_matrix(data):
 
 if __name__ == "__main__":
     # Load data
-    data = load_data()
-    driving_time_matrix = compute_matrix(data)
+    # data = load_data()
+    # driving_time_matrix = compute_matrix(data)
+
+    driving_time_matrix = np.load(DATA_DIR / "driving_time_matrix_NN.npy", allow_pickle=True)
+    data = np.load(DATA_DIR / "demand_index.npz", allow_pickle=True)
+    demand_idx = data["idx"]
+    grid_id = pd.read_parquet(DATA_DIR  / "all_index.parquet")
+    station_idx = np.load(DATA_DIR/"current_layout_idx.npy", allow_pickle=True)
+
+    selected_times = driving_time_matrix[np.ix_(demand_idx, station_idx)]
+
+    min_time_per_demand = selected_times.min(axis=1)
+
+    print(selected_times.shape)
+
+    df_min_time = pd.DataFrame({
+        "grid_idx": demand_idx,
+        "min_time_sec": min_time_per_demand
+    })
+
+    df_min_time = df_min_time.merge(grid_id[["grid_idx", "grid_id"]], on="grid_idx", how="left")
+
+    # 保存成 CSV
+    out_path = DATA_DIR / "min_time_per_demand.csv"
+    df_min_time.to_csv(out_path, index=False)
+
+    print(f"Saved CSV: {out_path}")
+
 
     # Save the matrix
     np.save(DATA_DIR / "driving_time_matrix_NN.npy", driving_time_matrix)

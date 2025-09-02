@@ -1,7 +1,8 @@
 # --------------------------------------------------------------
-# utils/network_tools.py
+# utils/osrm_utils.py
 # --------------------------------------------------------------
 # Call the local OSRM /table API, returning the driving time of each grid → the nearest fire station (seconds)
+# V1: Each optimization called OSRM API to compute travel times (very slow)
 # --------------------------------------------------------------
 
 import numpy as np
@@ -75,6 +76,7 @@ def get_osrm_time(event, station):
 
 
 if __name__ == "__main__":
+
     # Example usage
     station_df = pd.read_csv("/Users/zhaoyuxin/Repos/Fire_service_efficiency/Code/fire_station_optimisation_ga/data/station_information_with_bsv.csv")
     incident_df = pd.read_csv("/Users/zhaoyuxin/Repos/Fire_service_efficiency/Code/fire_station_optimisation_ga/data/incident_temp.csv")

@@ -14,6 +14,8 @@ from config import config
 
 from tqdm import tqdm
 from typing import Optional
+from scipy.spatial import cKDTree
+
 
 
 # set global variables
@@ -79,19 +81,15 @@ def fitness_function(ga_instance, solution, solution_idx):
 
     # Calculate the number of the station in the buffer, radius=10000
     station_num = count_stations_per_buffer(_xy_all, solution, buffer_m=10000)
-
     # Combine features
     feature_names = ['nearest_station_travel_time', 'neighbour_frequency_per_month',
                      'Agriculture - mainly crops', 'Deciduous woodland', 'station_count']
-
     X = pd.DataFrame(
         np.column_stack([nearest_times, _partial_features, station_num]),
         columns=feature_names
     )
-
     # Predict the fire service efficiency
     efficiency = _rf_model.predict(X)
-
     # Calculate the fitness
     fitness = np.sum(efficiency * _incident_freq) / np.sum(_incident_freq)
     print(fitness)
@@ -216,20 +214,6 @@ if __name__ == "__main__":
     _rf_model = data["rf_model"]
     _total_incidents = data["total_incidents"]
 
-    # Load west midlands boundary
-    boundary = gpd.read_file(DATA_DIR/ "west_midlands_boundary.geojson")
-    boundary = boundary.to_crs(epsg=27700)
-    # city_boundary: GeoDataFrame (27700)，xy_all: (N,2)
-    gdf_xy = gpd.GeoDataFrame(
-        pd.DataFrame({"old_idx": np.arange(len(_xy_all))}),
-        geometry=gpd.points_from_xy(_xy_all[:, 0], _xy_all[:, 1]),
-        crs=boundary.crs
-    )
-
-    study_union = boundary.unary_union
-    mask_in = gdf_xy.within(study_union).to_numpy()
-
-
     # The baseline efficiency
     current_layout_idx = np.load(DATA_DIR / "current_layout_idx.npy")
     baseline_fitness = fitness_function(None, current_layout_idx, 0)
@@ -237,7 +221,9 @@ if __name__ == "__main__":
 
     # set parameters: number of station is import from config; n_random_layouts is import from config
     n_station = config["num_stations"]
-    feasible_cells = np.arange(_xy_all.shape[0])
+    # find out the cells with incident_freq > 0
+    feasible_idx = np.where(_incident_freq > 0)[0]
+    feasible_cells = feasible_idx
 
     # Sampling 1000 demand weighted random Layout
     df_demand_weighted = evaluate_demand_weighted_layouts(
@@ -254,7 +240,7 @@ if __name__ == "__main__":
     print("Average fitness:", df_demand_weighted["fitness"].mean())
 
     # Save results to CSV
-    out_path = DATA_DIR.parents[0] / "analysis" / "demand_weighted_layouts_2.csv"
+    out_path = DATA_DIR.parents[0] / "analysis" / "demand_weighted_layouts_3.csv"
     df_demand_weighted.to_csv(out_path, index=False)
     print(f"Saved random layout results to: {out_path}")
 
