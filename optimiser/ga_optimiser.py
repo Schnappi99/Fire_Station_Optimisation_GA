@@ -152,9 +152,7 @@ class GAOptimiser:
         counts = np.asarray(A_sub.sum(axis=1)).ravel().astype(int)    # (N,)
         return counts
 
-    # =====================#
     #    Public API for evaluating the layout
-    # =====================#
     def evaluate_layout(self, solution: np.ndarray):
         """
         Independently evaluate any given layout (for feasibility study).
@@ -200,10 +198,7 @@ class GAOptimiser:
         })
         return incidents_served, eff_pct, detail
 
-
-    # =====================#
     # GA callbacks
-    # =====================#
     def _on_start(self, ga: pygad.GA):
         self._t0 = time.time()
         self._log.clear()
@@ -295,17 +290,17 @@ class GAOptimiser:
         return float(incidents_served)
 
     # =====================#
-    # 运行 GA / Run GA
+    # Run GA
     # =====================#
     def run_single(
             self,
             plot: bool = True,
             verbose: bool = True,
-            start_layout: np.ndarray | None = None,  # 旧：单个起点布局（可选）
-            n_seeds: int = 0,  # 旧：基于 start_layout 生成的邻域种子数
-            seed_replace_rate: float = 0.2,  # 旧：邻域种子替换比例
+            start_layout: np.ndarray | None = None,  # start from the current layout
+            n_seeds: int = 0,  # the number of seeds
+            seed_replace_rate: float = 0.2,  # the rate of seed replacement
             save_dir: str | None = None,
-            initial_population: np.ndarray | None = None,  # 新增：直接传入自定义初始种群
+            initial_population: np.ndarray | None = None,  # the initial population
     ):
         t0 = time.time()
 
@@ -316,15 +311,15 @@ class GAOptimiser:
         stop_criteria = tuple(self.config.get("stop_criteria", ()))
         k = self.config["num_stations"]
         rng = np.random.default_rng(self.config.get("random_seed", None))
+        pool_all = np.array(self.gene_space, dtype=int)
 
-        # ---------- 1) 如果显式给了 initial_population，就直接用它 ----------
-        # 形状检查： (sol_per_pop, k)
+        # 1) If initial_population is provided, use it directly
         if initial_population is not None:
             initial_population = np.asarray(initial_population, dtype=int)
             assert initial_population.ndim == 2 and initial_population.shape[1] == k, \
                 f"initial_population must be (sol_per_pop, num_stations) with num_stations={k}"
 
-        # ---------- 2) 否则，基于 start_layout 自动生成 seeds ----------
+        # 2) Else if start_layout is provided, build seeds around it (with weighted logic)
         elif start_layout is not None:
             start_layout = np.asarray(start_layout, dtype=int)
             assert start_layout.size == k, "start_layout length must equal num_stations"
@@ -332,32 +327,75 @@ class GAOptimiser:
             assert set(start_layout).issubset(set(self.gene_space)), "start_layout must be subset of gene_space"
 
             seeds = [start_layout.copy()]
-            pool_all = np.array(self.gene_space, dtype=int)
 
-            # 邻域扰动种子
+            # domain perturbation seeds
             for _ in range(max(0, n_seeds)):
                 child = start_layout.copy()
                 m = max(1, int(round(seed_replace_rate * k)))
-                pos = rng.choice(k, size=m, replace=False)
+
+                # demand weighted sampling
+                if m == 1:
+                    sel = self.time_matrix[:, child]  # (N, k)
+                    owners = np.argmin(sel, axis=1)  # the station that each grid belongs to
+                    demand_by_station = np.bincount(
+                        owners,
+                        weights=self.incident_freq.ravel(),
+                        minlength=child.size,
+                    ).astype(float)
+                    if demand_by_station.sum() <= 0:
+                        demand_by_station = np.ones_like(demand_by_station, dtype=float)
+                    station_probs = demand_by_station / demand_by_station.sum()
+                    pos = np.array([int(rng.choice(np.arange(k), p=station_probs))], dtype=int)
+                else:
+                    pos = rng.choice(k, size=m, replace=False)
+
                 used = set(child.tolist())
+                # parameters: demand weight index and uniform mix ratio
+                alpha = float(self.config.get("demand_weight_alpha", 1.0))
+                uniform_mix_ratio = float(self.config.get("uniform_mix_ratio", 0.0))
+                epsilon = float(self.config.get("demand_weight_epsilon", 1e-12))
+
                 for p in pos:
-                    choices = np.array([c for c in pool_all if c not in used], dtype=int)
-                    if choices.size == 0:
-                        # 极端兜底
-                        choices = pool_all
-                    new_val = int(rng.choice(choices))
+                    # candidate set: unused positions; if only one position is replaced, it is limited to incident_freq > 0
+                    base_candidates = np.array([c for c in pool_all if c not in used], dtype=int)
+                    if base_candidates.size == 0:
+                        # extreme fallback
+                        base_candidates = pool_all
+
+                    if m == 1:
+                        positive_mask = self.incident_freq[base_candidates].ravel() > 0
+                        candidates = base_candidates[positive_mask]
+                        if candidates.size == 0:
+                            candidates = base_candidates
+                    else:
+                        candidates = base_candidates
+
+                    # demand weighted sampling
+                    w = np.maximum(self.incident_freq[candidates].astype(float).ravel(), epsilon) ** alpha
+                    if w.sum() <= 0:
+                        w = np.ones_like(w, dtype=float)
+                    if uniform_mix_ratio > 0.0:
+                        lam = 1.0 - uniform_mix_ratio
+                        w = lam * w + (1.0 - lam) * 1.0
+                    prob = w / w.sum()
+
+                    new_val = int(rng.choice(candidates, p=prob))
                     used.discard(child[p])
                     child[p] = new_val
                     used.add(new_val)
                 seeds.append(child)
 
-            # 补到种群大小
+            # fill to population size
             pop_size = self.config["sol_per_pop"]
             while len(seeds) < pop_size:
                 seeds.append(rng.choice(pool_all, size=k, replace=False))
             initial_population = np.array(seeds[:pop_size], dtype=int)
 
-        # ---------- 3) 构造 GA（把 initial_population 传进去） ----------
+        # 3) Else: neither provided → let GA sample initial population uniformly
+        else:
+            initial_population = None
+
+        # construct GA
         ga = pygad.GA(
             num_generations=self.config["generations"],
             sol_per_pop=self.config["sol_per_pop"],
@@ -384,7 +422,7 @@ class GAOptimiser:
 
         ga.run()
 
-        # —— 后面保持你原来的 best_solution / 打印 / 返回 ——
+        #  best solution
         best_solution_arr, best_fitness, _ = ga.best_solution()
         best_solution = np.asarray(best_solution_arr, dtype=int)
         best_incidents = float(best_fitness)
@@ -432,7 +470,7 @@ class GAOptimiser:
         k = self.config["num_stations"]
         rng = np.random.default_rng(self.config.get("random_seed", None))
 
-        # ---------- initial population（以当前布局为起点，非必需） ----------
+        # ---------- initial population ----------
         initial_population = None
         if start_layout is not None:
             start_layout = np.asarray(start_layout, dtype=int)
@@ -444,6 +482,9 @@ class GAOptimiser:
             # 邻域扰动
             if n_seeds > 1:
                 pool_all = np.array(self.gene_space, dtype=int)
+
+
+
                 for _ in range(n_seeds - 1):
                     child = start_layout.copy()
                     m = max(1, int(round(seed_replace_rate * k)))

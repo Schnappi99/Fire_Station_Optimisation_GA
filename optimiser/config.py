@@ -19,7 +19,7 @@ config = {
     "generations": 500,  # the number of generations
     "sol_per_pop": 100,   # population size for each generation
     "num_parents_mating": 20,  # number of parents to select for mating
-    "parent_selection_type": "tournament",  #  parent select strategy  sss = steady-state selection
+    "parent_selection_type": "sss",  #  parent select strategy  sss = steady-state selection
     "crossover_type": "uniform",         #"single_point",  # crossover strategy
     "mutation_type": "random",         # mutation strategy
     "crossover_probability": 0.8,      # crossover possibility

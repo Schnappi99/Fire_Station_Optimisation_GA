@@ -1,108 +1,84 @@
-# optimiser/evaluator.py
+# optimiser/weighted.py
 from __future__ import annotations
 from dataclasses import dataclass
 import numpy as np
 from scipy.spatial import cKDTree
 from scipy.sparse import csr_matrix
 
-@dataclass
-class Evaluator:
-    xy_all: np.ndarray              # (N,2)
-    time_matrix: np.ndarray         # (N,N) —— 所有 demand, 所有候选
-    incident_freq: np.ndarray  # (N,)
-    partial_features: np.ndarray  # (N,p)
-    rf_model: object
-    demand_idx: np.ndarray          # (M,)  freq>0 的格子索引
-    A_cover: csr_matrix             # (M,N) 稀疏覆盖矩阵
-    _sum_incidents: float           # sum(freq[demand_idx])
 
-    # ---------- 构建器 ----------
-    @staticmethod
-    def build_from_raw(
-        *,
-        xy_all: np.ndarray,                  # (N,2)
-        time_matrix: np.ndarray,             # (N,N)
-        incident_freq: np.ndarray,      # (N,)
-        partial_features: np.ndarray,   # (N,p)
-        rf_model: object,
-        radius_m: float = 10_000.0,
-        demand_idx: np.ndarray | None = None
-    ) -> "Evaluator":
-        N = xy_all.shape[0]
-        if time_matrix.shape != (N, N):
-            raise ValueError(f"time_matrix must be (N,N), got {time_matrix.shape}")
-        if demand_idx is None:
-            demand_idx = np.where(incident_freq > 0)[0]
-
-        # 构建覆盖矩阵 (M,N)，M = len(demand_idx)
-        demand_xy = xy_all[demand_idx]
-        tree = cKDTree(demand_xy)
-        col_hits = tree.query_ball_point(xy_all, r=radius_m)  # 每个候选列对应 demand 行
-        rows, cols, data = [], [], []
-        for j, rows_j in enumerate(col_hits):
-            if rows_j:
-                rows.extend(rows_j)
-                cols.extend([j] * len(rows_j))
-                data.extend([1] * len(rows_j))
-        A_cover = csr_matrix((data, (rows, cols)), shape=(len(demand_idx), N), dtype=np.uint8)
-
-        return Evaluator(
-            xy_all=xy_all,
-            time_matrix=time_matrix,
-            incident_freq=incident_freq,
-            partial_features=partial_features,
-            rf_model=rf_model,
-            demand_idx=demand_idx,
-            A_cover=A_cover,
-            _sum_incidents=float(incident_freq[demand_idx].sum())
-        )
-
-    # ---------- station_count ----------
-    def station_count_from_layout(self, layout_idx: np.ndarray) -> np.ndarray:
-        """返回 (M,) —— demand cells 的10km站点计数。"""
-        counts = self.A_cover[:, np.asarray(layout_idx, dtype=int)].sum(axis=1).A1
-        return counts.astype(np.int16, copy=False)
-
-        # ---------- evaluate ----------
-
-    def evaluate(
-            layout_idx: np.ndarray,
-            *,
-            time_matrix: np.ndarray,  # (N,N)
-            demand_idx: np.ndarray,  # (M,)
-            incident_freq: np.ndarray,  # (N,)
-            partial_features: np.ndarray,  # (N,p)
-            rf_model: object,
-            A_cover: csr_matrix,
-            sum_incidents: float
-    ) -> float:
-        """
-        给定 station 布局，返回 demand>0 子集的加权效率。
-        """
-        layout_idx = np.asarray(layout_idx, dtype=int)
-
-        # 最近时间 (M,)
-        subT = time_matrix[demand_idx[:, None], layout_idx]  # (M,|layout|)
-        nearest_times = subT.min(axis=1)
-
-        # 覆盖数量 (M,)
-        station_num = A_cover[:, layout_idx].sum(axis=1).A1.astype(np.int16)
-
-        # 特征 (M,p)
-        features = partial_features[demand_idx]
-
-        # Combine features
-        feature_names = ['nearest_station_travel_time', 'neighbour_frequency_per_month',
-                         'Agriculture - mainly crops', 'Deciduous woodland', 'station_count']
-
-        # Predict the fire service efficiency
-        X = np.column_stack([nearest_times, features, station_num])
-        efficiency = rf_model.predict(X)
-
-        # Calculate the fitness
-        fitness = np.sum(efficiency * incident_freq) / np.sum(incident_freq)
-        print(fitness)
-
-        return float(fitness)
+def compute_station_probs(layout_idx: np.ndarray) -> np.ndarray:
+    """
+    ownership 权重: 哪个站负责的 demand 多 → 更容易被抽到移动。
+    layout_idx: shape=(k,), 每个元素是 cell_id（即在 _time_matrix 的列/索引空间能对应上）
+    """
+    # 取出这些站对应的时间子矩阵：sel = (M, k)
+    # 这里假设 _time_matrix 的列索引能按 cell_id 直接取到；若你的列是“按全部cells顺序”，
+    # 就做一次 pos 映射把 layout_idx 转为列号。
+    sel = _time_matrix[:, layout_idx]  # (M, k)
+    arg = np.argmin(sel, axis=1)       # 每个需求格最近的站（0..k-1）
+    w_st = np.bincount(arg, weights=_incident_freq, minlength=layout_idx.size).astype(float)  # 各站负责的需求权重和
+    if w_st.sum() <= 0:
+        w_st = np.ones_like(w_st, dtype=float)
+    return w_st / w_st.sum()
 
 
+def build_allowed_mask(layout: np.ndarray,
+                       s: int,
+                       candidate_cells: np.ndarray,
+                       pos_in_candidates: dict[int, int],
+                       mutual_exclusion: bool,
+                       MIN_DIST: float,
+                       _xy_all: np.ndarray) -> np.ndarray:
+    """返回候选格的可行性布尔掩码（满足互斥、最小间距、不原地）"""
+    allowed = np.ones(candidate_cells.shape[0], dtype=bool)
+
+    # 互斥（除开该站当前占用的 old_cell）
+    old_cell = layout[s]
+    if mutual_exclusion:
+        occ = set(layout.tolist()); occ.discard(old_cell)
+        for oc in occ:
+            j = pos_in_candidates.get(oc)
+            if j is not None:
+                allowed[j] = False
+
+    # 最小间距
+    if layout.size > 1:
+        others = np.delete(layout, s)
+        if others.size > 0:
+            cand_xy = _xy_all[candidate_cells]   # (C, 2)
+            others_xy = _xy_all[others]          # (k-1, 2)
+            # 每个候选点到其他站的最近距离
+            dmin = np.min(np.linalg.norm(cand_xy[:, None, :] - others_xy[None, :, :], axis=2), axis=1)
+            allowed &= (dmin >= float(MIN_DIST))
+
+    # 不允许留在原地
+    j_old = pos_in_candidates.get(old_cell)
+    if j_old is not None:
+        allowed[j_old] = False
+
+    return allowed
+
+
+def sample_new_cell(candidate_cells: np.ndarray,
+                    allowed_mask: np.ndarray,
+                    base_prob: np.ndarray,
+                    rng: np.random.Generator) -> int | None:
+    """
+    在 allowed 的候选里，按 base_prob 加权抽样新 cell_id。
+    兜底：若权重和为 0，则在 allowed 里均匀抽；若 allowed 全 False，返回 None。
+    """
+    if not allowed_mask.any():
+        return None
+
+    probs = np.zeros_like(base_prob, dtype=float)
+    probs[allowed_mask] = base_prob[allowed_mask]
+    ssum = probs.sum()
+    if ssum <= 0:
+        # 回退：均匀抽 allowed 区域
+        idxs = np.flatnonzero(allowed_mask)
+        j = rng.choice(idxs)
+        return int(candidate_cells[j])
+    else:
+        probs = probs / ssum
+        j = rng.choice(np.arange(candidate_cells.shape[0]), p=probs)
+        return int(candidate_cells[j])
