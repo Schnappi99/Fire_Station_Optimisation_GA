@@ -1,6 +1,8 @@
 import numpy as np
 from joblib import load
-from optimiser.ga_optimiser import GAOptimiser, make_single_swap_seeds
+#from optimiser.ga_optimiser import GAOptimiser, make_single_swap_seeds_weighted
+from optimiser.GA_algorithm import GAOptimiser, make_single_swap_seeds_weighted
+from optimiser.data_loader import load_data
 from optimiser.data_loader import load_data
 from optimiser.config import config, DATA_DIR
 
@@ -10,7 +12,7 @@ from pathlib import Path
 import json
 from datetime import datetime
 
-out_dir = Path("outputs/run_latest")
+out_dir = Path("outputs2/run_latest")
 out_dir.mkdir(parents=True, exist_ok=True)
 
 def save_layout_map(xy_all: np.ndarray, candidate_xy: np.ndarray, best_solution: np.ndarray, out_path="outputs/optimised_layout_map.png"):
@@ -55,27 +57,61 @@ start_layout = np.load("/Users/zhaoyuxin/Repos/fire_station_optimisation_ga/data
 # Gene space = indices of candidate station locations (columns of time_matrix).
 # If you already pruned feasible cells, pass their indices here.
 candidate_indices = np.arange(_time_matrix.shape[1])  # all candidates
-# Run optimisation
-# ------------------------------------------------
-opt = GAOptimiser(data=data_dict, config=config, gene_space=candidate_indices)
 
+# ---- build domains ----
+incident_freq_arr = _incident_freq.ravel().astype(float)
+pos_idx = np.flatnonzero(incident_freq_arr > 0).astype(int)
+
+
+# top-p% set for seeding convenience (not the gene_space)
+k = int(config["num_stations"])
+p = float(config.get("gene_space_top_pct", 0.10))
+if pos_idx.size == 0:
+    raise ValueError("No cells with incident_freq > 0.")
+# vals : incident>0
+vals = incident_freq_arr[pos_idx]
+# target: The target scale of the Top set = max(k, ceil(p * number of required grids)), ensuring that at least ≥ k.
+target = max(k, int(np.ceil(p * pos_idx.size)))
+target = min(target, pos_idx.size)
+# Get the top 10% (or more, at least k) grid index; the last row is sorted stably from high to low by frequency (just for easy observation).
+part = np.argpartition(-vals, target-1)[:target]
+top10_cells = pos_idx[part]
+top10_cells = top10_cells[np.argsort(-incident_freq_arr[top10_cells])]
+
+# wide gene_space: all incident>0 cells
+gene_space = np.flatnonzero(_incident_freq.ravel() > 0).astype(int)
+
+# ---- optimiser ----
+opt = GAOptimiser(data=data_dict, config=config, gene_space=gene_space)
+
+# ---- mixed/weighted seeding (optional). If you want GA to random-init → set initial_population=None
 rng = np.random.default_rng(config.get("random_seed", None))
-init_pop = make_single_swap_seeds(start_layout, candidate_indices, 60, config["sol_per_pop"], rng)
+# Configurable seeding parameters (given the default value, can also be provided in config)
+n_single_swap = int(config.get("n_single_swap_seeds", 60))
+alpha = float(config.get("seed_alpha", 1.0))
+mix = float(config.get("seed_uniform_mix_ratio", 0.1))
+
+# generate init_pop
+init_pop = make_single_swap_seeds_weighted(
+    base_layout=start_layout,                # based on current layout to do the single swamp change
+    incident_freq=incident_freq_arr,
+    #feasible_indices=top10_cells,            # only choose the top 10% demand cells
+    feasible_indices=gene_space,            # choose the gene space
+    n_single_swap_seeds=n_single_swap,
+    pop_size=int(config["sol_per_pop"]),
+    rng=rng,
+    k=k,
+    top_pct=p,                               # same as gene_space
+    alpha=alpha,
+    uniform_mix_ratio=mix
+)
 
 best_solution, best_incidents, best_pct, ga = opt.run_single(
-    initial_population=init_pop,
+    initial_population=init_pop,    #  or init_pop
+    start_layout=start_layout,
     plot=True,
     verbose=True,
 )
-
-# # best_solution, best_incidents, best_pct, ga = opt.run(plot=True, verbose=True)
-# best_solution, best_incidents, best_pct, ga = opt.run(
-#     plot=True,
-#     verbose=True,
-#     start_layout=start_layout,   # start from the current layout
-#     n_seeds=30,                  # generate 30 seeds
-#     seed_replace_rate=0.2        # Replace 20% of station per seed
-# )
 
 # Use results
 print("Selected candidate indices:", best_solution.tolist())

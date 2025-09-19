@@ -1,9 +1,9 @@
 # run_ga.py
 import numpy as np
 from joblib import load
-from optimiser.ga_optimiser import GAOptimiser, make_single_swap_seeds
-from optimiser.data_loader import load_data
-from optimiser.config import config, DATA_DIR
+from GA_algorithm.ga_optimiser import GAOptimiser, make_single_swap_seeds
+from GA_algorithm.data_loader import load_data
+from GA_algorithm.config import config, DATA_DIR
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -49,7 +49,6 @@ _rf_model = data_dict["rf_model"]
 _total_incidents = data_dict["total_incidents"]
 
 n_station = config["num_stations"]
-
 total_incidents = float(_incident_freq.sum())
 
 start_layout = np.load("/Users/zhaoyuxin/Repos/fire_station_optimisation_ga/data/current_layout_idx.npy")
@@ -63,6 +62,7 @@ opt = GAOptimiser(data=data_dict, config=config, gene_space=candidate_indices)
 
 rng = np.random.default_rng(config.get("random_seed", None))
 init_pop = make_single_swap_seeds(start_layout, candidate_indices, 60, config["sol_per_pop"], rng)
+
 
 best_solution, best_incidents, best_pct, ga = opt.run(
     initial_population=init_pop,

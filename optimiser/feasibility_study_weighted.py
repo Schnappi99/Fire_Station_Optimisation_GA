@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 from shapely.geometry import Point
 from scipy.stats import percentileofscore
 
-from optimiser import ga_optimiser
-from optimiser.data_loader import load_data
+from GA_algorithm import ga_optimiser
+from GA_algorithm.data_loader import load_data
 
 from config import DATA_DIR
 from config import n_random_layouts
