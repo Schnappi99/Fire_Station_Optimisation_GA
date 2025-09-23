@@ -14,11 +14,13 @@ Fire_Station_Optimisation_GA/
 │   └── config.py                 # GA hyperparameters
 │   └── feasiblilty_study.py      # Feasibility study
 │   └── ga_runner.py              # Run GA
+│ 
 ├── utils/                        # Helper scripts and notebooks
 │   ├── osrm_utils.py             # Functions for computing OSRM travel time
 │   └── preprocess.ipynb          # Grid/feature generation and preprocessing
 │   └── osrm_drv_time.ipynb       # Local attempts to calculate time for osrm
-│
+│   └── driving_time_matrix.py    # Calculate the osrm driving time matrix
+│ 
 ├── analysis/                     # Evaluation tools
 │   ├── feasibility_study.py      # Compare current layout to random layouts
 │   ├── random_layouts.csv        # Results of 1000 random layouts
@@ -41,9 +43,9 @@ conda env create -f environment.yml
 conda activate fire_station_ga
 
 # Run feasibility benchmark
-python analysis/feasibility_study_weighted.py
+python optimiser/feasibility_study_weighted.py
 
 # Run optimisation
-python main.py
+python optimiser/ga_runner.py
 
 ```
