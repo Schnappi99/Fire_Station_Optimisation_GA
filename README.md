@@ -9,10 +9,11 @@ This repository presents a spatial optimisation framework for fire station place
 Fire_Station_Optimisation_GA/
 ├── main.py                       # Entry point to run GA optimisation
 ├── optimiser/                    # Core optimisation logic
-│   ├── ga_optimiser.py           # Genetic Algorithm and fitness function
+│   ├── GA_algorithm.py           # Genetic Algorithm and fitness function
 │   ├── data_loader.py            # Load model input data into global variables
 │   └── config.py                 # GA hyperparameters
-│
+│   └── feasiblilty_study.py      # Feasibility study
+│   └── ga_runner.py              # Run GA
 ├── utils/                        # Helper scripts and notebooks
 │   ├── osrm_utils.py             # Functions for computing OSRM travel time
 │   └── preprocess.ipynb          # Grid/feature generation and preprocessing
