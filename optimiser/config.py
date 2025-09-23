@@ -49,7 +49,7 @@ config = {
     "log_dir": "log",  # log Directory
     "n_random_layouts": 1000,  # random baseline experiment number (Compared to GA)
     # parameters in init_pop
-    "gene_space_top_pct": 0.2,           # 初始 top20%
+    "gene_space_top_pct": 0.2,           # top 20%
     "n_single_swap_seeds": 100,          # 初始种子数
     "seed_uniform_mix_ratio": 0.3,       # 播种时混合权重
     "seed_alpha": 1.0,                   # 播种权重指数

@@ -12,10 +12,10 @@ from pathlib import Path
 import json
 from datetime import datetime
 
-out_dir = Path("outputs2/run_latest")
+out_dir = Path("outputs3/run_latest")
 out_dir.mkdir(parents=True, exist_ok=True)
 
-def save_layout_map(xy_all: np.ndarray, candidate_xy: np.ndarray, best_solution: np.ndarray, out_path="outputs/optimised_layout_map.png"):
+def save_layout_map(xy_all: np.ndarray, candidate_xy: np.ndarray, best_solution: np.ndarray, out_path="outputs3/optimised_layout_map.png"):
     out_path = Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
 

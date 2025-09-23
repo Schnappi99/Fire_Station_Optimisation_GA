@@ -63,7 +63,6 @@ opt = GAOptimiser(data=data_dict, config=config, gene_space=candidate_indices)
 rng = np.random.default_rng(config.get("random_seed", None))
 init_pop = make_single_swap_seeds(start_layout, candidate_indices, 60, config["sol_per_pop"], rng)
 
-
 best_solution, best_incidents, best_pct, ga = opt.run(
     initial_population=init_pop,
     plot=True,

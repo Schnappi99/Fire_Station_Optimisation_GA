@@ -105,10 +105,6 @@ def evaluate_demand_weighted_layouts_single(
 
 
 
-
-
-
-
 if __name__ == "__main__":
 
     data = data_loader.load_data()

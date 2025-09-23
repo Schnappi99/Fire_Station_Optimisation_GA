@@ -328,7 +328,6 @@ if __name__ == "__main__":
     # Save tau.npy and A_time.npz
     save_npz(DATA_DIR / "A_time_all_normal.npz", A_time)
 
-
     # Check A_time
     num_nonzero = A_time.nnz
 
