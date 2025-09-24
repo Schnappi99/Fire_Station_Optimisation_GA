@@ -7,7 +7,7 @@ This repository presents a spatial optimisation framework for fire station place
 
 ```text
 Fire_Station_Optimisation_GA/
-├── main.py                       # Entry point to run GA optimisation
+│
 ├── optimiser/                    # Core optimisation logic
 │   ├── GA_algorithm.py           # Genetic Algorithm and fitness function
 │   ├── data_loader.py            # Load model input data into global variables
