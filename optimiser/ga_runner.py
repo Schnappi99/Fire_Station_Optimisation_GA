@@ -12,10 +12,10 @@ from pathlib import Path
 import json
 from datetime import datetime
 
-out_dir = Path("outputs3/run_latest")
+out_dir = Path("outputs_none/run_latest")
 out_dir.mkdir(parents=True, exist_ok=True)
 
-def save_layout_map(xy_all: np.ndarray, candidate_xy: np.ndarray, best_solution: np.ndarray, out_path="outputs3/optimised_layout_map.png"):
+def save_layout_map(xy_all: np.ndarray, candidate_xy: np.ndarray, best_solution: np.ndarray, out_path="outputs_none/optimised_layout_map.png"):
     out_path = Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -75,8 +75,8 @@ target = max(k, int(np.ceil(p * pos_idx.size)))
 target = min(target, pos_idx.size)
 # Get the top 10% (or more, at least k) grid index; the last row is sorted stably from high to low by frequency (just for easy observation).
 part = np.argpartition(-vals, target-1)[:target]
-top10_cells = pos_idx[part]
-top10_cells = top10_cells[np.argsort(-incident_freq_arr[top10_cells])]
+top_cells = pos_idx[part]
+top_cells = top_cells[np.argsort(-incident_freq_arr[top_cells])]
 
 # wide gene_space: all incident>0 cells
 gene_space = np.flatnonzero(_incident_freq.ravel() > 0).astype(int)
@@ -96,7 +96,7 @@ init_pop = make_single_swap_seeds_weighted(
     base_layout=start_layout,                # based on current layout to do the single swamp change
     incident_freq=incident_freq_arr,
     #feasible_indices=top10_cells,            # only choose the top 10% demand cells
-    feasible_indices=gene_space,            # choose the gene space
+    feasible_indices=gene_space,            # choose the gene space/ top p %
     n_single_swap_seeds=n_single_swap,
     pop_size=int(config["sol_per_pop"]),
     rng=rng,
@@ -107,7 +107,7 @@ init_pop = make_single_swap_seeds_weighted(
 )
 
 best_solution, best_incidents, best_pct, ga = opt.run_single(
-    initial_population=init_pop,    #  or init_pop
+    initial_population=None,    #  or init_pop
     start_layout=start_layout,
     plot=True,
     verbose=True,

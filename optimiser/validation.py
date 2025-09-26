@@ -9,7 +9,7 @@ from shapely.ops import unary_union
 from shapely.geometry import MultiPoint
 
 from typing import List, Optional
-from GA_algorithm.data_loader import load_data
+from data_loader import load_data
 import io
 from PIL import Image
 import ast

@@ -9,7 +9,7 @@ import pygad
 import numpy as np
 from typing import Iterable
 
-# Added explicit `k` so we can build a seed when base_layout=None.
+# Generate an init_pop with a "single-swap" around a given layout base_layout (allow none).
 def make_single_swap_seeds_weighted(
     base_layout: np.ndarray | None,                 #  allow None
     incident_freq: np.ndarray,                      # (N,)
@@ -26,7 +26,7 @@ def make_single_swap_seeds_weighted(
 ) -> np.ndarray:
     """
     Build a single-swap seeding population around base_layout.
-    If base_layout is None, the very first seed is sampled from feasible_indices
+    If base_layout is None, the very first seed (seed[0]) is sampled from feasible_indices
     with demand-weighted, without-replacement sampling of length k.
 
     Returns
@@ -40,7 +40,7 @@ def make_single_swap_seeds_weighted(
     if k <= 0:
         raise ValueError("k (num_stations) must be positive.")
 
-    # --- helpers ---
+    # demand weighted
     def weight_of(ids: np.ndarray) -> np.ndarray:
         """Demand^alpha mixed with uniform by uniform_mix_ratio, normalized to sum=1."""
         if ids.size == 0:
@@ -487,7 +487,7 @@ class GAOptimiser:
             allow_duplicate_genes=bool(self.config.get("allow_duplicate_genes", False)),
         )
 
-        # [ADDED] Bind custom mutation so Top-P% rule is enforced during mutation.
+        # Top-P% rule is enforced during mutation.
         ga.mutation = _mutation_top_p.__get__(self, self.__class__)
 
         ga.run()
