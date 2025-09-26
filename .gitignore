@@ -4,9 +4,8 @@ data/driving_time_matrix.npy
 # Ignore PyCharm/IntelliJ project settings
 .idea/
 
-# Ignore .png and .tif
-*.tif
-*.tiff
+# Ignore .png and .gif
+*.gif
 *.png
 
 # Ignore files with spaces in file names
