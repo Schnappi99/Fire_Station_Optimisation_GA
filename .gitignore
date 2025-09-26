@@ -1,5 +1,16 @@
-# ignore big docs
+# Ignore big docs
 data/driving_time_matrix.npy
+
+# Ignore PyCharm/IntelliJ project settings
+.idea/
+
+# Ignore .png and .tif
+*.tif
+*.tiff
+*.png
+
+# Ignore files with spaces in file names
+* *  
 
 __pycache__/
 *.log
