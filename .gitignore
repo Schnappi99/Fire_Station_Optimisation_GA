@@ -12,6 +12,9 @@ data/driving_time_matrix.npy
 # Ignore files with spaces in file names
 * *  
 
+# Ignore macOS system files
+.DS_Store
+
 __pycache__/
 *.log
-.DS_Store
+
