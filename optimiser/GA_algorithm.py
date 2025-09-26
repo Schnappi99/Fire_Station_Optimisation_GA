@@ -489,7 +489,6 @@ class GAOptimiser:
 
         # Top-P% rule is enforced during mutation.
         ga.mutation = _mutation_top_p.__get__(self, self.__class__)
-
         ga.run()
 
         # ---------- results ----------
