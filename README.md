@@ -7,29 +7,34 @@ This repository presents a spatial optimisation framework for fire station place
 
 ```text
 Fire_Station_Optimisation_GA/
-├── main.py                       # Entry point to run GA optimisation
 ├── optimiser/                    # Core optimisation logic
-│   ├── GA_algorithm.py           # Genetic Algorithm and fitness function
+│   ├── GAOptimiser.py            # Genetic Algorithm 
+│   ├── ga_run.py                 # Run GA
+│   ├── Output                    # outputs
+│   └── log                       # log files
+│ 
+├── feasibility_study/            # Feasibility study
+│   ├── methods/                  # Functions for feasibility study
+│   │   ├── best_k.py             # Based on best_K selections
+│   │   ├── demand_weighted.py    # Demand weighted single sample
+│   └── run.py                    # Run the feasibility study
+│ 
+├── common/                       # common tools for GA and feasibility study 
+│   ├── config.py                 # GA hyperparameters
 │   ├── data_loader.py            # Load model input data into global variables
-│   └── config.py                 # GA hyperparameters
-│   └── feasiblilty_study.py      # Feasibility study
-│   └── ga_runner.py              # Run GA
-│   └── validation.py             # 
+│   ├── validation.py             # Validation
+│   └── evaluator.py              # Calculate the fitness 
 │ 
-├── utils/                        # Helper scripts and notebooks
-│   ├── osrm_utils.py             # Functions for computing OSRM travel time
-│   └── preprocess.ipynb          # Grid/feature generation and preprocessing
-│   └── osrm_drv_time.ipynb       # Local attempts to calculate time for osrm
-│   └── driving_time_matrix.py    # Calculate the osrm driving time matrix
-│ 
-├── analysis/                     # Evaluation tools
-│   ├── feasibility_study.py      # Compare current layout to random layouts
-│   ├── random_layouts.csv        # Results of 1000 random layouts
-│   └── random_layout_hist.png    # Histogram of fitness distribution
-│
-├── data/                         # Input data (e.g., .npy, .joblib, .gpkg files)
+├── data/                         # Input data (e.g., .npy, .joblib, .gpkg files and time matrix)
 │   └── ... 
-└── README.md                     # This file
+├── results/                      # Results
+│   ├── best_k
+│   └── demand_weighted
+│ 
+├──  README.md                    # This file 
+├── .environment.yml              # The environment of this repo
+├── .gitignore 
+└── .gitattributes
 
 ```
 
