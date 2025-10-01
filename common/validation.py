@@ -1,23 +1,14 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from altair import Point
-from datashader.layout import random_layout
 from sklearn.neighbors import NearestNeighbors
-from shapely.geometry import Polygon
-from shapely.ops import unary_union
-from shapely.geometry import MultiPoint
 
-from typing import List, Optional
-from data_loader import load_data
+from common.data_loader import load_data
 import io
 from PIL import Image
-import ast
-import re
-from config import DATA_DIR
+from common.config import DATA_DIR
 import imageio.v2 as imageio
 from pathlib import Path
-
 
 
 def _avg_nn_distance(coords: np.ndarray) -> float:

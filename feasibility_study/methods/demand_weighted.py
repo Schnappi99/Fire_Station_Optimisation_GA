@@ -5,17 +5,14 @@ import matplotlib.pyplot as plt
 from shapely.geometry import Point
 from scipy.stats import percentileofscore
 
-from GA_algorithm import GAOptimiser
-from data_loader import load_data
-
-from config import DATA_DIR
-from config import n_random_layouts
-from config import config
+from common.data_loader import load_data
+from common.config import DATA_DIR
+from common.config import n_random_layouts
+from common.config import config
 
 from tqdm import tqdm
 from typing import Optional
 from scipy.spatial import cKDTree
-import time
 
 # set global variables
 _xy_all = None
@@ -401,7 +398,8 @@ if __name__ == "__main__":
     # df_runs = evaluate_demand_weighted_layouts(
     #     current_layout_idx=current_layout_idx,
     #     iterations=n_random_layouts,
-    #     candidate_cells=feasible_cells,     # cells with _incident_freq > 0
+    #     candidate_cells=feasible_cells,
+    #     cells with _incident_freq > 0
     #     incident_freq=_incident_freq,
     #     MIN_DIST=2000,
     #     epsilon=1e-6,

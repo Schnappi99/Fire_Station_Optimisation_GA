@@ -1,13 +1,10 @@
-import os
 import time
 from pathlib import Path
-from typing import Dict, List, Iterable
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import pygad
 import numpy as np
-from typing import Iterable
+from common.evaluator import Evaluator
 
 # Generate an init_pop with a "single-swap" around a given layout base_layout (allow none).
 def make_single_swap_seeds_weighted(
@@ -146,8 +143,8 @@ class GAOptimiser:
 
     Data shapes:
     - xy_all: (N, 2)
-    - time_matrix: (N, M)  travel time from each grid (N) to candidate stations (M)  [CHANGED doc]
-    - A_matrix: (N, M)     0/1 reachability or count kernel                      [CHANGED doc]
+    - time_matrix: (N, M)  travel time from each grid (N) to candidate stations (M)
+    - A_matrix: (N, M)     0/1 reachability or count kernel
     - partial_features: (N, P)  features excluding [nearest_time, station_count]
     - incident_freq: (N,)
     """
@@ -160,14 +157,8 @@ class GAOptimiser:
         "station_count",
     ]
 
-    def __init__(
-        self,
-        data: Dict,
-        config: Dict,
-        gene_space: Iterable[int],
-        feature_names: List[str] | None = None,
-    ):
-        # ---- bind data ----
+    def __init__(self, data, config, gene_space, feature_names):
+        # data
         self.xy_all: np.ndarray = data["xy_all"]
         self.time_matrix: np.ndarray = data["time_matrix"]
         self.A_matrix: np.ndarray = data["A_matrix"]
@@ -176,17 +167,23 @@ class GAOptimiser:
         self.rf_model = data["rf_model"]
         self.total_incidents: float = float(data["total_incidents"])
 
-        # (Optional) lighter dtypes can speed up a lot
-        # self.time_matrix = self.time_matrix.astype(np.float32, copy=False)   # [OPTIONAL]
-        # self.A_matrix = self.A_matrix.astype(np.int32, copy=False)           # [OPTIONAL]
-
         self.config = dict(config)
-        self.gene_space = sorted({int(i) for i in gene_space})  # dedup + sort
-
-        # ---- feature names ----
+        self.gene_space = sorted({int(i) for i in gene_space})
         self.feature_names = feature_names or self.feature_names_default
 
-        # ---- sanity checks ----
+        # evaluator
+        self.evaluator = Evaluator(
+            xy_all=self.xy_all,
+            time_matrix=self.time_matrix,
+            A_matrix=self.A_matrix,
+            partial_features=self.partial_features,
+            incident_freq=self.incident_freq,
+            rf_model=self.rf_model,
+            total_incidents=self.total_incidents,
+            feature_names=self.feature_names,
+        )
+
+        # sanity checks
         N = self.xy_all.shape[0]
         assert self.time_matrix.shape[0] == N, "time_matrix rows must match xy_all"
         assert self.partial_features.shape[0] == N, "partial_features rows must match xy_all"
@@ -204,63 +201,7 @@ class GAOptimiser:
         self._log: list[tuple[float, float]] = []   # (elapsed_s, best_fitness)
         self._gen_times: list[float] = []
 
-    # ---- helpers ----
-    def _station_count_all(self, solution: np.ndarray) -> np.ndarray:
-        """
-        Given a layout (station column indices), return per-cell station_count (length N).
-        If A_matrix is binary, sum along columns; otherwise threshold first.
-        """
-        solution = np.asarray(solution, dtype=int)
-        A_sub = self.A_matrix[:, solution]                               # (N, k)
-        counts = np.asarray(A_sub.sum(axis=1)).ravel().astype(int)       # (N,)
-        return counts
-
-    # ---- public: evaluate any layout ----
-    def evaluate_layout(self, solution: np.ndarray):
-        """
-        Evaluate a given layout.
-
-        Returns
-        -------
-        incidents_served : float
-        eff_pct          : float
-        detail           : pd.DataFrame with columns:
-                           [nearest_time, station_count, incident_freq, efficiency, expected_served]
-        """
-        solution = np.asarray(solution, dtype=int)
-        if np.unique(solution).size != solution.size:
-            raise ValueError("solution has duplicate indices; must be unique")
-
-        # nearest station travel time
-        selected_times = self.time_matrix[:, solution]                    # [FIXED] removed duplicate line
-        nearest_times = selected_times.min(axis=1)                        # (N,)
-
-        # station count from A_matrix
-        station_count = self._station_count_all(solution)                 # (N,)
-
-        # build RF input in the correct order
-        X = np.column_stack([nearest_times, self.partial_features, station_count])
-        X_df = pd.DataFrame(X, columns=self.feature_names)
-
-        # RF predict and aggregate
-        eff = np.clip(self.rf_model.predict(X_df), 0.0, 1.0)             # (N,)
-        expected_served = eff * self.incident_freq                        # (N,)
-
-        incidents_served = float(expected_served.sum())
-        eff_pct = incidents_served / self.total_incidents if self.total_incidents > 0 else 0.0
-
-        detail = pd.DataFrame({
-            "nearest_time": nearest_times,
-            "station_count": station_count,
-            "incident_freq": self.incident_freq,
-            "efficiency": eff,
-            "expected_served": expected_served,
-        })
-        return incidents_served, eff_pct, detail
-
-    # =====================#
     # GA callbacks
-    # =====================#
     def _on_start(self, ga: pygad.GA):
         self._t0 = time.time()
         self._log.clear()
@@ -358,14 +299,7 @@ class GAOptimiser:
 
         print(f"Saved logs to: {log_csv} and {log_png} | Final best: {final_best:,.2f}")
 
-    def _fitness(self, ga_instance: pygad.GA, solution: np.ndarray, solution_idx: int) -> float:
-        """PyGAD fitness function: return incidents_served (maximize)."""
-        incidents_served, _, _ = self.evaluate_layout(solution)
-        return float(incidents_served)
-
-    # =====================#
     # Run GA
-    # =====================#
     def run_single(
         self,
         plot: bool = True,
@@ -423,7 +357,7 @@ class GAOptimiser:
         if verbose:
             print(f"Optimising with {k} stations from {pool_all.size} feasible locations (pre-filtered)...")
 
-        # ---------- custom mutation: mutate into Top-P% only ----------
+        # custom mutation: mutate into Top-P% only
         def _mutation_top_p(self_inner, offspring, ga_instance=None):   # [ADDED]
             """Custom mutation: when a gene mutates, new value is sampled from Top-P% over gene_space."""
             top_pct = float(self.config.get("gene_space_top_pct", 0.10))
@@ -461,7 +395,7 @@ class GAOptimiser:
                         offspring[r, c] = int(rng.choice(pool, p=p))
             return offspring
 
-        # ---------- build and run GA ----------
+        # build and run GA
         ga = pygad.GA(
             num_generations=int(self.config["generations"]),
             sol_per_pop=int(self.config["sol_per_pop"]),
@@ -470,7 +404,8 @@ class GAOptimiser:
             gene_type=int,
             gene_space=self.gene_space,                 # wide domain (incident>0 or user set)
             initial_population=initial_population,      # None → PyGAD samples; or pass your init_pop
-            fitness_func=self._fitness,
+            #fitness_func=self._fitness,
+            fitness_func=self.evaluator.fitness_pygad,
             on_start=self._on_start,
             on_generation=self._on_generation,
             on_stop=self._on_stop,
