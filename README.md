@@ -16,7 +16,7 @@ Fire_Station_Optimisation_GA/
 ├── feasibility_study/            # Feasibility study
 │   ├── methods/                  # Functions for feasibility study
 │   │   ├── best_k.py             # Based on best_K selections
-│   │   ├── demand_weighted.py    # Demand weighted single sample
+│   │   └── demand_weighted.py    # Demand weighted single sample
 │   └── run.py                    # Run the feasibility study
 │ 
 ├── uilts/                       # common tools for GA and feasibility study 
