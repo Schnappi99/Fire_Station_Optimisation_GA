@@ -19,7 +19,7 @@ Fire_Station_Optimisation_GA/
 │   │   ├── demand_weighted.py    # Demand weighted single sample
 │   └── run.py                    # Run the feasibility study
 │ 
-├── common/                       # common tools for GA and feasibility study 
+├── uilts/                       # common tools for GA and feasibility study 
 │   ├── config.py                 # GA hyperparameters
 │   ├── data_loader.py            # Load model input data into global variables
 │   ├── validation.py             # Validation
