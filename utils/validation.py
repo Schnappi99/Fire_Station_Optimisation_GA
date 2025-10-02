@@ -3,10 +3,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.neighbors import NearestNeighbors
 
-from common.data_loader import load_data
+from utils.data_loader import load_data
 import io
 from PIL import Image
-from common.config import DATA_DIR
+from utils.config import DATA_DIR
 import imageio.v2 as imageio
 from pathlib import Path
 
@@ -131,7 +131,7 @@ if __name__ == "__main__":
 
     parent_path = DATA_DIR.parent
     print(parent_path)
-    df_layout = pd.read_csv(DATA_DIR.parent / "analysis" /"single_swap_runs.csv")
+    df_layout = pd.read_csv(DATA_DIR.parent / "results" /"single_swap_runs.csv")
     random_layouts = [parse_layout_str(s) for s in df_layout['layout'][:50]]
 
     plot_fire_grid_heatmap_with_gif(
@@ -140,7 +140,7 @@ if __name__ == "__main__":
         station_coords=stations_xy,
         random_layouts=random_layouts,
         candidate_cells=feasible_cells,  # optional
-        gif_path=DATA_DIR.parent / "analysis" /"random_layouts_simple.gif",
+        gif_path=DATA_DIR.parent / "results" /"random_layouts_simple.gif",
         fps=3 )
 
 

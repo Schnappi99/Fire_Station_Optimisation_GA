@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import pygad
 import numpy as np
-from common.evaluator import Evaluator
+from utils.evaluator import Evaluator
 
 # Generate an init_pop with a "single-swap" around a given layout base_layout (allow none).
 def make_single_swap_seeds_weighted(

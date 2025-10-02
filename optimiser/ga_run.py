@@ -1,7 +1,7 @@
 import numpy as np
 from optimiser.GAOptimiser import GAOptimiser, make_single_swap_seeds_weighted
-from common.data_loader import load_data
-from common.config import config, DATA_DIR
+from utils.data_loader import load_data
+from utils.config import config, DATA_DIR
 
 import matplotlib.pyplot as plt
 import pandas as pd

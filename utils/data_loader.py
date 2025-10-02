@@ -1,9 +1,8 @@
 import numpy as np
-import pandas as pd
 from joblib import load
 from scipy.sparse import load_npz
 
-from .config import DATA_DIR
+from utils.config import DATA_DIR
 
 def load_data():
     data = {

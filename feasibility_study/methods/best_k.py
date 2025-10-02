@@ -1,4 +1,4 @@
-# feasibility_study/methods/demand_weighted_single_swap.py
+# feasibility_study/methods/best_k.py
 from __future__ import annotations
 import numpy as np
 import pandas as pd

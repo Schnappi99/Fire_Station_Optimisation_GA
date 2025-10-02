@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 from shapely.geometry import Point
 from scipy.stats import percentileofscore
 
-from common.data_loader import load_data
-from common.config import DATA_DIR
-from common.config import n_random_layouts
-from common.config import config
+from utils.data_loader import load_data
+from utils.config import DATA_DIR
+from utils.config import n_random_layouts
+from utils.config import config
 
 from tqdm import tqdm
 from typing import Optional
@@ -460,7 +460,7 @@ if __name__ == "__main__":
     plt.tight_layout()
 
     # Save BEFORE show (safer)
-    out_png = DATA_DIR.parents[0] / "analysis" / "single_swap_random_walk_hist_4.png"
+    out_png = DATA_DIR.parents[0] / "results" / "single_swap_random_walk_hist_4.png"
     plt.savefig(out_png, dpi=300)
     plt.show()
     print(f"Saved histogram to: {out_png}")
@@ -475,7 +475,7 @@ if __name__ == "__main__":
         print("No valid fitness recorded (all iterations were skipped).")
 
     # Save runs
-    out_csv = DATA_DIR.parents[0] / "analysis" / "single_swap_runs_4.csv"
+    out_csv = DATA_DIR.parents[0] / "results" / "single_swap_runs_4.csv"
     df_runs.to_csv(out_csv, index=False)
     print(f"Saved runs to: {out_csv}")
 
