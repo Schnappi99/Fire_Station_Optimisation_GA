@@ -165,7 +165,6 @@ class GAOptimiser:
         self.partial_features: np.ndarray = data["partial_features"]
         self.incident_freq: np.ndarray = np.asarray(data["incident_freq"], dtype=float).ravel()
         self.rf_model = data["rf_model"]
-        self.total_incidents: float = float(data["total_incidents"])
 
         self.config = dict(config)
         self.gene_space = sorted({int(i) for i in gene_space})
