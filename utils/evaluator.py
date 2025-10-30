@@ -15,7 +15,7 @@ class Evaluator:
     partial_features: np.ndarray     # (N, P) except nearest_time and station_count
     incident_freq: np.ndarray        # (N,)
     rf_model: object                 #  .predict(X_df) -> [0,1]
-    total_incidents: float
+    #total_incidents: float
     feature_names: list[str]         #  names of the five top important features
 
     def _station_count_all(self, solution: np.ndarray) -> np.ndarray:
@@ -42,11 +42,17 @@ class Evaluator:
         X = np.column_stack([nearest_times, self.partial_features, station_count])
         X_df = pd.DataFrame(X, columns=self.feature_names)
 
-        eff = np.clip(self.rf_model.predict(X_df), 0.0, 1.0)             # (N,)
-        expected_served = eff * self.incident_freq                        # (N,)
+        eff = np.clip(self.rf_model.predict(X_df), 0.0, 1.0)
 
+        expected_served = eff * self.incident_freq  # incident_freq
         incidents_served = float(expected_served.sum())
-        eff_pct = incidents_served / self.total_incidents if self.total_incidents > 0 else 0.0
+
+        # fire_freq: sum = 1
+        total_incidents = float(np.sum(self.incident_freq))
+        if abs(total_incidents - 1.0) < 1e-6:
+            eff_pct = incidents_served  # already normalized
+        else:
+            eff_pct = incidents_served / total_incidents if total_incidents > 0 else 0.0
 
         detail = pd.DataFrame({
             "nearest_time": nearest_times,

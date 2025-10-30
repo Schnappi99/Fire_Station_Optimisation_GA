@@ -106,7 +106,6 @@ def plot_fire_grid_heatmap_with_gif(
         frames.append(image)
         plt.close(fig)
 
-
     # Save as GIF
     imageio.mimsave(gif_path, frames, fps=fps)
     print(f"GIF saved to {gif_path}")
@@ -122,7 +121,6 @@ if __name__ == "__main__":
     _incident_freq = data["incident_freq"]
     _partial_features = data["partial_features"]
     _rf_model = data["rf_model"]
-    _total_incidents = data["total_incidents"]
 
     stations = pd.read_csv(DATA_DIR/"station_information_with_bsv.csv")
     stations_xy = stations[["Easting", "Northing"]].to_numpy()
