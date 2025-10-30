@@ -1,18 +1,19 @@
-# Ignore big docs
+# ====== Data and Outputs ======
 data/driving_time_matrix.npy
+*.log
+__pycache__/
+*.pyc
 
-# Ignore PyCharm/IntelliJ project settings
+# ====== IDE Settings ======
 .idea/
 
-# Ignore .png and .gif
+# ====== Images ======
 *.gif
 *.png
+!docs/*.png   # Keep figures for documentation
 
-# Ignore files with spaces in file names
-* *
+# ====== Files with spaces ======
+**/*\ *       # Ignore any files/folders with spaces in their names
 
-# Ignore macOS system files
+# ====== macOS system files ======
 .DS_Store
-
-__pycache__/
-*.log
