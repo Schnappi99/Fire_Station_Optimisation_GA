@@ -582,7 +582,7 @@ class GAOptimiser:
         #
         # print(f"[SAVE] Summary saved to: {out_json.resolve()}")
         return out_dir
-    
+
 
     # main run
     def run_single(
