@@ -486,10 +486,6 @@ class GAOptimiser:
         top_val = self.config.get("gene_space_top_pct", None)
         pieces.append(f"top{_parse_percent(top_val)}")
 
-        # distance
-        if self.config.get("min_station_spacing") is not None:
-            pieces.append(f"dist{int(self.config['min_station_spacing'])}")
-
         # mutation probability
         mut_val = self.config.get("mutation_probability", None)
         if mut_val is not None:
@@ -586,108 +582,7 @@ class GAOptimiser:
         #
         # print(f"[SAVE] Summary saved to: {out_json.resolve()}")
         return out_dir
-
-    def save_results_old(
-            self,
-            *,
-            run_dir_root: str | Path = "outputs",
-            run_label: str | None = None,
-            best_solution: np.ndarray,
-            best_incidents: float,
-            best_pct: float,
-            ga: "pygad.GA",
-            start_layout: np.ndarray | None = None,
-            detail: pd.DataFrame | None = None,
-            plot_map: bool = True,
-    ) -> Path:
-        """
-        Save all artifacts for this run under outputs/<run_id>/.
-        Returns the created run directory Path.
-        """
-        run_dir_root = Path(run_dir_root)
-        run_id = self._make_run_id(run_label)
-        out_dir = run_dir_root / run_id
-        out_dir.mkdir(parents=True, exist_ok=True)
-
-        # config
-        with open(out_dir / "config.json", "w", encoding="utf-8") as f:
-            json.dump(self.config, f, ensure_ascii=False, indent=2)
-
-        # save best solution
-        np.save(out_dir / "best_solution.npy", np.asarray(best_solution, int))
-        pd.Series(best_solution, name="candidate_index").to_csv(out_dir / "best_solution.csv", index=False)
-
-        # save details
-        if detail is None:
-            incidents_served, pct, detail = self.evaluate_layout(np.asarray(best_solution, int))
-        else:
-            incidents_served, pct = float(best_incidents), float(best_pct)
-
-        # save summary
-        total_incidents = float(self.incident_freq.sum())
-        summary = {
-            "timestamp": datetime.now().isoformat(timespec="seconds"),
-            "num_stations": int(len(best_solution)),
-            "best_incidents": float(incidents_served),
-            "best_pct": float(pct),
-            "total_incidents": float(total_incidents),
-        }
-
-        with open(out_dir / "summary.json", "w", encoding="utf-8") as f:
-            json.dump(summary, f, ensure_ascii=False, indent=2)
-
-        detail.to_csv(out_dir / "cell_detail.csv", index=False)
-
-        # GA fitness
-        if getattr(ga, "best_solutions_fitness", None) is not None:
-            pd.Series(ga.best_solutions_fitness, name="best_fitness_each_gen").to_csv(
-                out_dir / "best_fitness_each_gen.csv", index=False
-            )
-
-        # save log
-        # _on_stop: self.log_dir points to: out_dir/"log"
-        log_dir = out_dir / "log"
-        log_dir.mkdir(exist_ok=True)
-
-        if getattr(self, "_log", None):
-            log_df = pd.DataFrame(self._log, columns=["Time_s", "Best_fitness"])
-            log_df.to_csv(log_dir / "log.csv", index=False)
-            plt.figure(figsize=(8, 4.5))
-            plt.plot(log_df["Time_s"], log_df["Best_fitness"], marker="o")
-            plt.xlabel("Time (s)");
-            plt.ylabel("Best Fitness")
-            plt.title("GA Fitness Over Time");
-            plt.grid(True);
-            plt.tight_layout()
-            plt.savefig(log_dir / "fitness_curve.png", dpi=140);
-            plt.close()
-
-        # save map
-        if plot_map:
-            try:
-                fig, ax = plt.subplots(figsize=(8, 8))
-                ax.scatter(self.xy_all[:, 0], self.xy_all[:, 1], s=2, alpha=0.2, label="Grid centroids")
-                sel_xy = self.xy_all[np.asarray(best_solution, int)]
-                ax.scatter(sel_xy[:, 0], sel_xy[:, 1], s=60, marker="*", label="Selected stations")
-                ax.set_aspect("equal");
-                ax.legend()
-                ax.set_title("Optimised Fire Station Locations")
-                fig.tight_layout()
-                fig.savefig(out_dir / "optimised_layout_map.png", dpi=150)
-                plt.close(fig)
-            except Exception as e:
-                print(f"[WARN] plot_map failed: {e}")
-
-        # baseline
-        if start_layout is not None:
-            base_inc, base_pct, _ = self.evaluate_layout(np.asarray(start_layout, int))
-            with open(out_dir / "baseline_compare.txt", "w", encoding="utf-8") as f:
-                f.write(f"Baseline:  {base_inc:,.2f} ({base_pct:.2%})\n")
-                f.write(f"Optimised: {incidents_served:,.2f} ({pct:.2%})\n")
-                f.write(f"Delta: +{incidents_served - base_inc:,.2f} | Δ{(pct - base_pct):.2%}\n")
-
-        print(f"[SAVE] Results saved to: {out_dir.resolve()}")
-        return out_dir
+    
 
     # main run
     def run_single(

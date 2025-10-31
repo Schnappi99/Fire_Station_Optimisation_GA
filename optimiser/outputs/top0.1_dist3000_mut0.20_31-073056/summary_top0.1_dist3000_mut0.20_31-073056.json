@@ -1,0 +1,20 @@
+{
+  "summary": {
+    "generations_completed": 600,
+    "sol_per_pop": 200,
+    "keep_elitism": 2,
+    "keep_parents": 2,
+    "num_parents_mating": 50,
+    "total_time_sec": 3594.994817018509,
+    "avg_time_per_gen_sec": 5.991658028364181,
+    "stop_reason": "stopped_by_criteria",
+    "final_best_fitness": 0.4339630793337997
+  },
+  "parameters": {
+    "method_mode": "mixed",
+    "gene_space_top_pct": 0.1,
+    "stop_criteria": [
+      "saturate_500"
+    ]
+  }
+}

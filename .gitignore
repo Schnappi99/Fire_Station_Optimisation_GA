@@ -12,8 +12,5 @@ __pycache__/
 *.png
 !docs/*.png   # Keep figures for documentation
 
-# ====== Files with spaces ======
-**/*\ *       # Ignore any files/folders with spaces in their names
-
 # ====== macOS system files ======
 .DS_Store

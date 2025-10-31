@@ -1,0 +1,4815 @@
+{
+  "summary": {
+    "generations_completed": 800,
+    "sol_per_pop": 200,
+    "keep_elitism": 2,
+    "keep_parents": 2,
+    "num_parents_mating": 50,
+    "total_time_sec": 5896.337260246277,
+    "avg_time_per_gen_sec": 7.370421575307846,
+    "stop_reason": "stopped_by_criteria",
+    "final_best_fitness": 0.44733493041517713
+  },
+  "per_generation": [
+    {
+      "gen": 1,
+      "dt_sec": 27.83600902557373,
+      "best_fitness": 0.3487285354732826,
+      "offspring_count": 396
+    },
+    {
+      "gen": 2,
+      "dt_sec": 27.28487801551819,
+      "best_fitness": 0.35183310403364443,
+      "offspring_count": 396
+    },
+    {
+      "gen": 3,
+      "dt_sec": 27.288350105285645,
+      "best_fitness": 0.35578937851705,
+      "offspring_count": 396
+    },
+    {
+      "gen": 4,
+      "dt_sec": 27.631041049957275,
+      "best_fitness": 0.3625927000997468,
+      "offspring_count": 396
+    },
+    {
+      "gen": 5,
+      "dt_sec": 27.709574937820435,
+      "best_fitness": 0.3679486708589745,
+      "offspring_count": 396
+    },
+    {
+      "gen": 6,
+      "dt_sec": 27.820631980895996,
+      "best_fitness": 0.3679486708589745,
+      "offspring_count": 396
+    },
+    {
+      "gen": 7,
+      "dt_sec": 28.137443780899048,
+      "best_fitness": 0.3679486708589745,
+      "offspring_count": 396
+    },
+    {
+      "gen": 8,
+      "dt_sec": 28.439743280410767,
+      "best_fitness": 0.38070947780472775,
+      "offspring_count": 396
+    },
+    {
+      "gen": 9,
+      "dt_sec": 28.433936834335327,
+      "best_fitness": 0.38070947780472775,
+      "offspring_count": 396
+    },
+    {
+      "gen": 10,
+      "dt_sec": 28.30351495742798,
+      "best_fitness": 0.38070947780472775,
+      "offspring_count": 396
+    },
+    {
+      "gen": 11,
+      "dt_sec": 28.56465983390808,
+      "best_fitness": 0.38323483116649804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 12,
+      "dt_sec": 28.790412187576294,
+      "best_fitness": 0.38323483116649804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 13,
+      "dt_sec": 28.866667985916138,
+      "best_fitness": 0.38358644057929014,
+      "offspring_count": 396
+    },
+    {
+      "gen": 14,
+      "dt_sec": 28.890228986740112,
+      "best_fitness": 0.38954788636935667,
+      "offspring_count": 396
+    },
+    {
+      "gen": 15,
+      "dt_sec": 28.849351167678833,
+      "best_fitness": 0.38954788636935667,
+      "offspring_count": 396
+    },
+    {
+      "gen": 16,
+      "dt_sec": 29.091362714767456,
+      "best_fitness": 0.3912385845793304,
+      "offspring_count": 396
+    },
+    {
+      "gen": 17,
+      "dt_sec": 29.174816131591797,
+      "best_fitness": 0.3912385845793304,
+      "offspring_count": 396
+    },
+    {
+      "gen": 18,
+      "dt_sec": 29.152578115463257,
+      "best_fitness": 0.3987970120242864,
+      "offspring_count": 396
+    },
+    {
+      "gen": 19,
+      "dt_sec": 29.190202951431274,
+      "best_fitness": 0.3987970120242864,
+      "offspring_count": 396
+    },
+    {
+      "gen": 20,
+      "dt_sec": 28.949477910995483,
+      "best_fitness": 0.3987970120242864,
+      "offspring_count": 396
+    },
+    {
+      "gen": 21,
+      "dt_sec": 28.818169116973877,
+      "best_fitness": 0.3995279327341565,
+      "offspring_count": 396
+    },
+    {
+      "gen": 22,
+      "dt_sec": 29.096858978271484,
+      "best_fitness": 0.4026273720386194,
+      "offspring_count": 396
+    },
+    {
+      "gen": 23,
+      "dt_sec": 28.951894998550415,
+      "best_fitness": 0.40315572626757934,
+      "offspring_count": 396
+    },
+    {
+      "gen": 24,
+      "dt_sec": 28.73754906654358,
+      "best_fitness": 0.4055066636571241,
+      "offspring_count": 396
+    },
+    {
+      "gen": 25,
+      "dt_sec": 27.839953899383545,
+      "best_fitness": 0.40946675948720673,
+      "offspring_count": 396
+    },
+    {
+      "gen": 26,
+      "dt_sec": 25.495420217514038,
+      "best_fitness": 0.40969555350547054,
+      "offspring_count": 396
+    },
+    {
+      "gen": 27,
+      "dt_sec": 23.064732789993286,
+      "best_fitness": 0.41327068961875435,
+      "offspring_count": 396
+    },
+    {
+      "gen": 28,
+      "dt_sec": 22.33373188972473,
+      "best_fitness": 0.41327068961875435,
+      "offspring_count": 396
+    },
+    {
+      "gen": 29,
+      "dt_sec": 22.962306022644043,
+      "best_fitness": 0.41386905653794687,
+      "offspring_count": 396
+    },
+    {
+      "gen": 30,
+      "dt_sec": 23.42392110824585,
+      "best_fitness": 0.4141342772810074,
+      "offspring_count": 396
+    },
+    {
+      "gen": 31,
+      "dt_sec": 23.62843084335327,
+      "best_fitness": 0.4141342772810074,
+      "offspring_count": 396
+    },
+    {
+      "gen": 32,
+      "dt_sec": 23.057607173919678,
+      "best_fitness": 0.41474592630360174,
+      "offspring_count": 396
+    },
+    {
+      "gen": 33,
+      "dt_sec": 22.145030975341797,
+      "best_fitness": 0.41474592630360174,
+      "offspring_count": 396
+    },
+    {
+      "gen": 34,
+      "dt_sec": 22.12366795539856,
+      "best_fitness": 0.41684530804526565,
+      "offspring_count": 396
+    },
+    {
+      "gen": 35,
+      "dt_sec": 22.401636123657227,
+      "best_fitness": 0.41684530804526565,
+      "offspring_count": 396
+    },
+    {
+      "gen": 36,
+      "dt_sec": 21.770899057388306,
+      "best_fitness": 0.41684530804526565,
+      "offspring_count": 396
+    },
+    {
+      "gen": 37,
+      "dt_sec": 20.418486833572388,
+      "best_fitness": 0.4178058652496597,
+      "offspring_count": 396
+    },
+    {
+      "gen": 38,
+      "dt_sec": 19.460758209228516,
+      "best_fitness": 0.4184324375883382,
+      "offspring_count": 396
+    },
+    {
+      "gen": 39,
+      "dt_sec": 21.212796926498413,
+      "best_fitness": 0.42116636266875307,
+      "offspring_count": 396
+    },
+    {
+      "gen": 40,
+      "dt_sec": 22.45223903656006,
+      "best_fitness": 0.4212200460172726,
+      "offspring_count": 396
+    },
+    {
+      "gen": 41,
+      "dt_sec": 21.23886799812317,
+      "best_fitness": 0.4225225744924973,
+      "offspring_count": 396
+    },
+    {
+      "gen": 42,
+      "dt_sec": 19.346144914627075,
+      "best_fitness": 0.4225225744924973,
+      "offspring_count": 396
+    },
+    {
+      "gen": 43,
+      "dt_sec": 18.76787281036377,
+      "best_fitness": 0.422892501622101,
+      "offspring_count": 396
+    },
+    {
+      "gen": 44,
+      "dt_sec": 17.63662815093994,
+      "best_fitness": 0.4231147872140495,
+      "offspring_count": 396
+    },
+    {
+      "gen": 45,
+      "dt_sec": 15.269587993621826,
+      "best_fitness": 0.423354954029156,
+      "offspring_count": 396
+    },
+    {
+      "gen": 46,
+      "dt_sec": 13.34850788116455,
+      "best_fitness": 0.423354954029156,
+      "offspring_count": 396
+    },
+    {
+      "gen": 47,
+      "dt_sec": 11.526640892028809,
+      "best_fitness": 0.423354954029156,
+      "offspring_count": 396
+    },
+    {
+      "gen": 48,
+      "dt_sec": 12.236992120742798,
+      "best_fitness": 0.4238499935947544,
+      "offspring_count": 396
+    },
+    {
+      "gen": 49,
+      "dt_sec": 13.619441032409668,
+      "best_fitness": 0.4238499935947544,
+      "offspring_count": 396
+    },
+    {
+      "gen": 50,
+      "dt_sec": 12.29429006576538,
+      "best_fitness": 0.4242546393694017,
+      "offspring_count": 396
+    },
+    {
+      "gen": 51,
+      "dt_sec": 8.99851107597351,
+      "best_fitness": 0.4242546393694017,
+      "offspring_count": 396
+    },
+    {
+      "gen": 52,
+      "dt_sec": 5.862505912780762,
+      "best_fitness": 0.42462220691812314,
+      "offspring_count": 396
+    },
+    {
+      "gen": 53,
+      "dt_sec": 6.562493085861206,
+      "best_fitness": 0.42462220691812314,
+      "offspring_count": 396
+    },
+    {
+      "gen": 54,
+      "dt_sec": 8.09648084640503,
+      "best_fitness": 0.4277245083339345,
+      "offspring_count": 396
+    },
+    {
+      "gen": 55,
+      "dt_sec": 7.662273168563843,
+      "best_fitness": 0.4277245083339345,
+      "offspring_count": 396
+    },
+    {
+      "gen": 56,
+      "dt_sec": 7.184805154800415,
+      "best_fitness": 0.42860252632819984,
+      "offspring_count": 396
+    },
+    {
+      "gen": 57,
+      "dt_sec": 6.804572820663452,
+      "best_fitness": 0.42860252632819984,
+      "offspring_count": 396
+    },
+    {
+      "gen": 58,
+      "dt_sec": 7.174874782562256,
+      "best_fitness": 0.42860252632819984,
+      "offspring_count": 396
+    },
+    {
+      "gen": 59,
+      "dt_sec": 8.19448709487915,
+      "best_fitness": 0.42919404049820226,
+      "offspring_count": 396
+    },
+    {
+      "gen": 60,
+      "dt_sec": 8.742520093917847,
+      "best_fitness": 0.42970790684011306,
+      "offspring_count": 396
+    },
+    {
+      "gen": 61,
+      "dt_sec": 7.271193981170654,
+      "best_fitness": 0.42970790684011306,
+      "offspring_count": 396
+    },
+    {
+      "gen": 62,
+      "dt_sec": 6.98844313621521,
+      "best_fitness": 0.42970790684011306,
+      "offspring_count": 396
+    },
+    {
+      "gen": 63,
+      "dt_sec": 7.603696823120117,
+      "best_fitness": 0.42970790684011306,
+      "offspring_count": 396
+    },
+    {
+      "gen": 64,
+      "dt_sec": 7.37545108795166,
+      "best_fitness": 0.42970790684011306,
+      "offspring_count": 396
+    },
+    {
+      "gen": 65,
+      "dt_sec": 7.675684928894043,
+      "best_fitness": 0.42986493498012657,
+      "offspring_count": 396
+    },
+    {
+      "gen": 66,
+      "dt_sec": 7.595340967178345,
+      "best_fitness": 0.43001012030252206,
+      "offspring_count": 396
+    },
+    {
+      "gen": 67,
+      "dt_sec": 6.516066074371338,
+      "best_fitness": 0.43001012030252206,
+      "offspring_count": 396
+    },
+    {
+      "gen": 68,
+      "dt_sec": 7.449475049972534,
+      "best_fitness": 0.43025606931731963,
+      "offspring_count": 396
+    },
+    {
+      "gen": 69,
+      "dt_sec": 7.753597021102905,
+      "best_fitness": 0.43043877857872853,
+      "offspring_count": 396
+    },
+    {
+      "gen": 70,
+      "dt_sec": 7.617620944976807,
+      "best_fitness": 0.43121101863766076,
+      "offspring_count": 396
+    },
+    {
+      "gen": 71,
+      "dt_sec": 8.458164930343628,
+      "best_fitness": 0.4326825536793672,
+      "offspring_count": 396
+    },
+    {
+      "gen": 72,
+      "dt_sec": 7.612457990646362,
+      "best_fitness": 0.4326825536793672,
+      "offspring_count": 396
+    },
+    {
+      "gen": 73,
+      "dt_sec": 6.979974985122681,
+      "best_fitness": 0.4326825536793672,
+      "offspring_count": 396
+    },
+    {
+      "gen": 74,
+      "dt_sec": 6.985486030578613,
+      "best_fitness": 0.43285125611005854,
+      "offspring_count": 396
+    },
+    {
+      "gen": 75,
+      "dt_sec": 7.520243883132935,
+      "best_fitness": 0.43285125611005854,
+      "offspring_count": 396
+    },
+    {
+      "gen": 76,
+      "dt_sec": 8.835073232650757,
+      "best_fitness": 0.43285125611005854,
+      "offspring_count": 396
+    },
+    {
+      "gen": 77,
+      "dt_sec": 8.213665008544922,
+      "best_fitness": 0.4330004141476546,
+      "offspring_count": 396
+    },
+    {
+      "gen": 78,
+      "dt_sec": 6.273210048675537,
+      "best_fitness": 0.4330004141476546,
+      "offspring_count": 396
+    },
+    {
+      "gen": 79,
+      "dt_sec": 5.506638765335083,
+      "best_fitness": 0.4335705677361644,
+      "offspring_count": 396
+    },
+    {
+      "gen": 80,
+      "dt_sec": 5.4256510734558105,
+      "best_fitness": 0.4335705677361644,
+      "offspring_count": 396
+    },
+    {
+      "gen": 81,
+      "dt_sec": 5.351047992706299,
+      "best_fitness": 0.4335705677361644,
+      "offspring_count": 396
+    },
+    {
+      "gen": 82,
+      "dt_sec": 5.111023902893066,
+      "best_fitness": 0.4335705677361644,
+      "offspring_count": 396
+    },
+    {
+      "gen": 83,
+      "dt_sec": 5.96567702293396,
+      "best_fitness": 0.4335705677361644,
+      "offspring_count": 396
+    },
+    {
+      "gen": 84,
+      "dt_sec": 6.188664197921753,
+      "best_fitness": 0.4337197257737605,
+      "offspring_count": 396
+    },
+    {
+      "gen": 85,
+      "dt_sec": 6.732345819473267,
+      "best_fitness": 0.4337197257737605,
+      "offspring_count": 396
+    },
+    {
+      "gen": 86,
+      "dt_sec": 6.744300127029419,
+      "best_fitness": 0.4337197257737605,
+      "offspring_count": 396
+    },
+    {
+      "gen": 87,
+      "dt_sec": 5.030179023742676,
+      "best_fitness": 0.4337197257737605,
+      "offspring_count": 396
+    },
+    {
+      "gen": 88,
+      "dt_sec": 5.725144863128662,
+      "best_fitness": 0.43406836532030013,
+      "offspring_count": 396
+    },
+    {
+      "gen": 89,
+      "dt_sec": 6.505003929138184,
+      "best_fitness": 0.43406836532030013,
+      "offspring_count": 396
+    },
+    {
+      "gen": 90,
+      "dt_sec": 6.743528127670288,
+      "best_fitness": 0.4344873517778765,
+      "offspring_count": 396
+    },
+    {
+      "gen": 91,
+      "dt_sec": 7.35915994644165,
+      "best_fitness": 0.4344873517778765,
+      "offspring_count": 396
+    },
+    {
+      "gen": 92,
+      "dt_sec": 7.341779947280884,
+      "best_fitness": 0.4347973432610934,
+      "offspring_count": 396
+    },
+    {
+      "gen": 93,
+      "dt_sec": 7.6516640186309814,
+      "best_fitness": 0.4347973432610934,
+      "offspring_count": 396
+    },
+    {
+      "gen": 94,
+      "dt_sec": 8.038244247436523,
+      "best_fitness": 0.4347973432610934,
+      "offspring_count": 396
+    },
+    {
+      "gen": 95,
+      "dt_sec": 8.214781999588013,
+      "best_fitness": 0.4347973432610934,
+      "offspring_count": 396
+    },
+    {
+      "gen": 96,
+      "dt_sec": 7.806280851364136,
+      "best_fitness": 0.43521632971866975,
+      "offspring_count": 396
+    },
+    {
+      "gen": 97,
+      "dt_sec": 7.430055856704712,
+      "best_fitness": 0.43521632971866975,
+      "offspring_count": 396
+    },
+    {
+      "gen": 98,
+      "dt_sec": 7.2811830043792725,
+      "best_fitness": 0.435480471803264,
+      "offspring_count": 396
+    },
+    {
+      "gen": 99,
+      "dt_sec": 6.974503993988037,
+      "best_fitness": 0.435480471803264,
+      "offspring_count": 396
+    },
+    {
+      "gen": 100,
+      "dt_sec": 7.210695266723633,
+      "best_fitness": 0.4357901378753609,
+      "offspring_count": 396
+    },
+    {
+      "gen": 101,
+      "dt_sec": 7.82466983795166,
+      "best_fitness": 0.4365841167399589,
+      "offspring_count": 396
+    },
+    {
+      "gen": 102,
+      "dt_sec": 6.675835132598877,
+      "best_fitness": 0.4365841167399589,
+      "offspring_count": 396
+    },
+    {
+      "gen": 103,
+      "dt_sec": 6.526640892028809,
+      "best_fitness": 0.43689378281205593,
+      "offspring_count": 396
+    },
+    {
+      "gen": 104,
+      "dt_sec": 7.141404867172241,
+      "best_fitness": 0.43689378281205593,
+      "offspring_count": 396
+    },
+    {
+      "gen": 105,
+      "dt_sec": 7.069464206695557,
+      "best_fitness": 0.43689378281205593,
+      "offspring_count": 396
+    },
+    {
+      "gen": 106,
+      "dt_sec": 6.45215106010437,
+      "best_fitness": 0.43689378281205593,
+      "offspring_count": 396
+    },
+    {
+      "gen": 107,
+      "dt_sec": 6.228484869003296,
+      "best_fitness": 0.43800069347980614,
+      "offspring_count": 396
+    },
+    {
+      "gen": 108,
+      "dt_sec": 7.2210609912872314,
+      "best_fitness": 0.43800069347980614,
+      "offspring_count": 396
+    },
+    {
+      "gen": 109,
+      "dt_sec": 6.453540802001953,
+      "best_fitness": 0.43800069347980614,
+      "offspring_count": 396
+    },
+    {
+      "gen": 110,
+      "dt_sec": 6.45582127571106,
+      "best_fitness": 0.43800069347980614,
+      "offspring_count": 396
+    },
+    {
+      "gen": 111,
+      "dt_sec": 6.216817140579224,
+      "best_fitness": 0.43800069347980614,
+      "offspring_count": 396
+    },
+    {
+      "gen": 112,
+      "dt_sec": 5.368823766708374,
+      "best_fitness": 0.43800069347980614,
+      "offspring_count": 396
+    },
+    {
+      "gen": 113,
+      "dt_sec": 5.827051877975464,
+      "best_fitness": 0.43800069347980614,
+      "offspring_count": 396
+    },
+    {
+      "gen": 114,
+      "dt_sec": 5.904338359832764,
+      "best_fitness": 0.43823901789086483,
+      "offspring_count": 396
+    },
+    {
+      "gen": 115,
+      "dt_sec": 5.365517854690552,
+      "best_fitness": 0.43823901789086483,
+      "offspring_count": 396
+    },
+    {
+      "gen": 116,
+      "dt_sec": 5.224627733230591,
+      "best_fitness": 0.43823901789086483,
+      "offspring_count": 396
+    },
+    {
+      "gen": 117,
+      "dt_sec": 6.077049255371094,
+      "best_fitness": 0.43823901789086483,
+      "offspring_count": 396
+    },
+    {
+      "gen": 118,
+      "dt_sec": 7.003028869628906,
+      "best_fitness": 0.43835684946261716,
+      "offspring_count": 396
+    },
+    {
+      "gen": 119,
+      "dt_sec": 7.31142520904541,
+      "best_fitness": 0.44040293544179593,
+      "offspring_count": 396
+    },
+    {
+      "gen": 120,
+      "dt_sec": 6.690529823303223,
+      "best_fitness": 0.44040293544179593,
+      "offspring_count": 396
+    },
+    {
+      "gen": 121,
+      "dt_sec": 6.2980451583862305,
+      "best_fitness": 0.44040293544179593,
+      "offspring_count": 396
+    },
+    {
+      "gen": 122,
+      "dt_sec": 5.7530598640441895,
+      "best_fitness": 0.44040293544179593,
+      "offspring_count": 396
+    },
+    {
+      "gen": 123,
+      "dt_sec": 5.91118597984314,
+      "best_fitness": 0.44040293544179593,
+      "offspring_count": 396
+    },
+    {
+      "gen": 124,
+      "dt_sec": 6.3001179695129395,
+      "best_fitness": 0.44040293544179593,
+      "offspring_count": 396
+    },
+    {
+      "gen": 125,
+      "dt_sec": 6.228608131408691,
+      "best_fitness": 0.44040293544179593,
+      "offspring_count": 396
+    },
+    {
+      "gen": 126,
+      "dt_sec": 6.761979818344116,
+      "best_fitness": 0.4404978798489208,
+      "offspring_count": 396
+    },
+    {
+      "gen": 127,
+      "dt_sec": 7.090538024902344,
+      "best_fitness": 0.4404978798489208,
+      "offspring_count": 396
+    },
+    {
+      "gen": 128,
+      "dt_sec": 5.993410110473633,
+      "best_fitness": 0.440875959682437,
+      "offspring_count": 396
+    },
+    {
+      "gen": 129,
+      "dt_sec": 6.074490070343018,
+      "best_fitness": 0.440875959682437,
+      "offspring_count": 396
+    },
+    {
+      "gen": 130,
+      "dt_sec": 6.462580919265747,
+      "best_fitness": 0.440875959682437,
+      "offspring_count": 396
+    },
+    {
+      "gen": 131,
+      "dt_sec": 5.845837831497192,
+      "best_fitness": 0.440875959682437,
+      "offspring_count": 396
+    },
+    {
+      "gen": 132,
+      "dt_sec": 6.0740580558776855,
+      "best_fitness": 0.440875959682437,
+      "offspring_count": 396
+    },
+    {
+      "gen": 133,
+      "dt_sec": 5.994122266769409,
+      "best_fitness": 0.440875959682437,
+      "offspring_count": 396
+    },
+    {
+      "gen": 134,
+      "dt_sec": 5.609291076660156,
+      "best_fitness": 0.44106028849842405,
+      "offspring_count": 396
+    },
+    {
+      "gen": 135,
+      "dt_sec": 5.699664831161499,
+      "best_fitness": 0.44106028849842405,
+      "offspring_count": 396
+    },
+    {
+      "gen": 136,
+      "dt_sec": 6.070996999740601,
+      "best_fitness": 0.44106028849842405,
+      "offspring_count": 396
+    },
+    {
+      "gen": 137,
+      "dt_sec": 6.083261966705322,
+      "best_fitness": 0.44106028849842405,
+      "offspring_count": 396
+    },
+    {
+      "gen": 138,
+      "dt_sec": 6.90832781791687,
+      "best_fitness": 0.44106028849842405,
+      "offspring_count": 396
+    },
+    {
+      "gen": 139,
+      "dt_sec": 6.6692259311676025,
+      "best_fitness": 0.44106028849842405,
+      "offspring_count": 396
+    },
+    {
+      "gen": 140,
+      "dt_sec": 5.376969337463379,
+      "best_fitness": 0.44110456815066823,
+      "offspring_count": 396
+    },
+    {
+      "gen": 141,
+      "dt_sec": 5.91688871383667,
+      "best_fitness": 0.44110456815066823,
+      "offspring_count": 396
+    },
+    {
+      "gen": 142,
+      "dt_sec": 6.061618328094482,
+      "best_fitness": 0.44110456815066823,
+      "offspring_count": 396
+    },
+    {
+      "gen": 143,
+      "dt_sec": 5.842504978179932,
+      "best_fitness": 0.44110456815066823,
+      "offspring_count": 396
+    },
+    {
+      "gen": 144,
+      "dt_sec": 6.303141832351685,
+      "best_fitness": 0.44114952288035775,
+      "offspring_count": 396
+    },
+    {
+      "gen": 145,
+      "dt_sec": 6.458691120147705,
+      "best_fitness": 0.44114952288035775,
+      "offspring_count": 396
+    },
+    {
+      "gen": 146,
+      "dt_sec": 6.463015794754028,
+      "best_fitness": 0.44114952288035775,
+      "offspring_count": 396
+    },
+    {
+      "gen": 147,
+      "dt_sec": 7.249706983566284,
+      "best_fitness": 0.4415879051319188,
+      "offspring_count": 396
+    },
+    {
+      "gen": 148,
+      "dt_sec": 7.255137205123901,
+      "best_fitness": 0.44163285986160833,
+      "offspring_count": 396
+    },
+    {
+      "gen": 149,
+      "dt_sec": 6.402693033218384,
+      "best_fitness": 0.44163285986160833,
+      "offspring_count": 396
+    },
+    {
+      "gen": 150,
+      "dt_sec": 6.4830780029296875,
+      "best_fitness": 0.44163285986160833,
+      "offspring_count": 396
+    },
+    {
+      "gen": 151,
+      "dt_sec": 6.583569765090942,
+      "best_fitness": 0.44163285986160833,
+      "offspring_count": 396
+    },
+    {
+      "gen": 152,
+      "dt_sec": 5.936723947525024,
+      "best_fitness": 0.44163285986160833,
+      "offspring_count": 396
+    },
+    {
+      "gen": 153,
+      "dt_sec": 6.09679102897644,
+      "best_fitness": 0.44163285986160833,
+      "offspring_count": 396
+    },
+    {
+      "gen": 154,
+      "dt_sec": 7.100738048553467,
+      "best_fitness": 0.4417805689570901,
+      "offspring_count": 396
+    },
+    {
+      "gen": 155,
+      "dt_sec": 6.3945701122283936,
+      "best_fitness": 0.4417805689570901,
+      "offspring_count": 396
+    },
+    {
+      "gen": 156,
+      "dt_sec": 5.693749904632568,
+      "best_fitness": 0.4417805689570901,
+      "offspring_count": 396
+    },
+    {
+      "gen": 157,
+      "dt_sec": 5.848664045333862,
+      "best_fitness": 0.4417805689570901,
+      "offspring_count": 396
+    },
+    {
+      "gen": 158,
+      "dt_sec": 5.923340082168579,
+      "best_fitness": 0.4420059480351354,
+      "offspring_count": 396
+    },
+    {
+      "gen": 159,
+      "dt_sec": 6.795270919799805,
+      "best_fitness": 0.4420059480351354,
+      "offspring_count": 396
+    },
+    {
+      "gen": 160,
+      "dt_sec": 6.709748983383179,
+      "best_fitness": 0.4420059480351354,
+      "offspring_count": 396
+    },
+    {
+      "gen": 161,
+      "dt_sec": 5.2278242111206055,
+      "best_fitness": 0.4420059480351354,
+      "offspring_count": 396
+    },
+    {
+      "gen": 162,
+      "dt_sec": 5.001952648162842,
+      "best_fitness": 0.4420059480351354,
+      "offspring_count": 396
+    },
+    {
+      "gen": 163,
+      "dt_sec": 6.009821176528931,
+      "best_fitness": 0.44203288954052966,
+      "offspring_count": 396
+    },
+    {
+      "gen": 164,
+      "dt_sec": 5.687977075576782,
+      "best_fitness": 0.44203288954052966,
+      "offspring_count": 396
+    },
+    {
+      "gen": 165,
+      "dt_sec": 6.247278690338135,
+      "best_fitness": 0.4422344693888395,
+      "offspring_count": 396
+    },
+    {
+      "gen": 166,
+      "dt_sec": 6.9374001026153564,
+      "best_fitness": 0.4422344693888395,
+      "offspring_count": 396
+    },
+    {
+      "gen": 167,
+      "dt_sec": 6.546300172805786,
+      "best_fitness": 0.4423555582290767,
+      "offspring_count": 396
+    },
+    {
+      "gen": 168,
+      "dt_sec": 6.544785022735596,
+      "best_fitness": 0.4423555582290767,
+      "offspring_count": 396
+    },
+    {
+      "gen": 169,
+      "dt_sec": 6.862237930297852,
+      "best_fitness": 0.44236971341639697,
+      "offspring_count": 396
+    },
+    {
+      "gen": 170,
+      "dt_sec": 7.781774997711182,
+      "best_fitness": 0.44257161216094554,
+      "offspring_count": 396
+    },
+    {
+      "gen": 171,
+      "dt_sec": 6.929994106292725,
+      "best_fitness": 0.44257161216094554,
+      "offspring_count": 396
+    },
+    {
+      "gen": 172,
+      "dt_sec": 7.014735698699951,
+      "best_fitness": 0.44257161216094554,
+      "offspring_count": 396
+    },
+    {
+      "gen": 173,
+      "dt_sec": 7.785391330718994,
+      "best_fitness": 0.44257161216094554,
+      "offspring_count": 396
+    },
+    {
+      "gen": 174,
+      "dt_sec": 7.2422709465026855,
+      "best_fitness": 0.44257161216094554,
+      "offspring_count": 396
+    },
+    {
+      "gen": 175,
+      "dt_sec": 6.5391459465026855,
+      "best_fitness": 0.44257161216094554,
+      "offspring_count": 396
+    },
+    {
+      "gen": 176,
+      "dt_sec": 6.227394104003906,
+      "best_fitness": 0.4427564107603178,
+      "offspring_count": 396
+    },
+    {
+      "gen": 177,
+      "dt_sec": 6.230141878128052,
+      "best_fitness": 0.4427623531822857,
+      "offspring_count": 396
+    },
+    {
+      "gen": 178,
+      "dt_sec": 5.8376240730285645,
+      "best_fitness": 0.442947151781658,
+      "offspring_count": 396
+    },
+    {
+      "gen": 179,
+      "dt_sec": 6.612921714782715,
+      "best_fitness": 0.442947151781658,
+      "offspring_count": 396
+    },
+    {
+      "gen": 180,
+      "dt_sec": 6.991283416748047,
+      "best_fitness": 0.442947151781658,
+      "offspring_count": 396
+    },
+    {
+      "gen": 181,
+      "dt_sec": 6.365022897720337,
+      "best_fitness": 0.442947151781658,
+      "offspring_count": 396
+    },
+    {
+      "gen": 182,
+      "dt_sec": 5.9626476764678955,
+      "best_fitness": 0.442947151781658,
+      "offspring_count": 396
+    },
+    {
+      "gen": 183,
+      "dt_sec": 6.198899269104004,
+      "best_fitness": 0.442947151781658,
+      "offspring_count": 396
+    },
+    {
+      "gen": 184,
+      "dt_sec": 6.434514045715332,
+      "best_fitness": 0.442947151781658,
+      "offspring_count": 396
+    },
+    {
+      "gen": 185,
+      "dt_sec": 6.272183895111084,
+      "best_fitness": 0.442947151781658,
+      "offspring_count": 396
+    },
+    {
+      "gen": 186,
+      "dt_sec": 6.746348142623901,
+      "best_fitness": 0.442947151781658,
+      "offspring_count": 396
+    },
+    {
+      "gen": 187,
+      "dt_sec": 6.201345682144165,
+      "best_fitness": 0.442947151781658,
+      "offspring_count": 396
+    },
+    {
+      "gen": 188,
+      "dt_sec": 5.584275245666504,
+      "best_fitness": 0.44295703315212104,
+      "offspring_count": 396
+    },
+    {
+      "gen": 189,
+      "dt_sec": 6.0499327182769775,
+      "best_fitness": 0.44295703315212104,
+      "offspring_count": 396
+    },
+    {
+      "gen": 190,
+      "dt_sec": 5.885217189788818,
+      "best_fitness": 0.44295703315212104,
+      "offspring_count": 396
+    },
+    {
+      "gen": 191,
+      "dt_sec": 5.661352157592773,
+      "best_fitness": 0.44295703315212104,
+      "offspring_count": 396
+    },
+    {
+      "gen": 192,
+      "dt_sec": 6.518321990966797,
+      "best_fitness": 0.44295703315212104,
+      "offspring_count": 396
+    },
+    {
+      "gen": 193,
+      "dt_sec": 7.455404996871948,
+      "best_fitness": 0.4435690865173979,
+      "offspring_count": 396
+    },
+    {
+      "gen": 194,
+      "dt_sec": 7.29273796081543,
+      "best_fitness": 0.4435690865173979,
+      "offspring_count": 396
+    },
+    {
+      "gen": 195,
+      "dt_sec": 7.140671014785767,
+      "best_fitness": 0.4435690865173979,
+      "offspring_count": 396
+    },
+    {
+      "gen": 196,
+      "dt_sec": 6.287421941757202,
+      "best_fitness": 0.4435690865173979,
+      "offspring_count": 396
+    },
+    {
+      "gen": 197,
+      "dt_sec": 6.296816825866699,
+      "best_fitness": 0.4435690865173979,
+      "offspring_count": 396
+    },
+    {
+      "gen": 198,
+      "dt_sec": 6.930785179138184,
+      "best_fitness": 0.4435690865173979,
+      "offspring_count": 396
+    },
+    {
+      "gen": 199,
+      "dt_sec": 6.822051048278809,
+      "best_fitness": 0.44365687104535084,
+      "offspring_count": 396
+    },
+    {
+      "gen": 200,
+      "dt_sec": 6.742100954055786,
+      "best_fitness": 0.44365687104535084,
+      "offspring_count": 396
+    },
+    {
+      "gen": 201,
+      "dt_sec": 5.963024854660034,
+      "best_fitness": 0.44365687104535084,
+      "offspring_count": 396
+    },
+    {
+      "gen": 202,
+      "dt_sec": 5.922129154205322,
+      "best_fitness": 0.44365687104535084,
+      "offspring_count": 396
+    },
+    {
+      "gen": 203,
+      "dt_sec": 6.496906995773315,
+      "best_fitness": 0.443746545989743,
+      "offspring_count": 396
+    },
+    {
+      "gen": 204,
+      "dt_sec": 6.895670175552368,
+      "best_fitness": 0.4438249487769867,
+      "offspring_count": 396
+    },
+    {
+      "gen": 205,
+      "dt_sec": 6.437520742416382,
+      "best_fitness": 0.4438249487769867,
+      "offspring_count": 396
+    },
+    {
+      "gen": 206,
+      "dt_sec": 5.7385642528533936,
+      "best_fitness": 0.4438249487769867,
+      "offspring_count": 396
+    },
+    {
+      "gen": 207,
+      "dt_sec": 5.7368388175964355,
+      "best_fitness": 0.4438249487769867,
+      "offspring_count": 396
+    },
+    {
+      "gen": 208,
+      "dt_sec": 6.821758031845093,
+      "best_fitness": 0.4438249487769867,
+      "offspring_count": 396
+    },
+    {
+      "gen": 209,
+      "dt_sec": 7.5161778926849365,
+      "best_fitness": 0.443938205610981,
+      "offspring_count": 396
+    },
+    {
+      "gen": 210,
+      "dt_sec": 6.118951082229614,
+      "best_fitness": 0.443938205610981,
+      "offspring_count": 396
+    },
+    {
+      "gen": 211,
+      "dt_sec": 5.899899959564209,
+      "best_fitness": 0.443938205610981,
+      "offspring_count": 396
+    },
+    {
+      "gen": 212,
+      "dt_sec": 7.5217039585113525,
+      "best_fitness": 0.443938205610981,
+      "offspring_count": 396
+    },
+    {
+      "gen": 213,
+      "dt_sec": 7.210705041885376,
+      "best_fitness": 0.44394686827669877,
+      "offspring_count": 396
+    },
+    {
+      "gen": 214,
+      "dt_sec": 5.8114471435546875,
+      "best_fitness": 0.44406012511069304,
+      "offspring_count": 396
+    },
+    {
+      "gen": 215,
+      "dt_sec": 5.668399810791016,
+      "best_fitness": 0.44406012511069304,
+      "offspring_count": 396
+    },
+    {
+      "gen": 216,
+      "dt_sec": 6.281426906585693,
+      "best_fitness": 0.44406012511069304,
+      "offspring_count": 396
+    },
+    {
+      "gen": 217,
+      "dt_sec": 6.4283411502838135,
+      "best_fitness": 0.44406012511069304,
+      "offspring_count": 396
+    },
+    {
+      "gen": 218,
+      "dt_sec": 6.588602066040039,
+      "best_fitness": 0.44406012511069304,
+      "offspring_count": 396
+    },
+    {
+      "gen": 219,
+      "dt_sec": 6.565964937210083,
+      "best_fitness": 0.44406012511069304,
+      "offspring_count": 396
+    },
+    {
+      "gen": 220,
+      "dt_sec": 6.345240116119385,
+      "best_fitness": 0.44406012511069304,
+      "offspring_count": 396
+    },
+    {
+      "gen": 221,
+      "dt_sec": 6.6369407176971436,
+      "best_fitness": 0.44419884544570504,
+      "offspring_count": 396
+    },
+    {
+      "gen": 222,
+      "dt_sec": 6.659256219863892,
+      "best_fitness": 0.44419884544570504,
+      "offspring_count": 396
+    },
+    {
+      "gen": 223,
+      "dt_sec": 6.3339409828186035,
+      "best_fitness": 0.44419884544570504,
+      "offspring_count": 396
+    },
+    {
+      "gen": 224,
+      "dt_sec": 5.556993007659912,
+      "best_fitness": 0.44419884544570504,
+      "offspring_count": 396
+    },
+    {
+      "gen": 225,
+      "dt_sec": 5.954103946685791,
+      "best_fitness": 0.44419884544570504,
+      "offspring_count": 396
+    },
+    {
+      "gen": 226,
+      "dt_sec": 6.171223878860474,
+      "best_fitness": 0.44419884544570504,
+      "offspring_count": 396
+    },
+    {
+      "gen": 227,
+      "dt_sec": 5.6383442878723145,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 228,
+      "dt_sec": 6.104637861251831,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 229,
+      "dt_sec": 6.644569158554077,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 230,
+      "dt_sec": 6.337936878204346,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 231,
+      "dt_sec": 5.423746109008789,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 232,
+      "dt_sec": 5.347566843032837,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 233,
+      "dt_sec": 5.951656103134155,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 234,
+      "dt_sec": 6.192184925079346,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 235,
+      "dt_sec": 5.496082067489624,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 236,
+      "dt_sec": 5.735869884490967,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 237,
+      "dt_sec": 6.418706893920898,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 238,
+      "dt_sec": 5.795506954193115,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 239,
+      "dt_sec": 5.955141305923462,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 240,
+      "dt_sec": 6.583832740783691,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 241,
+      "dt_sec": 6.21710205078125,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 242,
+      "dt_sec": 6.358094215393066,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 243,
+      "dt_sec": 6.898672819137573,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 244,
+      "dt_sec": 6.98410701751709,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 245,
+      "dt_sec": 6.762948036193848,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 246,
+      "dt_sec": 6.433300018310547,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 247,
+      "dt_sec": 7.059651136398315,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 248,
+      "dt_sec": 7.056744813919067,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 249,
+      "dt_sec": 6.279349088668823,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 250,
+      "dt_sec": 6.0555219650268555,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 251,
+      "dt_sec": 5.153404951095581,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 252,
+      "dt_sec": 5.43878698348999,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 253,
+      "dt_sec": 6.060469150543213,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 254,
+      "dt_sec": 5.985874891281128,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 255,
+      "dt_sec": 6.7545647621154785,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 256,
+      "dt_sec": 6.996204137802124,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 257,
+      "dt_sec": 6.149084091186523,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 258,
+      "dt_sec": 5.430016040802002,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 259,
+      "dt_sec": 5.517738103866577,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 260,
+      "dt_sec": 4.9636390209198,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 261,
+      "dt_sec": 5.589781999588013,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 262,
+      "dt_sec": 5.66917085647583,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 263,
+      "dt_sec": 5.360059976577759,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 264,
+      "dt_sec": 6.210566759109497,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 265,
+      "dt_sec": 6.119871377944946,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 266,
+      "dt_sec": 5.590347766876221,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 267,
+      "dt_sec": 5.977420091629028,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 268,
+      "dt_sec": 6.91320013999939,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 269,
+      "dt_sec": 6.596589803695679,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 270,
+      "dt_sec": 6.1310670375823975,
+      "best_fitness": 0.44428076005328804,
+      "offspring_count": 396
+    },
+    {
+      "gen": 271,
+      "dt_sec": 5.588236093521118,
+      "best_fitness": 0.44434008491633104,
+      "offspring_count": 396
+    },
+    {
+      "gen": 272,
+      "dt_sec": 5.439094066619873,
+      "best_fitness": 0.44434008491633104,
+      "offspring_count": 396
+    },
+    {
+      "gen": 273,
+      "dt_sec": 5.051186800003052,
+      "best_fitness": 0.44447337412038557,
+      "offspring_count": 396
+    },
+    {
+      "gen": 274,
+      "dt_sec": 5.139994144439697,
+      "best_fitness": 0.44447337412038557,
+      "offspring_count": 396
+    },
+    {
+      "gen": 275,
+      "dt_sec": 5.510515928268433,
+      "best_fitness": 0.44447337412038557,
+      "offspring_count": 396
+    },
+    {
+      "gen": 276,
+      "dt_sec": 6.597278118133545,
+      "best_fitness": 0.44447337412038557,
+      "offspring_count": 396
+    },
+    {
+      "gen": 277,
+      "dt_sec": 6.737361907958984,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 278,
+      "dt_sec": 5.130183935165405,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 279,
+      "dt_sec": 5.430865049362183,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 280,
+      "dt_sec": 5.816871881484985,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 281,
+      "dt_sec": 6.206553220748901,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 282,
+      "dt_sec": 7.284725904464722,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 283,
+      "dt_sec": 6.88846492767334,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 284,
+      "dt_sec": 6.9806599617004395,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 285,
+      "dt_sec": 6.813703298568726,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 286,
+      "dt_sec": 5.429224729537964,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 287,
+      "dt_sec": 6.122413873672485,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 288,
+      "dt_sec": 5.888789176940918,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 289,
+      "dt_sec": 4.96091103553772,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 290,
+      "dt_sec": 5.66323184967041,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 291,
+      "dt_sec": 5.4975690841674805,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 292,
+      "dt_sec": 5.108431100845337,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 293,
+      "dt_sec": 5.731028079986572,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 294,
+      "dt_sec": 5.889164686203003,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 295,
+      "dt_sec": 5.27029013633728,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 296,
+      "dt_sec": 5.114049196243286,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 297,
+      "dt_sec": 6.359967947006226,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 298,
+      "dt_sec": 6.58648681640625,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 299,
+      "dt_sec": 6.438432931900024,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 300,
+      "dt_sec": 6.370181083679199,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 301,
+      "dt_sec": 6.680023193359375,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 302,
+      "dt_sec": 6.588739633560181,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 303,
+      "dt_sec": 6.364197254180908,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 304,
+      "dt_sec": 7.0474560260772705,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 305,
+      "dt_sec": 6.50977087020874,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 306,
+      "dt_sec": 5.573697090148926,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 307,
+      "dt_sec": 5.4296979904174805,
+      "best_fitness": 0.4445326989834285,
+      "offspring_count": 396
+    },
+    {
+      "gen": 308,
+      "dt_sec": 6.129814863204956,
+      "best_fitness": 0.4445622309655445,
+      "offspring_count": 396
+    },
+    {
+      "gen": 309,
+      "dt_sec": 6.4308390617370605,
+      "best_fitness": 0.4445622309655445,
+      "offspring_count": 396
+    },
+    {
+      "gen": 310,
+      "dt_sec": 5.860924243927002,
+      "best_fitness": 0.4445622309655445,
+      "offspring_count": 396
+    },
+    {
+      "gen": 311,
+      "dt_sec": 6.158337831497192,
+      "best_fitness": 0.4445622309655445,
+      "offspring_count": 396
+    },
+    {
+      "gen": 312,
+      "dt_sec": 6.189619064331055,
+      "best_fitness": 0.4445622309655445,
+      "offspring_count": 396
+    },
+    {
+      "gen": 313,
+      "dt_sec": 5.436042070388794,
+      "best_fitness": 0.4445622309655445,
+      "offspring_count": 396
+    },
+    {
+      "gen": 314,
+      "dt_sec": 5.058942794799805,
+      "best_fitness": 0.4445622309655445,
+      "offspring_count": 396
+    },
+    {
+      "gen": 315,
+      "dt_sec": 5.192591905593872,
+      "best_fitness": 0.4445622309655445,
+      "offspring_count": 396
+    },
+    {
+      "gen": 316,
+      "dt_sec": 6.349366188049316,
+      "best_fitness": 0.4445622309655445,
+      "offspring_count": 396
+    },
+    {
+      "gen": 317,
+      "dt_sec": 6.73011589050293,
+      "best_fitness": 0.4445622309655445,
+      "offspring_count": 396
+    },
+    {
+      "gen": 318,
+      "dt_sec": 6.270745277404785,
+      "best_fitness": 0.4445622309655445,
+      "offspring_count": 396
+    },
+    {
+      "gen": 319,
+      "dt_sec": 6.034651756286621,
+      "best_fitness": 0.4447811620067763,
+      "offspring_count": 396
+    },
+    {
+      "gen": 320,
+      "dt_sec": 6.442167043685913,
+      "best_fitness": 0.4447811620067763,
+      "offspring_count": 396
+    },
+    {
+      "gen": 321,
+      "dt_sec": 6.424624919891357,
+      "best_fitness": 0.4447811620067763,
+      "offspring_count": 396
+    },
+    {
+      "gen": 322,
+      "dt_sec": 6.990932941436768,
+      "best_fitness": 0.4447811620067763,
+      "offspring_count": 396
+    },
+    {
+      "gen": 323,
+      "dt_sec": 7.191430330276489,
+      "best_fitness": 0.4447811620067763,
+      "offspring_count": 396
+    },
+    {
+      "gen": 324,
+      "dt_sec": 6.60512375831604,
+      "best_fitness": 0.4447811620067763,
+      "offspring_count": 396
+    },
+    {
+      "gen": 325,
+      "dt_sec": 7.222115993499756,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 326,
+      "dt_sec": 6.968501091003418,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 327,
+      "dt_sec": 6.264369964599609,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 328,
+      "dt_sec": 6.04026198387146,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 329,
+      "dt_sec": 5.724116086959839,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 330,
+      "dt_sec": 5.959975957870483,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 331,
+      "dt_sec": 6.652003049850464,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 332,
+      "dt_sec": 6.425067901611328,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 333,
+      "dt_sec": 5.342031955718994,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 334,
+      "dt_sec": 5.7309839725494385,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 335,
+      "dt_sec": 6.205735206604004,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 336,
+      "dt_sec": 5.261786699295044,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 337,
+      "dt_sec": 4.803825378417969,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 338,
+      "dt_sec": 6.131138801574707,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 339,
+      "dt_sec": 6.8137969970703125,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 340,
+      "dt_sec": 6.764734983444214,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 341,
+      "dt_sec": 6.347909927368164,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 342,
+      "dt_sec": 5.344370126724243,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 343,
+      "dt_sec": 4.971981048583984,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 344,
+      "dt_sec": 5.208674907684326,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 345,
+      "dt_sec": 6.0408430099487305,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 346,
+      "dt_sec": 6.1252641677856445,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 347,
+      "dt_sec": 5.59434175491333,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 348,
+      "dt_sec": 5.5734169483184814,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 349,
+      "dt_sec": 5.3576061725616455,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 350,
+      "dt_sec": 5.1159398555755615,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 351,
+      "dt_sec": 5.1832170486450195,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 352,
+      "dt_sec": 5.101691007614136,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 353,
+      "dt_sec": 6.2702720165252686,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 354,
+      "dt_sec": 6.649770975112915,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 355,
+      "dt_sec": 6.127986192703247,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 356,
+      "dt_sec": 6.8075127601623535,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 357,
+      "dt_sec": 7.054396152496338,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 358,
+      "dt_sec": 6.509907960891724,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 359,
+      "dt_sec": 5.823149919509888,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 360,
+      "dt_sec": 5.282805919647217,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 361,
+      "dt_sec": 5.118643283843994,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 362,
+      "dt_sec": 5.253227710723877,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 363,
+      "dt_sec": 5.884081125259399,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 364,
+      "dt_sec": 6.266937971115112,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 365,
+      "dt_sec": 6.475641965866089,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 366,
+      "dt_sec": 6.060413122177124,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 367,
+      "dt_sec": 5.110994100570679,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 368,
+      "dt_sec": 4.812886714935303,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 369,
+      "dt_sec": 4.8023810386657715,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 370,
+      "dt_sec": 4.809526205062866,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 371,
+      "dt_sec": 6.20505690574646,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 372,
+      "dt_sec": 6.888966798782349,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 373,
+      "dt_sec": 6.59981107711792,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 374,
+      "dt_sec": 6.106211185455322,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 375,
+      "dt_sec": 5.586199045181274,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 376,
+      "dt_sec": 6.1223039627075195,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 377,
+      "dt_sec": 5.504079818725586,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 378,
+      "dt_sec": 5.198889970779419,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 379,
+      "dt_sec": 6.197908163070679,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 380,
+      "dt_sec": 7.212071180343628,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 381,
+      "dt_sec": 6.8073179721832275,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 382,
+      "dt_sec": 6.2913947105407715,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 383,
+      "dt_sec": 6.192469120025635,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 384,
+      "dt_sec": 6.450886964797974,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 385,
+      "dt_sec": 6.34260106086731,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 386,
+      "dt_sec": 6.447995901107788,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 387,
+      "dt_sec": 6.435772180557251,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 388,
+      "dt_sec": 5.911702871322632,
+      "best_fitness": 0.44539830934698244,
+      "offspring_count": 396
+    },
+    {
+      "gen": 389,
+      "dt_sec": 6.865832090377808,
+      "best_fitness": 0.4459659647277344,
+      "offspring_count": 396
+    },
+    {
+      "gen": 390,
+      "dt_sec": 7.604622840881348,
+      "best_fitness": 0.4459659647277344,
+      "offspring_count": 396
+    },
+    {
+      "gen": 391,
+      "dt_sec": 6.351026296615601,
+      "best_fitness": 0.4459659647277344,
+      "offspring_count": 396
+    },
+    {
+      "gen": 392,
+      "dt_sec": 5.665058612823486,
+      "best_fitness": 0.4459659647277344,
+      "offspring_count": 396
+    },
+    {
+      "gen": 393,
+      "dt_sec": 6.284669399261475,
+      "best_fitness": 0.4459659647277344,
+      "offspring_count": 396
+    },
+    {
+      "gen": 394,
+      "dt_sec": 5.725818872451782,
+      "best_fitness": 0.4459659647277344,
+      "offspring_count": 396
+    },
+    {
+      "gen": 395,
+      "dt_sec": 6.035331964492798,
+      "best_fitness": 0.4459659647277344,
+      "offspring_count": 396
+    },
+    {
+      "gen": 396,
+      "dt_sec": 5.564030885696411,
+      "best_fitness": 0.4459659647277344,
+      "offspring_count": 396
+    },
+    {
+      "gen": 397,
+      "dt_sec": 4.956132888793945,
+      "best_fitness": 0.4459659647277344,
+      "offspring_count": 396
+    },
+    {
+      "gen": 398,
+      "dt_sec": 5.574920177459717,
+      "best_fitness": 0.4459659647277344,
+      "offspring_count": 396
+    },
+    {
+      "gen": 399,
+      "dt_sec": 6.0349531173706055,
+      "best_fitness": 0.4459659647277344,
+      "offspring_count": 396
+    },
+    {
+      "gen": 400,
+      "dt_sec": 6.806658744812012,
+      "best_fitness": 0.4459659647277344,
+      "offspring_count": 396
+    },
+    {
+      "gen": 401,
+      "dt_sec": 6.661489248275757,
+      "best_fitness": 0.4459659647277344,
+      "offspring_count": 396
+    },
+    {
+      "gen": 402,
+      "dt_sec": 5.878661870956421,
+      "best_fitness": 0.4459659647277344,
+      "offspring_count": 396
+    },
+    {
+      "gen": 403,
+      "dt_sec": 5.962924957275391,
+      "best_fitness": 0.4459659647277344,
+      "offspring_count": 396
+    },
+    {
+      "gen": 404,
+      "dt_sec": 6.205951929092407,
+      "best_fitness": 0.4459659647277344,
+      "offspring_count": 396
+    },
+    {
+      "gen": 405,
+      "dt_sec": 6.819740056991577,
+      "best_fitness": 0.4459659647277344,
+      "offspring_count": 396
+    },
+    {
+      "gen": 406,
+      "dt_sec": 6.588863134384155,
+      "best_fitness": 0.44597753801229156,
+      "offspring_count": 396
+    },
+    {
+      "gen": 407,
+      "dt_sec": 5.649930000305176,
+      "best_fitness": 0.44597753801229156,
+      "offspring_count": 396
+    },
+    {
+      "gen": 408,
+      "dt_sec": 6.347037076950073,
+      "best_fitness": 0.44597753801229156,
+      "offspring_count": 396
+    },
+    {
+      "gen": 409,
+      "dt_sec": 6.2723119258880615,
+      "best_fitness": 0.44597753801229156,
+      "offspring_count": 396
+    },
+    {
+      "gen": 410,
+      "dt_sec": 6.045121908187866,
+      "best_fitness": 0.4459797706106746,
+      "offspring_count": 396
+    },
+    {
+      "gen": 411,
+      "dt_sec": 5.965220928192139,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 412,
+      "dt_sec": 7.048654079437256,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 413,
+      "dt_sec": 7.518525123596191,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 414,
+      "dt_sec": 6.251440763473511,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 415,
+      "dt_sec": 6.670834302902222,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 416,
+      "dt_sec": 6.3488099575042725,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 417,
+      "dt_sec": 6.058502912521362,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 418,
+      "dt_sec": 6.977297782897949,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 419,
+      "dt_sec": 7.442892074584961,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 420,
+      "dt_sec": 6.756442070007324,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 421,
+      "dt_sec": 6.060383081436157,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 422,
+      "dt_sec": 6.436675071716309,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 423,
+      "dt_sec": 6.353291034698486,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 424,
+      "dt_sec": 5.969603776931763,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 425,
+      "dt_sec": 5.655303955078125,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 426,
+      "dt_sec": 5.276565074920654,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 427,
+      "dt_sec": 5.348484039306641,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 428,
+      "dt_sec": 5.6677350997924805,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 429,
+      "dt_sec": 6.361735820770264,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 430,
+      "dt_sec": 6.517628192901611,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 431,
+      "dt_sec": 5.514352798461914,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 432,
+      "dt_sec": 5.434343099594116,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 433,
+      "dt_sec": 6.215520858764648,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 434,
+      "dt_sec": 5.655254125595093,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 435,
+      "dt_sec": 6.369100093841553,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 436,
+      "dt_sec": 7.126724004745483,
+      "best_fitness": 0.4460149068105398,
+      "offspring_count": 396
+    },
+    {
+      "gen": 437,
+      "dt_sec": 5.743844747543335,
+      "best_fitness": 0.44704934144311137,
+      "offspring_count": 396
+    },
+    {
+      "gen": 438,
+      "dt_sec": 6.047190189361572,
+      "best_fitness": 0.44704934144311137,
+      "offspring_count": 396
+    },
+    {
+      "gen": 439,
+      "dt_sec": 6.666883945465088,
+      "best_fitness": 0.44704934144311137,
+      "offspring_count": 396
+    },
+    {
+      "gen": 440,
+      "dt_sec": 5.732999086380005,
+      "best_fitness": 0.44704934144311137,
+      "offspring_count": 396
+    },
+    {
+      "gen": 441,
+      "dt_sec": 5.580244779586792,
+      "best_fitness": 0.44704934144311137,
+      "offspring_count": 396
+    },
+    {
+      "gen": 442,
+      "dt_sec": 6.043704271316528,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 443,
+      "dt_sec": 6.1318159103393555,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 444,
+      "dt_sec": 5.89972710609436,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 445,
+      "dt_sec": 6.607945919036865,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 446,
+      "dt_sec": 6.5242109298706055,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 447,
+      "dt_sec": 5.8165199756622314,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 448,
+      "dt_sec": 6.133887052536011,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 449,
+      "dt_sec": 5.980349063873291,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 450,
+      "dt_sec": 6.047252893447876,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 451,
+      "dt_sec": 6.139163970947266,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 452,
+      "dt_sec": 6.048041105270386,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 453,
+      "dt_sec": 6.058525800704956,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 454,
+      "dt_sec": 6.136411190032959,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 455,
+      "dt_sec": 6.930680990219116,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 456,
+      "dt_sec": 6.592300891876221,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 457,
+      "dt_sec": 5.347699165344238,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 458,
+      "dt_sec": 5.278681993484497,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 459,
+      "dt_sec": 6.534665822982788,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 460,
+      "dt_sec": 6.9772632122039795,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 461,
+      "dt_sec": 6.36235785484314,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 462,
+      "dt_sec": 6.228917121887207,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 463,
+      "dt_sec": 6.758152961730957,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 464,
+      "dt_sec": 5.608848810195923,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 465,
+      "dt_sec": 5.38130521774292,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 466,
+      "dt_sec": 6.381314039230347,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 467,
+      "dt_sec": 6.239490032196045,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 468,
+      "dt_sec": 6.90573787689209,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 469,
+      "dt_sec": 6.679775953292847,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 470,
+      "dt_sec": 5.502315044403076,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 471,
+      "dt_sec": 5.598337888717651,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 472,
+      "dt_sec": 5.813502073287964,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 473,
+      "dt_sec": 5.7001471519470215,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 474,
+      "dt_sec": 5.90460991859436,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 475,
+      "dt_sec": 6.071868896484375,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 476,
+      "dt_sec": 6.21911096572876,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 477,
+      "dt_sec": 6.604299068450928,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 478,
+      "dt_sec": 6.525491952896118,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 479,
+      "dt_sec": 5.505083084106445,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 480,
+      "dt_sec": 6.146040916442871,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 481,
+      "dt_sec": 6.229413032531738,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 482,
+      "dt_sec": 5.57708215713501,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 483,
+      "dt_sec": 6.543832778930664,
+      "best_fitness": 0.44710782748845024,
+      "offspring_count": 396
+    },
+    {
+      "gen": 484,
+      "dt_sec": 7.303314208984375,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 485,
+      "dt_sec": 6.451213836669922,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 486,
+      "dt_sec": 5.358241081237793,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 487,
+      "dt_sec": 5.832265853881836,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 488,
+      "dt_sec": 6.2044641971588135,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 489,
+      "dt_sec": 6.226317882537842,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 490,
+      "dt_sec": 5.838538885116577,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 491,
+      "dt_sec": 5.770546197891235,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 492,
+      "dt_sec": 6.3070080280303955,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 493,
+      "dt_sec": 6.5508527755737305,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 494,
+      "dt_sec": 5.7725231647491455,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 495,
+      "dt_sec": 5.2860658168792725,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 496,
+      "dt_sec": 6.23910117149353,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 497,
+      "dt_sec": 6.918615818023682,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 498,
+      "dt_sec": 6.383200407028198,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 499,
+      "dt_sec": 6.451598644256592,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 500,
+      "dt_sec": 7.39466404914856,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 501,
+      "dt_sec": 6.520254850387573,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 502,
+      "dt_sec": 5.842957258224487,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 503,
+      "dt_sec": 6.227592945098877,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 504,
+      "dt_sec": 6.5434699058532715,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 505,
+      "dt_sec": 7.002344131469727,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 506,
+      "dt_sec": 7.473387002944946,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 507,
+      "dt_sec": 6.144232749938965,
+      "best_fitness": 0.4471919098824451,
+      "offspring_count": 396
+    },
+    {
+      "gen": 508,
+      "dt_sec": 5.448787212371826,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 509,
+      "dt_sec": 5.7536211013793945,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 510,
+      "dt_sec": 4.977818965911865,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 511,
+      "dt_sec": 5.29378080368042,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 512,
+      "dt_sec": 5.522416114807129,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 513,
+      "dt_sec": 6.150404930114746,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 514,
+      "dt_sec": 6.774768114089966,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 515,
+      "dt_sec": 7.006918907165527,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 516,
+      "dt_sec": 6.459749221801758,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 517,
+      "dt_sec": 5.2945778369903564,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 518,
+      "dt_sec": 4.4346020221710205,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 519,
+      "dt_sec": 5.222043991088867,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 520,
+      "dt_sec": 6.379786968231201,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 521,
+      "dt_sec": 5.76183295249939,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 522,
+      "dt_sec": 6.0048980712890625,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 523,
+      "dt_sec": 6.245121955871582,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 524,
+      "dt_sec": 5.909199237823486,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 525,
+      "dt_sec": 5.762483835220337,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 526,
+      "dt_sec": 5.142413139343262,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 527,
+      "dt_sec": 6.011231899261475,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 528,
+      "dt_sec": 6.0775229930877686,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 529,
+      "dt_sec": 4.50254487991333,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 530,
+      "dt_sec": 4.686875104904175,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 531,
+      "dt_sec": 6.244248867034912,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 532,
+      "dt_sec": 5.443665266036987,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 533,
+      "dt_sec": 4.92654275894165,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 534,
+      "dt_sec": 6.226003885269165,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 535,
+      "dt_sec": 6.005963087081909,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 536,
+      "dt_sec": 6.00492525100708,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 537,
+      "dt_sec": 6.618451833724976,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 538,
+      "dt_sec": 6.55578088760376,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 539,
+      "dt_sec": 6.015312194824219,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 540,
+      "dt_sec": 6.865499973297119,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 541,
+      "dt_sec": 7.479609966278076,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 542,
+      "dt_sec": 6.777801036834717,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 543,
+      "dt_sec": 6.159404039382935,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 544,
+      "dt_sec": 5.764840841293335,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 545,
+      "dt_sec": 5.917185068130493,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 546,
+      "dt_sec": 5.602744102478027,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 547,
+      "dt_sec": 5.395076751708984,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 548,
+      "dt_sec": 5.934556245803833,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 549,
+      "dt_sec": 5.540803909301758,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 550,
+      "dt_sec": 5.697235822677612,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 551,
+      "dt_sec": 6.415081024169922,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 552,
+      "dt_sec": 5.675846099853516,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 553,
+      "dt_sec": 5.306318044662476,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 554,
+      "dt_sec": 5.9080870151519775,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 555,
+      "dt_sec": 7.073582887649536,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 556,
+      "dt_sec": 6.513739109039307,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 557,
+      "dt_sec": 5.672609090805054,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 558,
+      "dt_sec": 6.3927998542785645,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 559,
+      "dt_sec": 6.542668104171753,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 560,
+      "dt_sec": 6.313010931015015,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 561,
+      "dt_sec": 5.527973175048828,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 562,
+      "dt_sec": 5.6207427978515625,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 563,
+      "dt_sec": 6.3012471199035645,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 564,
+      "dt_sec": 7.644892930984497,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 565,
+      "dt_sec": 7.318803787231445,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 566,
+      "dt_sec": 5.762980222702026,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 567,
+      "dt_sec": 5.928361892700195,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 568,
+      "dt_sec": 6.014270067214966,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 569,
+      "dt_sec": 5.60627293586731,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 570,
+      "dt_sec": 5.30484414100647,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 571,
+      "dt_sec": 5.944647789001465,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 572,
+      "dt_sec": 5.837240219116211,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 573,
+      "dt_sec": 5.692770004272461,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 574,
+      "dt_sec": 6.145736932754517,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 575,
+      "dt_sec": 6.872953176498413,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 576,
+      "dt_sec": 7.235873699188232,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 577,
+      "dt_sec": 6.9291839599609375,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 578,
+      "dt_sec": 6.457785129547119,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 579,
+      "dt_sec": 5.6126389503479,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 580,
+      "dt_sec": 5.848737001419067,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 581,
+      "dt_sec": 6.9212212562561035,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 582,
+      "dt_sec": 6.610573768615723,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 583,
+      "dt_sec": 6.3770012855529785,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 584,
+      "dt_sec": 6.693248748779297,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 585,
+      "dt_sec": 6.239529848098755,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 586,
+      "dt_sec": 6.476589202880859,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 587,
+      "dt_sec": 6.61456298828125,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 588,
+      "dt_sec": 6.308942079544067,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 589,
+      "dt_sec": 6.314823865890503,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 590,
+      "dt_sec": 6.318601131439209,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 591,
+      "dt_sec": 6.618917942047119,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 592,
+      "dt_sec": 6.066689968109131,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 593,
+      "dt_sec": 5.537939071655273,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 594,
+      "dt_sec": 6.389443874359131,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 595,
+      "dt_sec": 7.50610089302063,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 596,
+      "dt_sec": 7.247196197509766,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 597,
+      "dt_sec": 6.537471055984497,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 598,
+      "dt_sec": 6.4648048877716064,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 599,
+      "dt_sec": 6.727845191955566,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 600,
+      "dt_sec": 5.673735857009888,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 601,
+      "dt_sec": 5.139609098434448,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 602,
+      "dt_sec": 6.705729007720947,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 603,
+      "dt_sec": 6.008859872817993,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 604,
+      "dt_sec": 5.5331761837005615,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 605,
+      "dt_sec": 6.775149822235107,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 606,
+      "dt_sec": 7.325181007385254,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 607,
+      "dt_sec": 6.616578817367554,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 608,
+      "dt_sec": 5.777165174484253,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 609,
+      "dt_sec": 5.377868890762329,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 610,
+      "dt_sec": 5.8582868576049805,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 611,
+      "dt_sec": 6.143437147140503,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 612,
+      "dt_sec": 5.301222085952759,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 613,
+      "dt_sec": 5.224714040756226,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 614,
+      "dt_sec": 5.2982988357543945,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 615,
+      "dt_sec": 5.3790199756622314,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 616,
+      "dt_sec": 5.536752223968506,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 617,
+      "dt_sec": 5.380531072616577,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 618,
+      "dt_sec": 5.536042928695679,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 619,
+      "dt_sec": 6.781540870666504,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 620,
+      "dt_sec": 7.0035481452941895,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 621,
+      "dt_sec": 5.996614933013916,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 622,
+      "dt_sec": 6.688200950622559,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 623,
+      "dt_sec": 7.421859979629517,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 624,
+      "dt_sec": 6.391046047210693,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 625,
+      "dt_sec": 6.150848865509033,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 626,
+      "dt_sec": 6.247250318527222,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 627,
+      "dt_sec": 5.916825771331787,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 628,
+      "dt_sec": 6.232219219207764,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 629,
+      "dt_sec": 6.368645906448364,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 630,
+      "dt_sec": 6.460545063018799,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 631,
+      "dt_sec": 6.936015844345093,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 632,
+      "dt_sec": 6.61242413520813,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 633,
+      "dt_sec": 6.0793538093566895,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 634,
+      "dt_sec": 6.230915069580078,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 635,
+      "dt_sec": 6.003793954849243,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 636,
+      "dt_sec": 5.837774038314819,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 637,
+      "dt_sec": 5.528684139251709,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 638,
+      "dt_sec": 5.618504762649536,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 639,
+      "dt_sec": 6.00444221496582,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 640,
+      "dt_sec": 6.936409950256348,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 641,
+      "dt_sec": 7.4002909660339355,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 642,
+      "dt_sec": 6.47305703163147,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 643,
+      "dt_sec": 6.074210166931152,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 644,
+      "dt_sec": 6.470149755477905,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 645,
+      "dt_sec": 6.699555158615112,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 646,
+      "dt_sec": 6.321606874465942,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 647,
+      "dt_sec": 5.4415647983551025,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 648,
+      "dt_sec": 6.0787131786346436,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 649,
+      "dt_sec": 6.839022159576416,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 650,
+      "dt_sec": 7.481200933456421,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 651,
+      "dt_sec": 7.387724876403809,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 652,
+      "dt_sec": 6.766278982162476,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 653,
+      "dt_sec": 7.322961091995239,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 654,
+      "dt_sec": 6.857237100601196,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 655,
+      "dt_sec": 5.678598880767822,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 656,
+      "dt_sec": 5.307790994644165,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 657,
+      "dt_sec": 6.005737066268921,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 658,
+      "dt_sec": 5.678658723831177,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 659,
+      "dt_sec": 6.010273218154907,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 660,
+      "dt_sec": 6.619089126586914,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 661,
+      "dt_sec": 5.847445011138916,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 662,
+      "dt_sec": 6.4735307693481445,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 663,
+      "dt_sec": 6.94545316696167,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 664,
+      "dt_sec": 7.1650710105896,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 665,
+      "dt_sec": 7.019519090652466,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 666,
+      "dt_sec": 6.152108669281006,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 667,
+      "dt_sec": 6.303515195846558,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 668,
+      "dt_sec": 6.073039770126343,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 669,
+      "dt_sec": 5.533428192138672,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 670,
+      "dt_sec": 5.377517938613892,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 671,
+      "dt_sec": 6.258157014846802,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 672,
+      "dt_sec": 6.6927549839019775,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 673,
+      "dt_sec": 6.531750202178955,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 674,
+      "dt_sec": 6.15087366104126,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 675,
+      "dt_sec": 4.81580114364624,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 676,
+      "dt_sec": 5.929407119750977,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 677,
+      "dt_sec": 7.309961795806885,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 678,
+      "dt_sec": 7.011065244674683,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 679,
+      "dt_sec": 5.841364860534668,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 680,
+      "dt_sec": 5.45944619178772,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 681,
+      "dt_sec": 5.527559757232666,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 682,
+      "dt_sec": 5.926230192184448,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 683,
+      "dt_sec": 6.5263848304748535,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 684,
+      "dt_sec": 5.757111072540283,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 685,
+      "dt_sec": 5.461302995681763,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 686,
+      "dt_sec": 5.455297946929932,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 687,
+      "dt_sec": 5.524484872817993,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 688,
+      "dt_sec": 6.394488096237183,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 689,
+      "dt_sec": 6.058377027511597,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 690,
+      "dt_sec": 4.828290939331055,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 691,
+      "dt_sec": 5.380436182022095,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 692,
+      "dt_sec": 6.232423782348633,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 693,
+      "dt_sec": 6.706468105316162,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 694,
+      "dt_sec": 6.62237811088562,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 695,
+      "dt_sec": 5.936776876449585,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 696,
+      "dt_sec": 5.444385051727295,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 697,
+      "dt_sec": 5.303349018096924,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 698,
+      "dt_sec": 5.1499738693237305,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 699,
+      "dt_sec": 5.914393186569214,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 700,
+      "dt_sec": 6.6180338859558105,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 701,
+      "dt_sec": 6.5434229373931885,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 702,
+      "dt_sec": 6.373443126678467,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 703,
+      "dt_sec": 5.519017934799194,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 704,
+      "dt_sec": 4.83419394493103,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 705,
+      "dt_sec": 5.842385292053223,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 706,
+      "dt_sec": 7.075319766998291,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 707,
+      "dt_sec": 7.013195991516113,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 708,
+      "dt_sec": 5.916198015213013,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 709,
+      "dt_sec": 4.828271865844727,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 710,
+      "dt_sec": 5.9228692054748535,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 711,
+      "dt_sec": 6.826281785964966,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 712,
+      "dt_sec": 5.272767066955566,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 713,
+      "dt_sec": 5.709564208984375,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 714,
+      "dt_sec": 6.539587736129761,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 715,
+      "dt_sec": 5.925843238830566,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 716,
+      "dt_sec": 6.03915810585022,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 717,
+      "dt_sec": 7.128129720687866,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 718,
+      "dt_sec": 6.422115087509155,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 719,
+      "dt_sec": 5.577115774154663,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 720,
+      "dt_sec": 5.552831411361694,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 721,
+      "dt_sec": 6.02571177482605,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 722,
+      "dt_sec": 7.4198689460754395,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 723,
+      "dt_sec": 7.079149007797241,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 724,
+      "dt_sec": 6.202238082885742,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 725,
+      "dt_sec": 6.288626194000244,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 726,
+      "dt_sec": 6.3813629150390625,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 727,
+      "dt_sec": 6.603998899459839,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 728,
+      "dt_sec": 5.938170909881592,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 729,
+      "dt_sec": 5.787415027618408,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 730,
+      "dt_sec": 6.671842098236084,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 731,
+      "dt_sec": 6.390218019485474,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 732,
+      "dt_sec": 6.08751106262207,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 733,
+      "dt_sec": 7.698856830596924,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 734,
+      "dt_sec": 7.123974084854126,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 735,
+      "dt_sec": 5.45007586479187,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 736,
+      "dt_sec": 5.5474770069122314,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 737,
+      "dt_sec": 6.23476505279541,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 738,
+      "dt_sec": 6.95133900642395,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 739,
+      "dt_sec": 6.365175008773804,
+      "best_fitness": 0.4472050618012142,
+      "offspring_count": 396
+    },
+    {
+      "gen": 740,
+      "dt_sec": 6.016308069229126,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 741,
+      "dt_sec": 7.075738906860352,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 742,
+      "dt_sec": 7.533056020736694,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 743,
+      "dt_sec": 6.358343839645386,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 744,
+      "dt_sec": 5.64789605140686,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 745,
+      "dt_sec": 5.717106103897095,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 746,
+      "dt_sec": 6.909759044647217,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 747,
+      "dt_sec": 7.611648082733154,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 748,
+      "dt_sec": 6.671741962432861,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 749,
+      "dt_sec": 5.912155866622925,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 750,
+      "dt_sec": 6.308634042739868,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 751,
+      "dt_sec": 6.393438100814819,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 752,
+      "dt_sec": 6.334039926528931,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 753,
+      "dt_sec": 6.689972162246704,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 754,
+      "dt_sec": 5.8318397998809814,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 755,
+      "dt_sec": 5.7741169929504395,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 756,
+      "dt_sec": 6.181491851806641,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 757,
+      "dt_sec": 6.406619310379028,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 758,
+      "dt_sec": 6.662765741348267,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 759,
+      "dt_sec": 6.247828245162964,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 760,
+      "dt_sec": 6.722523927688599,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 761,
+      "dt_sec": 7.8153767585754395,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 762,
+      "dt_sec": 7.2563440799713135,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 763,
+      "dt_sec": 6.088677167892456,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 764,
+      "dt_sec": 6.029517889022827,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 765,
+      "dt_sec": 6.40505313873291,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 766,
+      "dt_sec": 5.86334490776062,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 767,
+      "dt_sec": 4.937551021575928,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 768,
+      "dt_sec": 5.293683052062988,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 769,
+      "dt_sec": 5.758266925811768,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 770,
+      "dt_sec": 6.42954421043396,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 771,
+      "dt_sec": 6.749345779418945,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 772,
+      "dt_sec": 5.8672099113464355,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 773,
+      "dt_sec": 5.563738107681274,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 774,
+      "dt_sec": 6.051153898239136,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 775,
+      "dt_sec": 6.389642953872681,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 776,
+      "dt_sec": 5.42557692527771,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 777,
+      "dt_sec": 5.515438079833984,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 778,
+      "dt_sec": 6.355242013931274,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 779,
+      "dt_sec": 6.235921144485474,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 780,
+      "dt_sec": 6.067017078399658,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 781,
+      "dt_sec": 5.1663978099823,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 782,
+      "dt_sec": 5.95761513710022,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 783,
+      "dt_sec": 7.119164943695068,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 784,
+      "dt_sec": 6.958884954452515,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 785,
+      "dt_sec": 7.512362003326416,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 786,
+      "dt_sec": 7.9158408641815186,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 787,
+      "dt_sec": 7.994681119918823,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 788,
+      "dt_sec": 6.596955060958862,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 789,
+      "dt_sec": 5.844130039215088,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 790,
+      "dt_sec": 6.0321009159088135,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 791,
+      "dt_sec": 6.380136013031006,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 792,
+      "dt_sec": 6.509938955307007,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 793,
+      "dt_sec": 5.405056953430176,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 794,
+      "dt_sec": 5.553001165390015,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 795,
+      "dt_sec": 6.178782939910889,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 796,
+      "dt_sec": 5.800377130508423,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 797,
+      "dt_sec": 5.55584979057312,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 798,
+      "dt_sec": 6.080207109451294,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 799,
+      "dt_sec": 7.249720096588135,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    },
+    {
+      "gen": 800,
+      "dt_sec": 7.08503794670105,
+      "best_fitness": 0.44733493041517713,
+      "offspring_count": 396
+    }
+  ]
+}
