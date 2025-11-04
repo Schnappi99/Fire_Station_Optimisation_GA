@@ -1,7 +1,8 @@
 # ====== Data and Outputs ======
-data/driving_time_matrix.npy
+data/driving_time_matrix.csv
 *.log
 __pycache__/
+**/__pycache__/
 *.pyc
 
 # ====== IDE Settings ======
@@ -14,3 +15,4 @@ __pycache__/
 
 # ====== macOS system files ======
 .DS_Store
+**/.DS_Store
