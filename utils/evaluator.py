@@ -42,26 +42,31 @@ class Evaluator:
         X = np.column_stack([nearest_times, self.partial_features, station_count])
         X_df = pd.DataFrame(X, columns=self.feature_names)
 
+        # calculate eff of each cell
         eff = np.clip(self.rf_model.predict(X_df), 0.0, 1.0)
 
-        expected_served = eff * self.incident_freq  # incident_freq
-        incidents_served = float(expected_served.sum())
+        # Each incident cell contributes according to its occurrence frequency (incident_freq)
+        # Multiply predicted efficiency (eff) by incident frequency to get weighted service level per cell
+        weighted_efficiency = eff * self.incident_freq
+
+        # Sum across all incidents to get the total expected number (or proportion) of effectively served incidents
+        total_efficiency = float(weighted_efficiency.sum())
 
         # fire_freq: sum = 1
         total_incidents = float(np.sum(self.incident_freq))
         if abs(total_incidents - 1.0) < 1e-6:
-            eff_pct = incidents_served  # already normalized
+            eff_pct = weighted_efficiency  # already normalized
         else:
-            eff_pct = incidents_served / total_incidents if total_incidents > 0 else 0.0
+            eff_pct = weighted_efficiency / total_incidents if total_incidents > 0 else 0.0
 
         detail = pd.DataFrame({
             "nearest_time": nearest_times,
             "station_count": station_count,
             "incident_freq": self.incident_freq,
             "efficiency": eff,
-            "expected_served": expected_served,
+            "expected_served": total_efficiency,
         })
-        return incidents_served, eff_pct, detail
+        return total_efficiency, eff_pct, detail
 
     # Adapter for PyGAD (both signatures support)
     def fitness_pygad(self, solution, solution_idx) -> float:

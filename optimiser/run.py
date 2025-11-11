@@ -25,65 +25,36 @@ def save_layout_map(xy_all, candidate_xy, best_solution, out_path="outputs/optim
     print(f"Saved map to {out_path}")
 
 if __name__ == "__main__":
+
+    # setting the path
     out_dir = Path("outputs/run_latest"); out_dir.mkdir(parents=True, exist_ok=True)
-
-    # 1) load data
     data = load_data()
-    xy_all = data["xy_all"]
-    time_matrix = data["time_matrix"]
-    incident_freq = data["incident_freq"].ravel().astype(float)
-    total_incidents = float(incident_freq.sum())
-
-    # 2) gene_space: incident frequency > 0
-    gene_space = np.flatnonzero(incident_freq > 0).astype(int)
-
-    # 3) start layout
+    gene_space = np.flatnonzero(data['incident_freq'] > 0).astype(int)
+    # build optimiser
+    opt = GAOptimiser(data=data, config=config, gene_space=gene_space)
     start_layout = np.load(DATA_DIR / "current_layout_idx.npy")
 
-    # 4) build optimiser
-    opt = GAOptimiser(data=data, config=config, gene_space=gene_space)
-
-    # 5) init_pop（混合：baseline 邻域 + 多样化随机）
-    rng = np.random.default_rng(config.get("random_seed", None))
-
-    # Set parameter
-    mode = "mixed"        # "mixed" | "single_swap" | "random"
-
-    # init_pop = opt.build_initial_population(
-    #     base_layout=start_layout,
-    #     pop_size=int(config["sol_per_pop"]),
-    #     min_dist=float(config.get("min_station_spacing", 3000.0)),
-    #     n_single_swap_from_base=int(config.get("n_single_swap_seeds", 60)),
-    #     alpha=float(config.get("seed_alpha", 1.0)),
-    #     uniform_mix_ratio=float(config.get("seed_uniform_mix_ratio", 0.1)),
-    #     top_pct=top_pct,
-    #     rng=rng,
-    # )
-
     # Read from config (it could be "20%" or a numeric value like 0.2)
-    top_raw = config.get("gene_space_top_pct", "20%")
-
+    top_raw = config.get("gene_space_top_pct")
     # Convert "x%" → 0.x
     if isinstance(top_raw, str) and top_raw.endswith("%"):
         top_pct = float(top_raw.strip("%")) / 100.0
     else:
         top_pct = float(top_raw)
 
+    print(top_raw)
+
     init_pop = opt.build_initial_population(
         base_layout=start_layout,
-        pop_size=int(config["sol_per_pop"]),
+        pop_size=int(opt.config["sol_per_pop"]),
         mode="mixed",
         # with spacing constraint
         # min_dist=float(config.get("min_station_spacing", 3000.0)),
         # enforce_spacing=True,
-        # without spacing constraint
-        min_dist=None,
-        enforce_spacing=None,
-        n_single_swap_from_base=int(config.get("n_single_swap_seeds", 60)),
-        alpha=float(config.get("seed_alpha", 1.0)),
-        uniform_mix_ratio=float(config.get("seed_uniform_mix_ratio", 0.1)),
+        n_single_swap_from_base=int(opt.config.get("n_single_swap_seeds", 60)),
+        alpha=float(opt.config.get("seed_alpha", 1.0)),
+        uniform_mix_ratio=float(opt.config.get("seed_uniform_mix_ratio", 0.1)),
         top_pct=top_pct,
-        rng=rng,
     )
 
     # 6) run GA (single-swap mutation)
@@ -111,8 +82,6 @@ if __name__ == "__main__":
         "num_stations": int(len(best_solution)),
         "best_incidents": float(best_served),
         "best_pct": float(best_pct2),
-        "total_incidents": float(total_incidents),
-        "mode": mode,
         "top_pct": top_pct,
     }
 

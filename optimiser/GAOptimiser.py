@@ -87,64 +87,67 @@ class GAOptimiser:
         self._t0 = None
         self._log: list[tuple[float, float]] = []
 
-    # public helpers
+    # evaluate the efficiency
     def evaluate_layout(self, solution: np.ndarray):
         """Proxy to Evaluator"""
         return self.evaluator.evaluate_layout(solution)
 
     # build initial population
     def build_initial_population(
-        self,
-        base_layout: Optional[np.ndarray],
-        pop_size: int,
-        mode: str = "mixed",                 # "mixed" | "single_swap" | "random"
-        # dist constriant
-        min_dist: Optional[float] = None,    # None;
-        enforce_spacing: Optional[bool] = None,  # 若不为 None，则覆盖 min_dist 的开关
-        n_single_swap_from_base: int = 0,
-        alpha: float = 1.0,
-        uniform_mix_ratio: float = 0.0,
-        top_pct: float = 0.10,
-        rng=None,
+            self,
+            base_layout: Optional[np.ndarray],     # Baseline layout used as the starting point (if provided).
+            pop_size: int,                         # Number of individuals to generate in the initial population.
+            mode: str,                             # Population generation mode: "balanced_init", "local_init", or "random_init".
+            n_single_swap_from_base: int,          # Number of single-swap neighbours generated from the baseline layout.
+            alpha: float,                          # Exponent controlling demand weight sensitivity (freq^alpha).
+            uniform_mix_ratio: float,              # Mixing ratio between demand-weighted and uniform random sampling.
+            top_pct: float,                        # Select candidate cells from the top p% highest-demand areas.
+            rng=None,                              # Random number generator for reproducibility.
     ) -> np.ndarray:
-
         """
-        Initial population builder with TOGGLED spacing constraint.
+        Build the initial population for GA
 
-        - mixed: baseline + n_single_swap neighbors + demand-weighted random
-        - single_swap: only single-swap neighbors around baseline (plus baseline if given)
-        - random: demand-weighted random
+        Modes:
 
-        Spacing control:
-          * If enforce_spacing is None:
-                spacing_enabled = (min_dist is not None)
-            else:
-                spacing_enabled = bool(enforce_spacing)
-                if spacing_enabled and min_dist is None:
-                    # 从 config 兜底
-                    min_dist = float(self.config.get("min_dist", 3000.0))
+            - "balanced_init": use the current layout as a start point (if given),
+                               create several single-swap neighbours (n_single_swap_from_base),
+                               and fill the rest with demand-weighted random layouts.
+
+            - "local_init": use the current layout as a start point (if given),
+                            create single-swap neighbours (n_single_swap_from_base).
+
+            - "random_init": fully random layouts based on demand weights.
+                             No baseline used.
+
+        All layouts:
+            - have exactly k = num_stations genes;
+            - have no duplicate station indices;
+            - can be biased towards high-demand cells using top_pct.
         """
-        rng = rng or self.rng
+        rng = self.rng
         k = int(self.config["num_stations"])
         feasible = np.asarray(self.gene_space, dtype=int)
         freq = np.asarray(self.incident_freq, dtype=float)
-        xy = np.asarray(self.xy_all)
 
         if feasible.size < k:
             raise ValueError(f"gene_space too small: {feasible.size} < num_stations={k}")
 
-        # ---- 解析 spacing 开关 ----
-        if enforce_spacing is None:
-            spacing_enabled = (min_dist is not None)
-        else:
-            spacing_enabled = bool(enforce_spacing)
-            if spacing_enabled and min_dist is None:
-                min_dist = float(self.config.get("min_dist", 3000.0))
-
-        # ---------- helpers ----------
+        # weighted demand function
         def _weights(ids: np.ndarray) -> np.ndarray:
-            # demand^alpha, optionally mixed with uniform
+            """
+            Demand-weighted sampling function:
+
+            1): each location's weight = freq^alpha
+
+            2): optional mixed with a uniform distribution (controlled by uniform_mix_ratio)
+            to make the demand-weighted more random and diverse.
+
+            """
+
+            # weighted demand based on incident_freq
             w = np.maximum(freq[ids], 1e-12) ** float(alpha)
+
+            # mixed with a uniform distribution
             if uniform_mix_ratio > 0.0:
                 lam = 1.0 - float(uniform_mix_ratio)
                 w = lam * w + (1.0 - lam)
@@ -152,6 +155,12 @@ class GAOptimiser:
             return w / s if s > 0 else np.ones(ids.size) / ids.size
 
         def _top_pool(pool: np.ndarray) -> np.ndarray:
+            """
+            Select candidate cells from the top p% with the highest demand.
+
+            If top_pct is not set or outside (0, 1), the full pool is returned.
+
+            """
             if top_pct is None or top_pct <= 0.0 or top_pct >= 1.0:
                 return pool
             vals = freq[pool]
@@ -159,119 +168,69 @@ class GAOptimiser:
             top = pool[vals >= q]
             return top if top.size > 0 else pool
 
-        # ---- 无间距：一次性“加权不放回抽样” ----
-        def sample_layout_no_spacing() -> np.ndarray:
+        def sample_layout() -> np.ndarray:
+            """
+            Sample one layout of size k (new layout from scratch) :
+            - no duplicates;
+            - demand-weighted;
+            - optionally restricted to top p% high-demand cells.
+            """
             pool = _top_pool(feasible)
+            if pool.size < k:
+                raise ValueError(f"top-pool size {pool.size} < k={k}; relax top_pct or gene_space.")
             p = _weights(pool)
             chosen = rng.choice(pool, size=k, replace=False, p=p)
             return np.asarray(chosen, dtype=int)
 
-        # ---- 有间距：逐位贪心 + 动态剔除近邻候选----
-        def sample_layout_with_spacing() -> np.ndarray:
-            chosen: list[int] = []
-            # 初始池：可选 top-p 过滤
-            pool = _top_pool(feasible)
-            # 动态概率（按池中剩余候选更新）
-            while len(chosen) < k:
-                if pool.size == 0:
-                    # 如果空间约束太紧导致选不满，则回退到“只保证不重复”补齐
-                    remaining = np.setdiff1d(feasible, np.asarray(chosen, int), assume_unique=False)
-                    p_remain = _weights(remaining)
-                    need = k - len(chosen)
-                    extra = rng.choice(remaining, size=need, replace=False, p=p_remain)
-                    chosen.extend(list(map(int, extra)))
-                    break
-
-                p = _weights(pool)
-                cand = int(rng.choice(pool, p=p))
-
-                # 距离检查：与已选最近距离 >= min_dist 才收下
-                if len(chosen) == 0 or _euclid_min_dist(xy, np.asarray(chosen, int), cand) >= float(min_dist):
-                    chosen.append(cand)
-                    # 从池中剔除 cand 以及所有与 cand 过近的点（加速后续成功率）
-                    if min_dist is not None and min_dist > 0:
-                        # 计算 cand 到池中所有点的距离并剔除过近者
-                        dist_to_cand = np.linalg.norm(xy[pool] - xy[cand], axis=1)
-                        pool = pool[dist_to_cand >= float(min_dist)]
-                    # 同时也要剔除已选（避免重复）
-                    if pool.size > 0:
-                        pool = pool[~np.isin(pool, np.asarray(chosen, int))]
-                else:
-                    # cand 太近：从池中移除它，继续
-                    pool = pool[pool != cand]
-
-            return np.asarray(chosen, dtype=int)
-
         def single_swap_from(layout: np.ndarray) -> np.ndarray:
             """
-            Change exactly one station; ensure no-dup; spacing optional.
+            Change exactly one station index in `layout`(change exactly one station index).
+            - No duplicates;
+            - Optionally restricted to top p% high-demand cells.
             """
             child = np.asarray(layout, dtype=int).copy()
-            i = int(rng.integers(0, k))
+            if child.size != k:
+                raise ValueError(f"layout length {child.size} != k={k}")
 
-            # 候选 = 不在 child 的所有点（可选 top-p）
+            # candidate pool: all feasible indices not already in the layout
             pool = feasible[~np.isin(feasible, child)]
             pool = _top_pool(pool)
             if pool.size == 0:
-                return child  # 没有可替换的候选，直接返回
-
-            if not spacing_enabled:
-                p = _weights(pool)
-                child[i] = int(rng.choice(pool, p=p))
+                # no alternative candidate, return unchanged
                 return child
-
-            # spacing 启用：先过滤出满足 min_dist 的候选
-            keep_mask = []
-            others = np.delete(child, i)  # 除了位置 i 之外的所有已选
-            for cand in pool:
-                if _euclid_min_dist(xy, others, cand) >= float(min_dist):
-                    keep_mask.append(True)
-                else:
-                    keep_mask.append(False)
-            pool_ok = pool[np.array(keep_mask, dtype=bool)]
-
-            # 若没有满足 spacing 的候选，则回退到“仅不重复”
-            pool_final = pool_ok if pool_ok.size > 0 else pool
-            p = _weights(pool_final)
-            child[i] = int(rng.choice(pool_final, p=p))
+            # randomly pick a location index i
+            i = int(rng.integers(0, k))
+            p = _weights(pool)
+            child[i] = int(rng.choice(pool, p=p))
             return child
 
-        # generate the population
+        # build population
+        # create an empty list named `pop` to store each layout (i.e., each individual instance).
         pop: list[np.ndarray] = []
 
-        # include baseline if applicable
-        if mode in ("mixed", "single_swap") and base_layout is not None:
+        # add baseline into `pop` list if start_layout is not None
+        if mode in ("balanced_init", "local_init") and base_layout is not None:
             base_layout = np.asarray(base_layout, dtype=int)
             if base_layout.size != k:
                 raise ValueError(f"base_layout length {base_layout.size} != k={k}")
             if len(np.unique(base_layout)) != k:
                 raise ValueError("base_layout contains duplicate indices.")
-            # 若启用 spacing，保证 baseline 自身也满足（否则提示或容忍）
-            if spacing_enabled:
-                ok = True
-                for a in range(k):
-                    others = np.delete(base_layout, a)
-                    if _euclid_min_dist(xy, others, base_layout[a]) < float(min_dist):
-                        ok = False
-                        break
-                if not ok:
-                    # 这里选择“容忍并放入”，也可以改为 raise 或自动修正
-                    pass
             pop.append(base_layout)
 
-        if mode in ("mixed", "single_swap") and base_layout is not None and n_single_swap_from_base > 0:
+        # generate several single-swap neighbours (determined by n_single_swap_from_base)
+        #  n_single_swap_from_base : the number of the layout which generated from single swap
+        if mode in ("balanced_init", "local_init") and base_layout is not None and n_single_swap_from_base > 0:
             for _ in range(int(n_single_swap_from_base)):
                 pop.append(single_swap_from(base_layout))
 
-        sampler = sample_layout_with_spacing if spacing_enabled else sample_layout_no_spacing
-
-        if mode in ("mixed", "random"):
+        # fill the rest of the layouts with random demand-weighted method
+        if mode in ("balanced_init", "random_init"):
             while len(pop) < pop_size:
-                pop.append(sampler())
+                pop.append(sample_layout())
 
-        # fill (safety)
+        # safety fill in case
         while len(pop) < pop_size:
-            pop.append(sampler())
+            pop.append(sample_layout())
 
         return np.asarray(pop[:pop_size], dtype=int)
 
@@ -285,12 +244,6 @@ class GAOptimiser:
         self._per_gen = []
 
         print(f"Optimising with {ga.num_genes} stations from {len(self.gene_space)} feasible locations...")
-
-        # Optional: print whether the spacing constraint is enabled
-        spacing_enabled = getattr(self, "spacing_enabled", None)
-        min_dist = getattr(self, "min_dist", None)
-        if spacing_enabled is not None:
-            print(f"[INIT_POP] Spacing constraint: {'ON' if spacing_enabled else 'OFF'} (min_dist={min_dist})")
 
     def _on_generation(self, ga: pygad.GA):
         """Triggered once after each generation is completed."""
@@ -351,12 +304,29 @@ class GAOptimiser:
         gens = max(1, int(getattr(ga, "generations_completed", 0)))
         avg_time = total_time / gens
 
-        # Identify reason for stopping
-        stop_reason = "completed_all_generations"
-        if getattr(ga, "stop_criteria", None):
-            stop_reason = "stopped_by_criteria"
+        # Identify reason for stopping:
+        # - If completed all planned generations → "completed_all_generations"
+        # - Otherwise → stopped early due to stop criteria (e.g. saturation)
+        max_gens = int(self.config.get("generations"))
+        if gens >= max_gens:
+            stop_reason = "maximum_generations_hit"
+        else:
+            stop_reason = "saturation"
 
-        # === Save time–fitness log (existing behaviour) ===
+        #  Save minimal summary (delegate to save_results)
+        self.save_results(
+            run_dir_root=self.config.get("out_dir", "outputs"),
+            run_label="auto",
+            ga=ga,
+            stop_reason=stop_reason,
+            total_gens=gens,
+            total_time=total_time,
+            avg_time_per_gen=avg_time,
+            final_best_fitness=float(final_best),
+        )
+
+
+        # Save time–fitness log (existing behaviour)
         if self._log:
             log_df = pd.DataFrame(self._log, columns=["Time_s", "Best_fitness"])
             log_df.to_csv(self.log_dir / "log.csv", index=False)
@@ -371,24 +341,23 @@ class GAOptimiser:
             plt.savefig(self.log_dir / "fitness_curve.png", dpi=140)
             plt.close()
 
-        # === Save per-generation performance ===
+        # Save per-generation performance
         if self._per_gen:
             with open(self.log_dir / "per_generation.csv", "w", newline="", encoding="utf-8") as f:
                 writer = csv.DictWriter(f, fieldnames=["gen", "dt_sec", "best_fitness", "offspring_count"])
                 writer.writeheader()
                 writer.writerows(self._per_gen)
 
-        # === Save overall timing summary ===
+        # Save overall timing summary
         summary = {
-            "generations_completed": gens,
-            "sol_per_pop": int(getattr(ga, "sol_per_pop", 0)),
-            "keep_elitism": int(getattr(ga, "keep_elitism", 0)),
-            "keep_parents": int(getattr(ga, "keep_parents", -1)),
-            "num_parents_mating": int(getattr(ga, "num_parents_mating", 0)),
-            "total_time_sec": float(total_time),
-            "avg_time_per_gen_sec": float(avg_time),
-            "stop_reason": stop_reason,
-            "final_best_fitness": None if final_best != final_best else float(final_best),
+            "stop_reason": stop_reason,               # reason : "maximum_generations_hit" or "saturation"
+            "total_generations": int(gens),           # real gens
+            "max_generations": int(max_gens),         # max gens
+            "total_time_sec": float(total_time),      # total time
+            "avg_time_per_gen_sec": float(avg_time),  # avg time
+            "final_best_fitness": (
+                None if final_best != final_best else float(final_best)
+            ),
         }
 
         with open(self.log_dir / "timing.json", "w", encoding="utf-8") as f:
@@ -401,32 +370,21 @@ class GAOptimiser:
         print(f"[GA] Wrote timing.json, per_generation.csv, and log.csv to: {self.log_dir}")
 
 
-    # mutation: single-swap + spacing
-    def _mutation_single_swap_dist(self, offspring, ga_instance=None):
+    def _mutation_single_swap(self, offspring, ga_instance=None):
         """
-        Each offspring mutates EXACTLY ONE gene;
-        ensure ≥ min_dist & no duplicates;
-        demand-weighted Top-p%.
+        Mutation: single-swap.
+        Each offspring mutates EXACTLY ONE gene,
+        sampling from Top-p% highest-demand cells (demand-weighted).
         """
+        # --- RNG setup ---
         rng = getattr(self, "rng", None)
         if rng is None:
             rng = np.random.default_rng(self.config.get("random_seed", None))
             self.rng = rng
-        #rng = np.random.default_rng(self.config.get("random_seed", None))
+
         k = offspring.shape[1]
 
-        # spacing control (toggle)
-        enforce_spacing = self.config.get("enforce_spacing", None)
-        min_dist = self.config.get("min_station_spacing", None)
-        if enforce_spacing is None:
-            spacing_enabled = (min_dist is not None)
-        else:
-            spacing_enabled = bool(enforce_spacing)
-        if spacing_enabled and min_dist is None:
-            min_dist = 3000.0
-        min_dist = None if min_dist is None else float(min_dist)
-
-        # top-p control (supports "20%")
+        # --- Top-p% control ---
         top_pct = _parse_percent(self.config.get("gene_space_top_pct", "20%"), default=0.2)
         if top_pct is None or top_pct <= 0.0 or top_pct >= 1.0:
             top_pct = 0.0  # treat as no filtering
@@ -434,18 +392,13 @@ class GAOptimiser:
         mut_prob = float(self.config.get("mutation_probability", 1.0))
         xy, freq, feasible = self.xy_all, self.incident_freq, self.gene_space
 
-        def too_close_arr(cand: int, arr: np.ndarray) -> bool:
-            if not spacing_enabled or arr.size == 0:
-                return False
-            d = np.linalg.norm(xy[arr] - xy[cand], axis=1)
-            return float(d.min()) < float(min_dist)
-
+        # --- helper: demand-weighted probability ---
         def p_of(ids: np.ndarray):
             w = freq[ids].astype(float)
             s = w.sum()
             return (w / s) if s > 0 else None
 
-        # precompute Top-p
+        # --- precompute Top-p% subset ---
         pool_all = feasible
         if top_pct > 0:
             vals = freq[pool_all]
@@ -456,140 +409,76 @@ class GAOptimiser:
         else:
             top_ids = pool_all
 
+        # --- mutate each offspring ---
         for r in range(offspring.shape[0]):
             if rng.random() >= mut_prob:
                 continue
+
+            # pick which gene to mutate
             i = int(rng.integers(0, k))
+
+            # candidate pool: all top_ids not already in this solution
             pool = top_ids[~np.isin(top_ids, offspring[r])]
             if pool.size == 0:
                 pool = top_ids
-            p = p_of(pool)  # or your weighted version
 
+            p = p_of(pool)
             old_val = int(offspring[r, i])
-            for _ in range(200):
+
+            # choose new location different from the old one
+            for _ in range(100):
                 cand = int(rng.choice(pool, p=p))
-                ok_spacing = (not spacing_enabled) or (not too_close_arr(cand, np.delete(offspring[r], i)))
-                if cand != old_val and ok_spacing:
+                if cand != old_val:
                     offspring[r, i] = cand
                     break
+
         return offspring
-
-    def _make_run_id(self, extra_label: str | None = None) -> str:
-        """
-        Compose a readable run_id from key params + timestamp (robust to list values).
-        """
-        ts = datetime.now().strftime("%d-%H%M%S")
-
-        pieces = []
-
-        # top_pct
-        top_val = self.config.get("gene_space_top_pct", None)
-        pieces.append(f"top{_parse_percent(top_val)}")
-
-        # mutation probability
-        mut_val = self.config.get("mutation_probability", None)
-        if mut_val is not None:
-            try:
-                pieces.append(f"mut{float(mut_val):.2f}")
-            except Exception:
-                pass
-
-        # extra label if provided
-        if extra_label:
-            pieces.append(extra_label)
-
-        pieces.append(ts)
-        return "_".join(pieces)
 
     def save_results(
             self,
             *,
             run_dir_root: str | Path = "outputs",
             run_label: str | None = None,
-            best_solution: np.ndarray,
-            best_incidents: float,
-            best_pct: float,
-            ga: "pygad.GA",
-            start_layout: np.ndarray | None = None,
-            detail: pd.DataFrame | None = None,
-            plot_map: bool = True,
+            ga=None,
+            stop_reason: str,
+            total_gens: int,
+            total_time: float,
+            avg_time_per_gen: float,
+            final_best_fitness: float,
     ) -> Path:
         """
-        Save minimal GA summary and key config parameters in a simple JSON file.
+        Save minimal GA summary (stop reason, generations, time, fitness).
         """
-        run_dir_root = Path(run_dir_root)
-        run_id = self._make_run_id(run_label)
-        out_dir = run_dir_root / run_id
-        out_dir.mkdir(parents=True, exist_ok=True)
+        import json
+        from datetime import datetime
+        from pathlib import Path
 
-        # Compute timing info
-        total_time_sec = float(getattr(self, "_total_time", 0.0))
-        if hasattr(self, "_t0"):
-            total_time_sec = time.time() - self._t0
-        generations_completed = int(getattr(ga, "generations_completed", 0))
-        avg_time_per_gen = total_time_sec / generations_completed if generations_completed > 0 else np.nan
+        # Directory based only on timestamp
+        ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+        run_dir = Path(run_dir_root) / (f"{ts}_{run_label}" if run_label else ts)
+        run_dir.mkdir(parents=True, exist_ok=True)
 
-        # Safely extract final best fitness
-        final_best_fitness = float("nan")
-        try:
-            if hasattr(ga, "best_solution"):
-                bs = ga.best_solution()  # (solution, fitness, index)
-                if isinstance(bs, (list, tuple)) and len(bs) >= 2:
-                    final_best_fitness = float(bs[1])
-        except Exception:
-            pass
-
-        # Build concise summary JSON
         summary = {
-            "summary": {
-                "generations_completed": generations_completed,
-                "sol_per_pop": int(getattr(ga, "sol_per_pop", self.config.get("sol_per_pop", 0))),
-                "keep_elitism": int(self.config.get("keep_elitism", 0)),
-                "keep_parents": int(self.config.get("keep_parents", 0)),
-                "num_parents_mating": int(self.config.get("num_parents_mating", 0)),
-                "total_time_sec": total_time_sec,
-                "avg_time_per_gen_sec": avg_time_per_gen,
-                "stop_reason": str(getattr(ga, "stop_reason", "stopped_by_criteria")),
-                "final_best_fitness": final_best_fitness,
-            },
-            "parameters": {
-                "method_mode": self.config.get("init_mode", self.config.get("method_mode")),
-                "gene_space_top_pct": self.config.get("init_top_pct", self.config.get("gene_space_top_pct")),
-                "stop_criteria": self.config.get("stop_criteria", ["saturate_100"]),
-            },
+            "stop_reason": stop_reason,  # "maximum_generations_hit" / "saturation"
+            "total_generations": int(total_gens),
+            "total_time_sec": float(total_time),
+            "avg_time_per_gen_sec": float(avg_time_per_gen),
+            "final_best_fitness": float(final_best_fitness),
         }
 
-        # Save concise JSON
-        out_json = out_dir / f"summary_{run_id}.json"
+        out_json = run_dir / "summary.json"
         with open(out_json, "w", encoding="utf-8") as f:
             json.dump(summary, f, ensure_ascii=False, indent=2)
 
-        # # Optional map plot
-        # if plot_map:
-        #     try:
-        #         fig, ax = plt.subplots(figsize=(8, 8))
-        #         ax.scatter(self.xy_all[:, 0], self.xy_all[:, 1], s=2, alpha=0.2, label="Grid centroids")
-        #         sel_xy = self.xy_all[np.asarray(best_solution, int)]
-        #         ax.scatter(sel_xy[:, 0], sel_xy[:, 1], s=60, marker="*", label="Selected stations")
-        #         ax.set_aspect("equal");
-        #         ax.legend()
-        #         ax.set_title("Optimised Fire Station Locations")
-        #         fig.tight_layout()
-        #         fig.savefig(out_dir / f"map_{run_id}.png", dpi=150)
-        #         plt.close(fig)
-        #     except Exception as e:
-        #         print(f"[WARN] plot_map failed: {e}")
-        #
-        # print(f"[SAVE] Summary saved to: {out_json.resolve()}")
-        return out_dir
-
+        print(f"[SAVE] Summary saved to: {out_json.resolve()}")
+        return run_dir
 
     # main run
     def run_single(
             self,
             *,
-            start_layout: Optional[np.ndarray] = None,
-            initial_population: Optional[np.ndarray] = None,
+            start_layout,
+            initial_population,
             plot: bool = True,
             verbose: bool = True,
     ):
@@ -608,10 +497,6 @@ class GAOptimiser:
             if bad.size > 0:
                 raise ValueError(f"init_pop contains indices outside gene_space: {bad[:10]}...")
 
-        tmp_run_id = self._make_run_id(extra_label="running")
-        self.log_dir = Path(self.config.get("out_dir", "outputs")) / tmp_run_id / "log"
-        self.log_dir.mkdir(parents=True, exist_ok=True)
-
         ga = pygad.GA(
             num_generations=int(self.config["generations"]),
             sol_per_pop=int(self.config["sol_per_pop"]),
@@ -622,23 +507,23 @@ class GAOptimiser:
             initial_population=initial_population,
             fitness_func=self.evaluator.fitness_pygad_with_ga,
             parent_selection_type=self.config["parent_selection_type"],
-            K_tournament=int(self.config.get("K_tournament", 3)),
+            K_tournament=int(self.config.get("K_tournament")),
             crossover_type=self.config["crossover_type"],
-            crossover_probability=float(self.config.get("crossover_probability", 0.0)),  # no crossover
+            crossover_probability=float(self.config.get("crossover_probability")),  # no crossover
             mutation_type="random",
-            mutation_probability=float(self.config.get("mutation_probability", 1.0)),
-            keep_elitism=int(self.config.get("keep_elitism", 2)),
-            keep_parents=int(self.config.get("keep_parents", 0)),
+            mutation_probability=float(self.config.get("mutation_probability")),
+            keep_elitism=int(self.config.get("keep_elitism")),
+            keep_parents=int(self.config.get("keep_parents")),
             stop_criteria=stop_criteria,
-            random_seed=self.config.get("random_seed", None),
+            random_seed=self.config.get("random_seed"),
             allow_duplicate_genes=False,
             on_start=self._on_start,
             on_generation=self._on_generation,
             on_stop=self._on_stop,
         )
 
-        #  single-swap + spacing
-        ga.mutation = self._mutation_single_swap_dist.__get__(self, self.__class__)
+        #  mutation
+        ga.mutation = self._mutation_single_swap.__get__(self, self.__class__)
         ga.run()
 
         best_solution_arr, best_fitness, _ = ga.best_solution()

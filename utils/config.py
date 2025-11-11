@@ -14,30 +14,40 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 genetic algorithm parameters
 '''
 
+
 config = {
-    "generations": 800,
-    "sol_per_pop": 200,  # 200
-    "num_parents_mating": 50,
-    "num_stations": 40,
-    "parent_selection_type": "tournament",
-    "K_tournament": 3,   # tournament_size
-    "crossover_type": "uniform",       # "single_point" "two_points" "uniform" "scattered"
-    "crossover_probability": 0.8,
-    "mutation_probability": 0.2,    # 0.2
-    "keep_elitism": 2,
-    "keep_parents": 2,
-    "random_seed": 0,
-    "log_dir": "log",  # log Directory
-    "n_random_layouts": 1000,  # random baseline experiment number (Compared to GA)
-    # parameters in init_pop
-    # "gene_space_top_pct": "30%",
-    "gene_space_top_pct": [0.40, 0.30, 0.20, 0.10],
-    "stop_criteria": ["saturate_300", "saturate_500"],
-    # "method_mode": ["mixed", "single_swap", "random"],
-    "method_mode": ["mixed"],
-    "min_station_spacing": 3000,
-    "n_single_swap_seeds": 100,          #
-    "seed_uniform_mix_ratio": 0.3,       #
-    "seed_alpha": 1.0,                   #
+    "generations": 800,               # Total number of generations to evolve
+    "sol_per_pop": 200,               # Number of individuals per population
+    "num_parents_mating": 50,         # Number of parents selected for mating in each generation
+    "num_stations": 40,               # Number of stations (genes) per solution
+
+    #  Selection & Crossover settings
+    "parent_selection_type": "tournament",   # Parent selection strategy ("tournament" / "rank" / "roulette")
+    "K_tournament": 3,                       # Tournament size (number of individuals competing)
+    "crossover_type": "uniform",             # Crossover method ("single_point", "two_points", "uniform", "scattered")
+    "crossover_probability": 0.8,            # Probability that crossover occurs between two parents
+
+    #  Mutation settings
+    "mutation_probability": 0.2,             # Probability that a gene mutates
+    "keep_elitism": 2,                       # Number of best solutions preserved each generation (elitism)
+    "keep_parents": 2,                       # Number of parent solutions carried over to next generation
+    "random_seed": 0,                        # Random seed for reproducibility
+
+    # Logging and baseline experiment
+    "log_dir": "log",                        # Directory for saving run logs
+    "n_random_layouts": 1000,                # Number of random layouts for baseline comparison (outside GA)
+
+    # gene_space_top_pct defines the proportion of high-demand cells used when sampling initial solutions
+    "gene_space_top_pct": [0.40, 0.30, 0.20, 0.10],   # Top X% of demand cells considered (used in sweep runs)
+
+    #  Initial population parameters
+    "method_mode": ["balanced_init", "local_init", "random_init"],                # Initialisation mode: "mixed", "single_swap", or "random"
+    "n_single_swap_seeds": 100,  # Number of single-swap neighbours generated from baseline
+    "seed_uniform_mix_ratio": 0.3,  # Ratio of purely random seeds mixed with demand-weighted ones
+    "seed_alpha": 1.0,  # Demand-weighting factor (1.0 = full demand-based sampling)
+
+    #  Stopping criteria
+    "stop_criteria": ["saturate_300", "saturate_500"],  # Stop when no improvement for 300/500 generations
+
 }
 

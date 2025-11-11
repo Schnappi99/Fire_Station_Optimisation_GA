@@ -11,13 +11,11 @@ import numpy as np
 
 # utils.config
 
-from utils.config import config as base_config  # dict】
+from utils.config import config as base_config  # dict
 from utils.data_loader import load_data
 from optimiser.GAOptimiser import GAOptimiser
+from utils.config import config, DATA_DIR
 
-# -----------------------------
-# Tools
-# -----------------------------
 
 def time_stamp():
     return time.strftime("%Y%m%d-%H%M%S")
@@ -75,11 +73,11 @@ def build_configs_for_sweep(cfg: Dict[str, Any]) -> List[Dict[str, Any]]:
         # fallback
         return str(x)
 
-    modes  = _to_list(cfg.get("method_mode", "mixed"))
-    tops   = _to_list(cfg.get("gene_space_top_pct", 0.20))
-    stops  = _to_list(cfg.get("stop_criteria", ["saturate_100"]))
+    modes  = _to_list(cfg.get("method_mode"))
+    tops   = _to_list(cfg.get("gene_space_top_pct"))
+    stops  = _to_list(cfg.get("stop_criteria"))
 
-    out: List[Dict[str, Any]] = []
+    out = []
     for mode, top, stop in itertools.product(modes, tops, stops):
         c = dict(cfg)  # shallow copy
         c["method_mode"] = mode
@@ -88,49 +86,31 @@ def build_configs_for_sweep(cfg: Dict[str, Any]) -> List[Dict[str, Any]]:
         out.append(c)
     return out
 
-def run_one(cfg: Dict[str, Any]) -> Path:
+def run_one(cfg):
     data = load_data()
-    xy_all = data["xy_all"]
-    incident_freq = data["incident_freq"]
-    time_matrix = data["time_matrix"]
+    gene_space = np.flatnonzero(data['incident_freq'].ravel() > 0).astype(int)
 
-    gene_space = np.flatnonzero(incident_freq.ravel() > 0).astype(int)
+    # normalise the config
+    cfg["method_mode"] = _as_scalar(cfg.get("method_mode"))
+    cfg["gene_space_top_pct"] = _pct_to_float(_as_scalar(cfg.get("gene_space_top_pct")))
 
-    cfg = dict(cfg)  # do not mutate caller's dict
-
-    # --- normalize the two key inputs to scalars (already done in build_configs_for_sweep, but keep defensive) ---
-    cfg["method_mode"] = _as_scalar(cfg.get("method_mode"), "mixed")
-    # NEW: gene_space_top_pct (float in [0,1])
-    cfg["gene_space_top_pct"] = _pct_to_float(_as_scalar(cfg.get("gene_space_top_pct"), 0.20))
-    top_pct = float(cfg["gene_space_top_pct"])
-    init_mode = cfg["method_mode"]
-
-    # start optimiser
+    # build the optimiser with current cfg
     opt = GAOptimiser(data=data, config=cfg, gene_space=gene_space)
 
-    # optional baseline
-    start_layout = None
-    start_layout_path = cfg.get("start_layout_path")
-    if start_layout_path and Path(start_layout_path).exists():
-        start_layout = np.load(start_layout_path)
+    # load the current layout
+    start_layout = np.load(DATA_DIR / "current_layout_idx.npy")
 
-    # record init params into opt.config (saved later with results)
-    opt.config["init_mode"] = init_mode
-    opt.config["init_top_pct"] = top_pct
-
-    # build initial population (use *top_pct* from gene_space_top_pct)
+    # build initial population
+    # Three different types
     init_pop = opt.build_initial_population(
         base_layout=start_layout,
         pop_size=int(cfg["sol_per_pop"]),
-        mode=init_mode,   # "mixed" | "single_swap" | "random"
-        #min_dist=float(cfg.get("min_station_spacing", 3000.0)),
-        min_dist=None,
-        enforce_spacing=None,
-        n_single_swap_from_base=int(cfg.get("n_single_swap_seeds", 60)),
-        alpha=float(cfg.get("seed_alpha", 1.0)),
-        uniform_mix_ratio=float(cfg.get("seed_uniform_mix_ratio", 0.1)),
-        top_pct=top_pct,
-        rng=opt.rng,      # persistent RNG for reproducibility
+        mode=cfg["method_mode"],
+        n_single_swap_from_base=int(cfg.get("n_single_swap_seeds")),
+        alpha=float(cfg.get("seed_alpha")),
+        uniform_mix_ratio=float(cfg.get("seed_uniform_mix_ratio")),
+        top_pct=float(cfg["gene_space_top_pct"]),
+        rng=opt.rng,
     )
 
     best_solution, best_incidents, best_pct, ga = opt.run_single(
@@ -140,24 +120,8 @@ def run_one(cfg: Dict[str, Any]) -> Path:
         verbose=True,
     )
 
-    out_dir_root = cfg.get("out_dir", "outputs")
-    out_dir = opt.save_results(
-        run_dir_root=out_dir_root,
-        run_label=None,
-        best_solution=best_solution,
-        best_incidents=best_incidents,
-        best_pct=best_pct,
-        ga=ga,
-        start_layout=start_layout,
-        detail=None,
-        plot_map=True,
-    )
-    print(f"[DONE] Saved to: {out_dir}")
-    return out_dir
 
-# -----------------------------
 # main()
-# -----------------------------
 def main():
     cfg_all = dict(base_config)
     # parameters loop: False —— single run
