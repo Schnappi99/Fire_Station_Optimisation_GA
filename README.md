@@ -9,8 +9,12 @@ This repository presents a spatial optimisation framework for fire station place
 Fire_Station_Optimisation_GA/
 ├── optimiser/                    # Core optimisation logic
 │   ├── GAOptimiser.py            # Genetic Algorithm 
-│   ├── ga_run.py                 # Run GA
-│   ├── Output                    # outputs
+│   ├── run.py                    # Run GA in a single time
+│   ├── run_experiments.py        # Run GA under different parameters
+│   ├── outputs                   # outputs
+│   │   ├── results_summary.csv   # summary of the results 
+│   │   ├── summary_xxxxxx.json   # xxxxxx is the time stamp
+│   │   └── ...
 │   └── log                       # log files
 │ 
 ├── feasibility_study/            # Feasibility study
@@ -23,7 +27,8 @@ Fire_Station_Optimisation_GA/
 │   ├── config.py                 # GA hyperparameters
 │   ├── data_loader.py            # Load model input data into global variables
 │   ├── validation.py             # Validation
-│   └── evaluator.py              # Calculate the fitness 
+│   ├── evaluator.py              # Calculate the fitness 
+│   └── combine_results.py
 │ 
 ├── data/                         # Input data (e.g., .npy, .joblib, .gpkg files and time matrix)
 │   └── ... 
