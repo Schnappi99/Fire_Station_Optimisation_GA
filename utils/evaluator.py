@@ -59,19 +59,13 @@ class Evaluator:
         else:
             eff_pct = weighted_efficiency / total_incidents if total_incidents > 0 else 0.0
 
-        detail = pd.DataFrame({
-            "nearest_time": nearest_times,
-            "station_count": station_count,
-            "incident_freq": self.incident_freq,
-            "efficiency": eff,
-            "expected_served": total_efficiency,
-        })
-        return total_efficiency, eff_pct, detail
+        return total_efficiency, eff
 
     # Adapter for PyGAD (both signatures support)
     def fitness_pygad(self, solution, solution_idx) -> float:
-        incidents_served, _, _ = self.evaluate_layout(np.asarray(solution, dtype=int))
-        return float(incidents_served)
+        total_efficiency, eff = self.evaluate_layout(np.asarray(solution, dtype=int))
+        return float(total_efficiency)
 
     def fitness_pygad_with_ga(self, ga_instance, solution, solution_idx) -> float:
+        # ga_instance: which can get the current statement (generations, populations, best solution) of the GA.
         return self.fitness_pygad(solution, solution_idx)

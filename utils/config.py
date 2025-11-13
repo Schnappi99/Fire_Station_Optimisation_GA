@@ -16,7 +16,7 @@ genetic algorithm parameters
 
 
 config = {
-    "generations": 800,               # Total number of generations to evolve
+    "generations": 800,               # Maximum generations
     "sol_per_pop": 200,               # Number of individuals per population
     "num_parents_mating": 50,         # Number of parents selected for mating in each generation
     "num_stations": 40,               # Number of stations (genes) per solution
@@ -44,7 +44,7 @@ config = {
     "method_mode": ["balanced_init", "local_init", "random_init"],                # Initialisation mode: "mixed", "single_swap", or "random"
     "n_single_swap_seeds": 100,  # Number of single-swap neighbours generated from baseline
     "seed_uniform_mix_ratio": 0.3,  # Ratio of purely random seeds mixed with demand-weighted ones
-    "seed_alpha": 1.0,  # Demand-weighting factor (1.0 = full demand-based sampling)
+    "seed_alpha": 1.0,                                                # Demand-weighting factor (1.0 = full demand-based sampling)
 
     #  Stopping criteria
     "stop_criteria": ["saturate_300", "saturate_500"],  # Stop when no improvement for 300/500 generations

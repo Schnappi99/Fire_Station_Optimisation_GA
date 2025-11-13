@@ -1,5 +1,6 @@
 # ====== Data and Outputs ======
 data/driving_time_matrix.csv
+data/driving_time_matrix_NN.npy
 *.log
 __pycache__/
 **/__pycache__/

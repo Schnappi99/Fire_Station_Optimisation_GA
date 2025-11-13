@@ -109,11 +109,11 @@ class GAOptimiser:
 
         Modes:
 
-            - "balanced_init": use the current layout as a start point (if given),
+            - "balanced_init": use the current layout as a start point,
                                create several single-swap neighbours (n_single_swap_from_base),
                                and fill the rest with demand-weighted random layouts.
 
-            - "local_init": use the current layout as a start point (if given),
+            - "local_init": use the current layout as a start point,
                             create single-swap neighbours (n_single_swap_from_base).
 
             - "random_init": fully random layouts based on demand weights.
@@ -301,7 +301,10 @@ class GAOptimiser:
 
         # Compute total runtime and average time per generation
         total_time = time.time() - (self._t0 or time.time())
-        gens = max(1, int(getattr(ga, "generations_completed", 0)))
+
+        gens = ga.generations_completed
+        # getattr(obj, attr_name, default): if obj.attr_name is none, then return default
+        # gens = max(1, int(getattr(ga, "generations_completed", 0)))
         avg_time = total_time / gens
 
         # Identify reason for stopping:
@@ -324,7 +327,6 @@ class GAOptimiser:
             avg_time_per_gen=avg_time,
             final_best_fitness=float(final_best),
         )
-
 
         # Save time–fitness log (existing behaviour)
         if self._log:
@@ -376,29 +378,30 @@ class GAOptimiser:
         Each offspring mutates EXACTLY ONE gene,
         sampling from Top-p% highest-demand cells (demand-weighted).
         """
-        # --- RNG setup ---
-        rng = getattr(self, "rng", None)
+        # set up the rng
+        rng = self.rng
+        # rng = getattr(self, "rng", None)
         if rng is None:
             rng = np.random.default_rng(self.config.get("random_seed", None))
             self.rng = rng
 
         k = offspring.shape[1]
 
-        # --- Top-p% control ---
-        top_pct = _parse_percent(self.config.get("gene_space_top_pct", "20%"), default=0.2)
+        # top p% of cells
+        top_pct = _parse_percent(self.config.get("gene_space_top_pct", "20%"))
         if top_pct is None or top_pct <= 0.0 or top_pct >= 1.0:
             top_pct = 0.0  # treat as no filtering
 
         mut_prob = float(self.config.get("mutation_probability", 1.0))
         xy, freq, feasible = self.xy_all, self.incident_freq, self.gene_space
 
-        # --- helper: demand-weighted probability ---
+        #  demand-weighted probability
         def p_of(ids: np.ndarray):
             w = freq[ids].astype(float)
             s = w.sum()
             return (w / s) if s > 0 else None
 
-        # --- precompute Top-p% subset ---
+        # precompute Top-p% subset
         pool_all = feasible
         if top_pct > 0:
             vals = freq[pool_all]
@@ -409,7 +412,7 @@ class GAOptimiser:
         else:
             top_ids = pool_all
 
-        # --- mutate each offspring ---
+        # mutate each offspring
         for r in range(offspring.shape[0]):
             if rng.random() >= mut_prob:
                 continue
@@ -537,5 +540,4 @@ class GAOptimiser:
             except Exception:
                 if verbose:
                     print("Plot failed.")
-
         return best_solution, float(best_fitness), float(best_pct), ga
