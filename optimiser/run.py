@@ -51,7 +51,7 @@ if __name__ == "__main__":
         # with spacing constraint
         # min_dist=float(config.get("min_station_spacing", 3000.0)),
         # enforce_spacing=True,
-        n_single_swap_from_base=int(opt.config.get("n_single_swap_seeds", 60)),
+        n_single_swap_from_base=int(opt.config.get("n_one_step_neighbors", 60)),
         alpha=float(opt.config.get("seed_alpha", 1.0)),
         uniform_mix_ratio=float(opt.config.get("seed_uniform_mix_ratio", 0.1)),
         top_pct=top_pct,

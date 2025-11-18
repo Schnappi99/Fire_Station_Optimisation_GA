@@ -4,6 +4,14 @@ from dataclasses import dataclass
 import numpy as np
 import pandas as pd
 
+
+# Calculate the time threshold
+def compute_time_threshold(distance_km: float, speed_mph: float = 30.0) -> float:
+    # mph -> m/s
+    v_mps = speed_mph * 1609.34 / 3600.0
+    D_m = distance_km * 1000.0
+    return D_m / v_mps
+
 @dataclass
 class Evaluator:
     """
@@ -17,19 +25,40 @@ class Evaluator:
     rf_model: object                 #  .predict(X_df) -> [0,1]
     #total_incidents: float
     feature_names: list[str]         #  names of the five top important features
+    station_time_threshold: float | None = None  # global time threshold τ (seconds)
 
-    def _station_count_all(self, solution: np.ndarray) -> np.ndarray:
+    def _station_count_all_1(self, solution: np.ndarray) -> np.ndarray:
         solution = np.asarray(solution, dtype=int)
         A_sub = self.A_matrix[:, solution]                               # (N, k)
         counts = np.asarray(A_sub.sum(axis=1)).ravel().astype(int)       # (N,)
         return counts
 
+    def _station_count_all(self, solution: np.ndarray) -> np.ndarray:
+        """
+        Count how many stations are within the time threshold (tau)
+        for each incident cell.
+
+        For a given solution (selected station indices):
+          - Take the corresponding time columns from time_matrix (N, k).
+          - Mark stations with travel_time <= station_time_threshold as 1, else 0.
+          - Sum over stations to get the count per incident cell.
+        """
+
+        solution = np.asarray(solution, dtype=int)
+        # (N, k): travel times from each incident to selected stations
+        selected_times = self.time_matrix[:, solution]
+        # (N, k) bool: True if station is within the time threshold τ
+        within_threshold = selected_times <= self.station_time_threshold
+        # (N,): count stations within τ for each incident
+        counts = within_threshold.sum(axis=1).astype(int)
+        return counts
+
+
     def evaluate_layout(self, solution: np.ndarray):
         """
         Return:
-          incidents_served: float
-          eff_pct: float
-          detail: pd.DataFrame(["nearest_time","station_count","incident_freq","efficiency","expected_served"])
+          total efficiency: float
+          eff: float
         """
         solution = np.asarray(solution, dtype=int)
         if np.unique(solution).size != solution.size:
@@ -61,11 +90,11 @@ class Evaluator:
 
         return total_efficiency, eff
 
-    # Adapter for PyGAD (both signatures support)
     def fitness_pygad(self, solution, solution_idx) -> float:
         total_efficiency, eff = self.evaluate_layout(np.asarray(solution, dtype=int))
         return float(total_efficiency)
 
     def fitness_pygad_with_ga(self, ga_instance, solution, solution_idx) -> float:
         # ga_instance: which can get the current statement (generations, populations, best solution) of the GA.
+        # which meets PyGAD 2.20.0 the method signature requirements.
         return self.fitness_pygad(solution, solution_idx)

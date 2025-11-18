@@ -12,6 +12,7 @@ from datetime import datetime
 
 from utils.evaluator import Evaluator
 
+
 def _parse_percent(val, default=None) -> float | None:
     """Parse values like '20%' or 0.2 into a float in [0,1]; None stays None."""
     if val is None:
@@ -27,6 +28,13 @@ def _euclid_min_dist(xy: np.ndarray, chosen: np.ndarray, cand_idx: int) -> float
         return np.inf
     d = np.linalg.norm(xy[chosen] - xy[cand_idx], axis=1)
     return float(d.min())
+
+# Calculate the time threshold
+def compute_time_threshold(distance_km: float, speed_mph: float = 30.0) -> float:
+    # mph -> m/s
+    v_mps = speed_mph * 1609.34 / 3600.0
+    D_m = distance_km * 1000.0
+    return D_m / v_mps
 
 
 class GAOptimiser:
@@ -74,6 +82,13 @@ class GAOptimiser:
             feature_names=self.feature_names,
         )
 
+        # Compute global travel time threshold tau
+        distance_km = float(config["station_distance_threshold_km"])
+        speed_mph = float(config.get("speed_mph"))
+
+        tau = compute_time_threshold(distance_km, speed_mph)
+        self.evaluator.station_time_threshold = tau
+
         # quick sanity
         N = self.xy_all.shape[0]
         assert self.time_matrix.shape[0] == N
@@ -86,11 +101,6 @@ class GAOptimiser:
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self._t0 = None
         self._log: list[tuple[float, float]] = []
-
-    # evaluate the efficiency
-    def evaluate_layout(self, solution: np.ndarray):
-        """Proxy to Evaluator"""
-        return self.evaluator.evaluate_layout(solution)
 
     # build initial population
     def build_initial_population(
@@ -110,6 +120,7 @@ class GAOptimiser:
         Modes:
 
             - "balanced_init": use the current layout as a start point,
+            every time change one station location for
                                create several single-swap neighbours (n_single_swap_from_base),
                                and fill the rest with demand-weighted random layouts.
 
@@ -301,11 +312,8 @@ class GAOptimiser:
 
         # Compute total runtime and average time per generation
         total_time = time.time() - (self._t0 or time.time())
-
         gens = ga.generations_completed
-        # getattr(obj, attr_name, default): if obj.attr_name is none, then return default
-        # gens = max(1, int(getattr(ga, "generations_completed", 0)))
-        avg_time = total_time / gens
+        avg_time = total_time / gens if gens >0 else float("nan")
 
         # Identify reason for stopping:
         # - If completed all planned generations → "completed_all_generations"
@@ -316,16 +324,21 @@ class GAOptimiser:
         else:
             stop_reason = "saturation"
 
-        #  Save minimal summary (delegate to save_results)
+        # extract experiment config
+        top_pct = float(self.config["gene_space_top_pct"])
+        mode_of_initialisation = self.config["method_mode"]
+
+        #  Save summary (delegate to save_results)
         self.save_results(
             run_dir_root=self.config.get("out_dir", "outputs"),
-            run_label="auto",
             ga=ga,
             stop_reason=stop_reason,
             total_gens=gens,
             total_time=total_time,
             avg_time_per_gen=avg_time,
             final_best_fitness=float(final_best),
+            top_pct=top_pct,
+            mode_of_initialisation=mode_of_initialisation,
         )
 
         # Save time–fitness log (existing behaviour)
@@ -360,6 +373,8 @@ class GAOptimiser:
             "final_best_fitness": (
                 None if final_best != final_best else float(final_best)
             ),
+            "top_pct": top_pct,
+            "mode_of_initialisation": mode_of_initialisation,
         }
 
         with open(self.log_dir / "timing.json", "w", encoding="utf-8") as f:
@@ -388,11 +403,11 @@ class GAOptimiser:
         k = offspring.shape[1]
 
         # top p% of cells
-        top_pct = _parse_percent(self.config.get("gene_space_top_pct", "20%"))
+        top_pct = _parse_percent(self.config.get("gene_space_top_pct"))
         if top_pct is None or top_pct <= 0.0 or top_pct >= 1.0:
             top_pct = 0.0  # treat as no filtering
 
-        mut_prob = float(self.config.get("mutation_probability", 1.0))
+        mut_prob = float(self.config.get("mutation_probability"))
         xy, freq, feasible = self.xy_all, self.incident_freq, self.gene_space
 
         #  demand-weighted probability
@@ -448,6 +463,8 @@ class GAOptimiser:
             total_time: float,
             avg_time_per_gen: float,
             final_best_fitness: float,
+            top_pct: float,
+            mode_of_initialisation: str,
     ) -> Path:
         """
         Save minimal GA summary (stop reason, generations, time, fitness).
@@ -467,6 +484,8 @@ class GAOptimiser:
             "total_time_sec": float(total_time),
             "avg_time_per_gen_sec": float(avg_time_per_gen),
             "final_best_fitness": float(final_best_fitness),
+            "top_pct": float(top_pct),
+            "mode_of_initialisation": mode_of_initialisation,  # ← NEW
         }
 
         out_json = run_dir / "summary.json"
@@ -500,6 +519,7 @@ class GAOptimiser:
             if bad.size > 0:
                 raise ValueError(f"init_pop contains indices outside gene_space: {bad[:10]}...")
 
+        # Initialise GA class
         ga = pygad.GA(
             num_generations=int(self.config["generations"]),
             sol_per_pop=int(self.config["sol_per_pop"]),

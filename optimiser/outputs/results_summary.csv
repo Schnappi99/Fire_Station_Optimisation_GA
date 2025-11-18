@@ -1,9 +1,0 @@
-file_name,run_folder,method_mode,gene_space_top_pct,stop_criteria,generations_completed,final_best_fitness,total_time_sec,avg_time_per_gen_sec,stop_reason
-summary_top0.4_dist3000_mut0.20_31-003306.json,outputs,mixed,0.4,saturate_500,800,0.44733493041517713,5899.585164070129,7.374481455087662,stopped_by_criteria
-summary_top0.4_dist3000_mut0.20_30-225443.json,outputs,mixed,0.4,saturate_300,800,0.44733493041517713,10433.005237102509,13.041256546378136,stopped_by_criteria
-summary_top0.3_dist3000_mut0.20_31-015233.json,outputs,mixed,0.3,saturate_300,601,0.4492222756948614,4763.943744897842,7.926695083024696,stopped_by_criteria
-summary_top0.3_dist3000_mut0.20_31-033227.json,outputs,mixed,0.3,saturate_500,800,0.44920787229752857,5990.711290836334,7.488389113545418,stopped_by_criteria
-summary_top0.2_dist3000_mut0.20_31-042843.json,outputs,mixed,0.2,saturate_300,432,0.4348728550302638,3372.2678768634796,7.806175640887684,stopped_by_criteria
-summary_top0.2_dist3000_mut0.20_31-054401.json,outputs,mixed,0.2,saturate_500,632,0.43460532974783384,4514.657801151276,7.143445887897588,stopped_by_criteria
-summary_top0.1_dist3000_mut0.20_31-063059.json,outputs,mixed,0.1,saturate_300,400,0.43401782987613585,2814.3377180099487,7.035844295024872,stopped_by_criteria
-summary_top0.1_dist3000_mut0.20_31-073056.json,outputs,mixed,0.1,saturate_500,600,0.4339630793337997,3594.994817018509,5.991658028364181,stopped_by_criteria

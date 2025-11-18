@@ -23,18 +23,28 @@ def time_stamp():
 def _to_list_or_single(v):
     return v if isinstance(v, list) else [v]
 
-def _pct_to_float(x) -> float:
-    """Accepts 0.3, '0.3', '30%', 30 and returns 0.30 as float."""
-    if x is None:
-        return 1.0
+# def _pct_to_float(x) -> float:
+#     """Accepts 0.3, '0.3', '30%', 30 and returns 0.30 as float."""
+#     if x is None:
+#         return 1.0
+#     if isinstance(x, (int, float)):
+#         xf = float(x)
+#         return xf/100.0 if xf > 1 else xf
+#     s = str(x).strip()
+#     if s.endswith('%'):
+#         return float(s[:-1]) / 100.0
+#     xf = float(s)
+#     return xf/100.0 if xf > 1 else xf
+
+def _pct_to_float(x):
+    """
+    Convert '30%' → 0.3, but return float directly if already numeric.
+
+    """
     if isinstance(x, (int, float)):
-        xf = float(x)
-        return xf/100.0 if xf > 1 else xf
+        return float(x)
     s = str(x).strip()
-    if s.endswith('%'):
-        return float(s[:-1]) / 100.0
-    xf = float(s)
-    return xf/100.0 if xf > 1 else xf
+    return float(s.replace('%', '')) / 100
 
 def _as_scalar(val, default=None):
     if isinstance(val, list):
@@ -106,7 +116,7 @@ def run_one(cfg):
         base_layout=start_layout,
         pop_size=int(cfg["sol_per_pop"]),
         mode=cfg["method_mode"],
-        n_single_swap_from_base=int(cfg.get("n_single_swap_seeds")),
+        n_single_swap_from_base=int(cfg.get("n_one_step_neighbors")),
         alpha=float(cfg.get("seed_alpha")),
         uniform_mix_ratio=float(cfg.get("seed_uniform_mix_ratio")),
         top_pct=float(cfg["gene_space_top_pct"]),
